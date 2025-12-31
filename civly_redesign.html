@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIVLY.AI - Opposition Research in 48 Hours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a0a2e;
+            --primary: #2d1b4e;
+            --primary-mid: #4a1d6e;
+            --primary-light: #7c3aed;
+            --accent: #a855f7;
+            --accent-bright: #c084fc;
+            --accent-magenta: #d946ef;
+            --text-white: #ffffff;
+            --text-light: rgba(255,255,255,0.9);
+            --text-muted: rgba(255,255,255,0.7);
+            --bg-dark: #0f0515;
+            --bg-card: rgba(255,255,255,0.05);
+            --border-light: rgba(255,255,255,0.1);
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-white);
+            background: var(--bg-dark);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 5, 21, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links > li {
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-white);
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .dropdown-toggle::after {
+            content: "▼";
+            font-size: 0.6rem;
+            margin-left: 0.25rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: -1rem;
+            background: var(--primary-dark);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s;
+            margin-top: 0.75rem;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--bg-card);
+            color: var(--text-white);
+        }
+
+        .dropdown-menu .primary-solution {
+            border-left: 3px solid var(--accent-magenta);
+        }
+
+        .dropdown-menu .solution-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent-magenta);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-cta {
+            border: 1px solid var(--text-muted);
+            padding: 0.6rem 1.25rem;
+            border-radius: 4px;
+            transition: all 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            border-color: var(--text-white);
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 50%, var(--bg-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-bright) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 750px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .price-banner {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--accent);
+            color: var(--text-white);
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-white);
+            border: 1px solid var(--text-muted);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-white);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .trust-indicator {
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Section styling */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: var(--bg-dark);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+        }
+
+        .problem-card h3 {
+            color: var(--accent-magenta);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .problem-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+        }
+
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .solution-text h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-white);
+        }
+
+        .solution-text > p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .included-list {
+            list-style: none;
+        }
+
+        .included-list li {
+            padding: 0.6rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .included-list .check {
+            color: var(--success);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .solution-highlight {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+        }
+
+        .solution-highlight p {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--accent-bright);
+            font-style: italic;
+        }
+
+        /* Comparison Table */
+        .comparison {
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+        }
+
+        .comparison-table {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(255,255,255,0.1);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .comparison-table tr:not(:last-child) td {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .comparison-table .civly-col {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .comparison-table .traditional-col {
+            color: var(--text-muted);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: var(--bg-dark);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .step p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .how-it-works-footer {
+            text-align: center;
+        }
+
+        .how-it-works-footer p {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+        }
+
+        .pricing-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .pricing-main {
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 3rem;
+            position: relative;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .pricing-main h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            color: var(--text-white);
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent-magenta) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-light);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features .check {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .pricing-addons {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .pricing-addons h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-white);
+        }
+
+        .addon-list {
+            list-style: none;
+        }
+
+        .addon-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .addon-list li:last-child {
+            border-bottom: none;
+        }
+
+        .addon-price {
+            font-weight: 600;
+            color: var(--accent-bright);
+        }
+
+        /* Who We Serve */
+        .who-we-serve {
+            background: var(--bg-dark);
+        }
+
+        .serve-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .serve-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+
+        .serve-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.2);
+        }
+
+        .serve-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .serve-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-white);
+        }
+
+        .serve-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Sample Report Section */
+        .sample-report {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+            text-align: center;
+        }
+
+        .sample-report-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .sample-report h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .sample-report p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .sample-report .note {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+
+        /* Guarantee */
+        .guarantee {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .guarantee-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .guarantee h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .guarantee p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+        }
+
+        .guarantee-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--bg-dark);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-light);
+            padding: 1.5rem 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-white);
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta > p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .final-cta .hero-ctas {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--accent-bright);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            padding: 3rem 2rem;
+            background: var(--bg-dark);
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .section-divider h3 {
+            color: var(--text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Compliance Section (Secondary) */
+        .compliance-section {
+            background: linear-gradient(180deg, var(--primary-dark) 0%, var(--bg-dark) 100%);
+            text-align: center;
+        }
+
+        .compliance-section .section-title {
+            font-size: 2rem;
+        }
+
+        .compliance-intro {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .compliance-intro p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .compliance-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+        }
+
+        .compliance-feature {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            text-align: left;
+        }
+
+        .compliance-feature h4 {
+            color: var(--accent-magenta);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .compliance-feature p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            padding: 0.25rem 0;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-bright);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .price-banner {
+                font-size: 1.1rem;
+                padding: 0.75rem 1.5rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .solution-content {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                font-size: 0.875rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1rem;
+            }
+        }
+
+        /* Mobile Nav Toggle */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-white);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <div class="logo-icon">&#10003;</div>
+            Civly
+        </a>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li class="dropdown">
+                <span class="dropdown-toggle"><a href="#">Solutions</a></span>
+                <div class="dropdown-menu">
+                    <a href="#opposition-research" class="primary-solution">
+                        <span class="solution-label">Primary</span>
+                        Opposition Research (Helios)
+                    </a>
+                    <a href="#compliance">
+                        Campaign Compliance Engine
+                    </a>
+                </div>
+            </li>
+            <li><a href="#company">Company</a></li>
+            <li><a href="#contact" class="nav-cta">Request a Demo</a></li>
+        </ul>
+        <button class="mobile-nav-toggle">&#9776;</button>
+    </nav>
+
+    <!-- ============================================== -->
+    <!-- OPPOSITION RESEARCH - PRIMARY PRODUCT SECTION -->
+    <!-- ============================================== -->
+
+    <!-- Hero Section -->
+    <section class="hero" id="opposition-research">
+        <div class="hero-container">
+            <h1>Opposition Research. Delivered in 48 Hours, Not 3 Weeks.</h1>
+            <p class="hero-subtitle">
+                Comprehensive opposition dossiers on any candidate &mdash; social media archaeology,
+                voting records, contradictions, and vulnerabilities. AI-powered research at half
+                the cost of traditional firms.
+            </p>
+            <div class="price-banner">
+                Starting at $4,995 | 48-Hour Delivery Guaranteed
+            </div>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn btn-primary">Order Research Now</a>
+                <a href="#sample" class="btn btn-secondary">See Sample Report</a>
+            </div>
+            <p class="trust-indicator">
+                Trusted by campaigns in Texas, Florida, Pennsylvania, and Arizona
+            </p>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="section-container">
+            <h2 class="section-title">Traditional Opposition Research is Broken</h2>
+            <p class="section-subtitle">The old way of doing research costs too much, takes too long, and delivers too little.</p>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>Too Slow</h3>
+                    <p>Traditional firms take 3-4 weeks to deliver research. Your opponent isn't waiting. Critical intel arrives too late for debates, ads, and rapid response.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Too Expensive</h3>
+                    <p>$10,000 to $20,000 for a single opposition dossier. That's 5-10% of a down-ballot campaign budget &mdash; money that could go to voter contact and ads.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Too Dense</h3>
+                    <p>100-page PDF reports that sit unread. When you need specific info for a press release or debate prep, you're searching through mountains of text.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="section-container">
+            <div class="solution-content">
+                <div class="solution-text">
+                    <h2>Civly Delivers Comprehensive Research in 48 Hours</h2>
+                    <p>Using proprietary AI research technology, we compile everything traditional firms deliver &mdash; 10x faster at half the cost.</p>
+
+                    <ul class="included-list">
+                        <li><span class="check">&#10003;</span> Complete social media history (Twitter/X, Facebook, Instagram back to 2008)</li>
+                        <li><span class="check">&#10003;</span> Voting records & legislative history</li>
+                        <li><span class="check">&#10003;</span> Public statements & position changes</li>
+                        <li><span class="check">&#10003;</span> Financial disclosures & FEC filings</li>
+                        <li><span class="check">&#10003;</span> News coverage, interviews, & controversies</li>
+                        <li><span class="check">&#10003;</span> Contradictions & vulnerability analysis</li>
+                        <li><span class="check">&#10003;</span> Formatted into 25-35 page actionable brief</li>
+                    </ul>
+                </div>
+                <div class="solution-highlight">
+                    <p>"Not a data dump. Actionable intelligence you can use immediately."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison">
+        <div class="section-container">
+            <h2 class="section-title">Why Choose Civly?</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th class="traditional-col">Traditional Firms</th>
+                        <th class="civly-col">Civly</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Delivery Time</td>
+                        <td class="traditional-col">3-4 weeks</td>
+                        <td class="civly-col">48 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td class="traditional-col">$10,000 - $20,000</td>
+                        <td class="civly-col">$4,995</td>
+                    </tr>
+                    <tr>
+                        <td>Format</td>
+                        <td class="traditional-col">100+ page PDF</td>
+                        <td class="civly-col">25-35 page actionable brief</td>
+                    </tr>
+                    <tr>
+                        <td>Updates</td>
+                        <td class="traditional-col">Expensive, slow</td>
+                        <td class="civly-col">Rapid turnaround</td>
+                    </tr>
+                    <tr>
+                        <td>Technology</td>
+                        <td class="traditional-col">Manual research</td>
+                        <td class="civly-col">AI-powered analysis</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="section-container">
+            <h2 class="section-title">Simple Process. Fast Results.</h2>
+            <p class="section-subtitle">Get your opposition research in three easy steps.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Order</h3>
+                    <p>Fill out our simple order form with your opponent's name and basic info. Pay $4,995 securely online.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>We Research</h3>
+                    <p>Our AI-powered platform analyzes millions of data points &mdash; social media posts, voting records, public statements, news coverage, and more.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>You Receive</h3>
+                    <p>Within 48 hours, receive a comprehensive, formatted dossier with everything you need for debates, ads, and rapid response.</p>
+                </div>
+            </div>
+            <div class="how-it-works-footer">
+                <p>That's it. No meetings. No delays. No surprises.</p>
+                <a href="#contact" class="btn btn-primary">Order Research Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="pricing-container">
+            <h2 class="section-title">Transparent, Straightforward Pricing</h2>
+            <p class="section-subtitle">No hidden fees. No surprises. Just clear pricing for clear results.</p>
+            <div class="pricing-grid">
+                <div class="pricing-main">
+                    <span class="pricing-badge">Most Popular</span>
+                    <h3>Standard Package</h3>
+                    <div class="price">$4,995</div>
+                    <ul class="pricing-features">
+                        <li><span class="check">&#10003;</span> Comprehensive opposition dossier</li>
+                        <li><span class="check">&#10003;</span> One opponent</li>
+                        <li><span class="check">&#10003;</span> 48-hour delivery</li>
+                        <li><span class="check">&#10003;</span> Social media archaeology (back to 2008)</li>
+                        <li><span class="check">&#10003;</span> Voting records & legislative history</li>
+                        <li><span class="check">&#10003;</span> Contradictions & vulnerability analysis</li>
+                        <li><span class="check">&#10003;</span> 25-35 page actionable brief</li>
+                        <li><span class="check">&#10003;</span> 30-day satisfaction guarantee</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Order Now</a>
+                </div>
+                <div class="pricing-addons">
+                    <h4>Add-Ons</h4>
+                    <ul class="addon-list">
+                        <li>
+                            <span>Rush delivery (24 hours)</span>
+                            <span class="addon-price">+$2,000</span>
+                        </li>
+                        <li>
+                            <span>Talking points package</span>
+                            <span class="addon-price">+$1,500</span>
+                        </li>
+                        <li>
+                            <span>Media/video analysis</span>
+                            <span class="addon-price">+$2,500</span>
+                        </li>
+                        <li>
+                            <span>Ongoing monitoring</span>
+                            <span class="addon-price">$750/mo</span>
+                        </li>
+                    </ul>
+                    <h4 style="margin-top: 2rem;">Volume Pricing</h4>
+                    <ul class="addon-list">
+                        <li>
+                            <span>3 opponents</span>
+                            <span class="addon-price">$13,500</span>
+                        </li>
+                        <li>
+                            <span>5+ opponents</span>
+                            <span class="addon-price">Custom</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Serve -->
+    <section class="who-we-serve">
+        <div class="section-container">
+            <h2 class="section-title">Built for Campaigns & Political Organizations</h2>
+            <div class="serve-grid">
+                <div class="serve-card">
+                    <div class="serve-icon">&#127963;</div>
+                    <h3>Congressional & Senate Campaigns</h3>
+                    <p>Get comprehensive intel on primary and general election opponents</p>
+                </div>
+                <div class="serve-card">
+                    <div class="serve-icon">&#128202;</div>
+                    <h3>PACs & Super PACs</h3>
+                    <p>Research multiple candidates for independent expenditure campaigns</p>
+                </div>
+                <div class="serve-card">
+                    <div class="serve-icon">&#127919;</div>
+                    <h3>Political Consultants</h3>
+                    <p>White-label research services for your campaign clients</p>
+                </div>
+                <div class="serve-card">
+                    <div class="serve-icon">&#128200;</div>
+                    <h3>State & Local Campaigns</h3>
+                    <p>Affordable opposition research for competitive down-ballot races</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Report Section -->
+    <section class="sample-report" id="sample">
+        <div class="sample-report-content">
+            <h2>See What You'll Receive</h2>
+            <p>We believe in showing our work. Download a sample opposition research dossier to see the format, depth, and quality we deliver.</p>
+            <a href="#" class="btn btn-primary">Download Sample Report</a>
+            <p class="note">Sample shows research on a public figure from a recent race. Your custom dossier will be tailored to your specific opponent and race dynamics.</p>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="guarantee">
+        <div class="guarantee-content">
+            <h2>Risk-Free Guarantee</h2>
+            <p>We're confident in our research quality. If you're not satisfied with your opposition dossier, we'll refund your money. No questions asked.</p>
+            <div class="guarantee-badge">30-Day Money-Back Guarantee</div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="section-container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about our opposition research service.</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-question">How comprehensive is your research?</h3>
+                    <p class="faq-answer">We cover everything traditional firms deliver: complete social media history (back to 2008), voting records, public statements, FEC filings, news coverage, and contradictions. 25-35 page formatted report.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What if I need research faster than 48 hours?</h3>
+                    <p class="faq-answer">We offer rush delivery (24 hours) for an additional $2,000, and same-day (8 hours) for $5,000.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Can you update research as the campaign progresses?</h3>
+                    <p class="faq-answer">Yes. We offer ongoing monitoring for $750/month, or you can order rapid research updates as needed.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Do you work with PACs and Super PACs?</h3>
+                    <p class="faq-answer">Absolutely. We work with campaigns, PACs, Super PACs, and political consultants. Volume discounts available for multiple candidates.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What if I already have research from another firm?</h3>
+                    <p class="faq-answer">We can supplement existing research with rapid updates, or provide our document analysis tool to make your existing research more searchable and usable.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How does payment work?</h3>
+                    <p class="faq-answer">Secure online payment via credit card or ACH. You pay when you order, we deliver within 48 hours.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What's your refund policy?</h3>
+                    <p class="faq-answer">30-day money-back guarantee if you're not satisfied with the research quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA for Opposition Research -->
+    <section class="final-cta" id="contact">
+        <h2>Ready to Get Started?</h2>
+        <p>Order your opposition research dossier today. Fast delivery. Transparent pricing. Guaranteed results.</p>
+        <div class="hero-ctas">
+            <a href="mailto:research@civly.ai?subject=Opposition Research Order" class="btn btn-primary">Order Research Now</a>
+            <a href="#" class="btn btn-secondary">Schedule a Call</a>
+        </div>
+        <div class="contact-info">
+            <p>Or contact us: <a href="mailto:research@civly.ai">research@civly.ai</a></p>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- COMPLIANCE ENGINE - SECONDARY PRODUCT SECTION -->
+    <!-- ============================================== -->
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <h3>Additional Solutions</h3>
+    </div>
+
+    <!-- Compliance Section (Secondary Solution) -->
+    <section class="compliance-section" id="compliance">
+        <div class="section-container">
+            <h2 class="section-title">Campaign Compliance Engine</h2>
+            <div class="compliance-intro">
+                <p>The support you need for your campaign, PAC, or Super PAC. AI-powered compliance management to keep you audit-ready and on schedule.</p>
+            </div>
+
+            <div class="compliance-features">
+                <div class="compliance-feature">
+                    <h4>Contributions</h4>
+                    <p>Real-time checks for source eligibility, aggregate limits, employer/occupation completeness, and earmark handling.</p>
+                </div>
+                <div class="compliance-feature">
+                    <h4>FEC & State Filings</h4>
+                    <p>Preparation, review, and one-click FEC submission (e.g., FEC Form 3/3X/3P and state equivalents).</p>
+                </div>
+                <div class="compliance-feature">
+                    <h4>Audit/Complaint Response</h4>
+                    <p>Audit-ready documentation to prevent FEC errors and fines. Chatbot to assist with questions and answers.</p>
+                </div>
+                <div class="compliance-feature">
+                    <h4>Deadline Management</h4>
+                    <p>Streamline FEC deadline management with tools to track important dates. Customized calendars populated automatically.</p>
+                </div>
+                <div class="compliance-feature">
+                    <h4>Auto-Coding/Anomaly Detection</h4>
+                    <p>Learns your chart of accounts and surfaces outliers before they become problems.</p>
+                </div>
+                <div class="compliance-feature">
+                    <h4>Entity Resolution & Risk Scoring</h4>
+                    <p>Donor, vendor, and payee de-duplication with risk flagged (e.g., foreign national indicators, straw donor patterns).</p>
+                </div>
+            </div>
+
+            <a href="mailto:compliance@civly.ai?subject=Compliance Engine Demo Request" class="btn btn-secondary">Request a Demo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="#opposition-research">Opposition Research</a></li>
+                    <li><a href="#compliance">Compliance Engine</a></li>
+                    <li><a href="#sample">Sample Reports</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter/X</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Civly.AI. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
