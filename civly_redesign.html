@@ -842,6 +842,103 @@
             line-height: 1.6;
         }
 
+        /* Company Section */
+        .company-section {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+        }
+
+        .company-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .company-intro p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.2);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--accent);
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-info h3 {
+            font-size: 1.25rem;
+            color: var(--text-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .team-info .title {
+            color: var(--accent-magenta);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-info .bio {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .company-mission {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+        }
+
+        .company-mission p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
         /* Footer */
         footer {
             background: var(--bg-dark);
@@ -1280,6 +1377,82 @@
         </div>
     </section>
 
+    <!-- ============================================== -->
+    <!-- COMPANY SECTION -->
+    <!-- ============================================== -->
+
+    <!-- Company Section -->
+    <section class="company-section" id="company">
+        <div class="section-container">
+            <h2 class="section-title">Empowering Compliance Solutions</h2>
+
+            <div class="company-intro">
+                <p>Our team of non-profit, campaign and compliance professionals know that it is essential to fully integrate our product with the full suite of companion vendors, products, and services.</p>
+                <p>Discover the power of compliance technology with Civly. Our advanced solutions and user-centric designs effectively interface to redefine how compliance is managed, while providing exceptional insights and reliability for all your compliance needs.</p>
+            </div>
+
+            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 2rem;">Meet the Team</h2>
+
+            <div class="team-grid">
+                <!-- Daniel Barkhuff -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <!-- Replace with: <img src="images/daniel-barkhuff.jpg" alt="Daniel Barkhuff"> -->
+                        &#128100;
+                    </div>
+                    <div class="team-info">
+                        <h3>Daniel Barkhuff</h3>
+                        <p class="title">Chief Executive Officer & Founder</p>
+                        <p class="bio">A 2001 US Naval Academy graduate and combat decorated Navy SEAL with deployments to Iraq, Afghanistan, and Africa. After military service, he attended Harvard Medical School and completed Residency Training in Emergency Medicine at the University of New Mexico. Currently an attending physician at the University of Vermont and Director of Trauma Care in the Department of Emergency Medicine. Founded Veterans for Responsible Leadership and the Vermont Afghan Alliance. Lives in Vermont with his wife Whittney and 4 children.</p>
+                    </div>
+                </div>
+
+                <!-- Zack Czajkowski -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <!-- Replace with: <img src="images/zack-czajkowski.jpg" alt="Zack Czajkowski"> -->
+                        &#128100;
+                    </div>
+                    <div class="team-info">
+                        <h3>Zack Czajkowski</h3>
+                        <p class="title">Co-Founder & Chief Operating Officer</p>
+                        <p class="bio">A political consultant, public affairs professional, and strategist who began his career as a field organizer for Obama's 2012 reelection campaign in Florida. Has managed campaigns from school board to US Senate. After managing Katie Hill's successful red to blue campaign, served as Political Director of The Lincoln Project during the 2020 cycle. Founder and CEO of Brackish Solutions and Director of Public Affairs at Four Corners Strategies. Lives in Durham, NC with his wife Dr. Sarah Cunningham and their rescue bulldog Petunia.</p>
+                    </div>
+                </div>
+
+                <!-- Matthew Hanauer -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <!-- Replace with: <img src="images/matthew-hanauer.jpg" alt="Matthew Hanauer"> -->
+                        &#128100;
+                    </div>
+                    <div class="team-info">
+                        <h3>Matthew Hanauer, PhD</h3>
+                        <p class="title">Chief Technology Officer</p>
+                        <p class="bio">Transforms complex AI concepts into market-ready products that drive measurable business impact. With 15+ years in data science leadership, has delivered over 15 production-grade products generating $15M+ in quantifiable savings. Track record includes revitalizing stalled AI initiatives and bringing them to market within 6-9 months while reducing time-to-market by 4x. Specializes in building healthcare AI solutions and excels at translating stakeholder requirements into scalable AI products with end-to-end expertise from ideation through deployment.</p>
+                    </div>
+                </div>
+
+                <!-- Jordyn Geruso -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <!-- Replace with: <img src="images/jordyn-geruso.jpg" alt="Jordyn Geruso"> -->
+                        &#128100;
+                    </div>
+                    <div class="team-info">
+                        <h3>Jordyn Geruso</h3>
+                        <p class="title">Chief Marketing Officer</p>
+                        <p class="bio">A dedicated professional with a deep passion for public service and community advocacy. After earning her bachelor's degree in Healthcare Management and Marketing, transitioned from Human Resources to the political arena in 2023. Now serves as the Executive Director of Veterans for Responsible Leadership and has contributed to other pro-democracy organizations including Women4US and Valor Media Network. Lives in Montana with her fianc&eacute;, their dog, and horse.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="company-mission">
+                <p>"Civly was built and is run by a team of long time political campaign workers and compliance professionals, in partnership with experienced developers and data scientists. Our goal is to make compliance faster, easier, cheaper, and more accurate."</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -1294,8 +1467,8 @@
             <div class="footer-section">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#company">About Us</a></li>
+                    <li><a href="#company">Our Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
