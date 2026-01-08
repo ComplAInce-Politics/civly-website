@@ -878,7 +878,262 @@
             }
         }
 
-        /* Platform Capabilities Section */
+        /* Product Header (shared) */
+        .product-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .product-label {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        /* Helios Books Section */
+        .helios-books {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+        }
+
+        .helios-books-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .helios-books-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .helios-books-cta {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .cta-note {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Helios Command Center Section */
+        .command-center {
+            background: var(--bg-dark);
+        }
+
+        .command-center-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            min-width: 180px;
+        }
+
+        .flow-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-step h4 {
+            color: var(--text-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .flow-step p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        @media (max-width: 700px) {
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        .command-center-tools h3 {
+            color: var(--text-white);
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-card {
+            background: var(--bg-card);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .tool-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-card h4 {
+            color: var(--text-white);
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .tool-card p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .vault-warroom {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .vault-card, .warroom-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        .vault-icon, .warroom-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .vault-card h4, .warroom-card h4 {
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .vault-card p, .warroom-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .command-center-note {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .command-center-note p {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .command-center-cta {
+            text-align: center;
+        }
+
+        /* Conigere Section */
+        .conigere {
+            background: linear-gradient(180deg, var(--primary-dark) 0%, var(--bg-dark) 100%);
+        }
+
+        .conigere-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .conigere-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .conigere-feature {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        .conigere-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .conigere-feature h4 {
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .conigere-feature p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .conigere-cta {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* Platform Capabilities Section (legacy - can be removed if not used) */
         .capabilities {
             background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
         }
@@ -1155,16 +1410,18 @@
             <img src="images/civly-logo.png" alt="Civly" class="logo-img">
         </a>
         <ul class="nav-links">
-            <li><a href="#platform">Platform</a></li>
             <li class="dropdown">
-                <span class="dropdown-toggle"><a href="#solutions">Solutions</a></span>
+                <span class="dropdown-toggle"><a href="#helios-books">Products</a></span>
                 <div class="dropdown-menu">
-                    <a href="#warroom" class="primary-solution">
-                        <span class="solution-label">Research</span>
-                        Civly War Room
+                    <a href="#helios-books" class="primary-solution">
+                        <span class="solution-label">Foundation</span>
+                        Helios Books
                     </a>
-                    <a href="#compliance">
-                        Civly Compliance
+                    <a href="#command-center">
+                        Helios Command Center
+                    </a>
+                    <a href="#conigere">
+                        Conigere (White-Glove)
                     </a>
                 </div>
             </li>
@@ -1179,106 +1436,160 @@
     <!-- ============================================== -->
 
     <!-- Hero Section -->
-    <section class="hero" id="platform">
+    <section class="hero" id="home">
         <div class="hero-container">
-            <h1>Your Campaign's AI War Room</h1>
+            <h1>Campaign Intelligence Starts Here</h1>
             <p class="hero-subtitle">
-                AI-powered research, real-time intelligence, and content generation &mdash; all in one platform.
-                From opposition research to compliance screening, get the insights you need in hours, not weeks.
+                From deep opposition research to real-time analysis and content generation &mdash;
+                everything your campaign needs to win. It all starts with the book.
             </p>
             <div class="price-banner">
-                Real-Time Intelligence. AI-Powered Analysis. Campaign-Ready Content.
+                Helios Books &rarr; Helios Command Center &rarr; Victory
             </div>
             <div class="hero-ctas">
-                <a href="#contact" class="btn btn-primary">Request a Demo</a>
-                <a href="#capabilities" class="btn btn-secondary">See Platform Features</a>
+                <a href="#helios-books" class="btn btn-primary">Start with a Book</a>
+                <a href="#command-center" class="btn btn-secondary">Explore Command Center</a>
             </div>
             <p class="trust-indicator">
-                Trusted by campaigns nationwide
+                Trusted by campaigns, PACs, and nonprofits nationwide
             </p>
         </div>
     </section>
 
-    <!-- Problem Section -->
-    <section class="problem">
+    <!-- Helios Books Section -->
+    <section class="helios-books" id="helios-books">
         <div class="section-container">
-            <h2 class="section-title">Traditional Research Can't Keep Up</h2>
-            <p class="section-subtitle">Static PDFs, weeks of waiting, and no way to ask follow-up questions. Your campaign deserves better.</p>
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <h3>Static & Stale</h3>
-                    <p>Traditional oppo books become outdated within days. No real-time updates, no way to refresh findings as news breaks.</p>
+            <div class="product-header">
+                <span class="product-label">The Foundation</span>
+                <h2 class="section-title">Helios Books</h2>
+                <p class="section-subtitle">Deep opposition research in days, not weeks. The foundation for everything that follows.</p>
+            </div>
+
+            <div class="helios-books-content">
+                <div class="helios-books-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">&#9889;</div>
+                        <div class="feature-text">
+                            <h4>10x Faster</h4>
+                            <p>What takes traditional firms weeks, we deliver in days. AI-powered research at scale.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">&#128260;</div>
+                        <div class="feature-text">
+                            <h4>Refreshable</h4>
+                            <p>News breaks. Scandals emerge. Your book stays current with on-demand refresh capability.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">&#127919;</div>
+                        <div class="feature-text">
+                            <h4>Campaign-Ready</h4>
+                            <p>Attack lines, sourced vulnerabilities, and messaging &mdash; ready for debates, ads, and rapid response.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">&#128218;</div>
+                        <div class="feature-text">
+                            <h4>Comprehensive</h4>
+                            <p>Social media history, voting records, public statements, FEC filings, news coverage, and contradictions.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="problem-card">
-                    <h3>No Interaction</h3>
-                    <p>Need to find a specific quote? You're stuck doing Ctrl+F through 100+ pages. No AI to answer questions or surface insights.</p>
+
+                <div class="helios-books-cta">
+                    <p class="cta-note">Order a Helios Book as a standalone product, or bundle with Command Center access.</p>
+                    <a href="#contact" class="btn btn-primary">Order a Book</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Platform Capabilities Section -->
-    <section class="capabilities" id="capabilities">
+    <!-- Helios Command Center Section -->
+    <section class="command-center" id="command-center">
         <div class="section-container">
-            <h2 class="section-title">Platform Capabilities</h2>
-            <p class="section-subtitle">Everything you need to research, analyze, and win &mdash; powered by AI.</p>
+            <div class="product-header">
+                <span class="product-label">The Platform</span>
+                <h2 class="section-title">Helios Command Center</h2>
+                <p class="section-subtitle">Your research hub. Analyze, store, and transform intelligence into campaign-ready content.</p>
+            </div>
 
-            <div class="capabilities-grid">
-                <div class="capability-card">
-                    <div class="capability-icon">&#128172;</div>
-                    <span class="capability-tag">AI-Powered</span>
-                    <h3>AI Chat Interface</h3>
-                    <p>Ask questions in natural language. Get instant answers from your research. No more Ctrl+F through 100-page PDFs.</p>
+            <div class="command-center-flow">
+                <div class="flow-step">
+                    <div class="flow-icon">&#128269;</div>
+                    <h4>Gather Intelligence</h4>
+                    <p>Deep research tools for every source</p>
+                </div>
+                <div class="flow-arrow">&rarr;</div>
+                <div class="flow-step">
+                    <div class="flow-icon">&#128451;</div>
+                    <h4>Organize in Vault</h4>
+                    <p>Store, tag, and search findings</p>
+                </div>
+                <div class="flow-arrow">&rarr;</div>
+                <div class="flow-step">
+                    <div class="flow-icon">&#128221;</div>
+                    <h4>Generate Content</h4>
+                    <p>Attack ads, debate prep, and more</p>
+                </div>
+            </div>
+
+            <div class="command-center-tools">
+                <h3>Research Tools</h3>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-icon">&#128270;</div>
+                        <h4>Helios</h4>
+                        <p>Deep opposition research in minutes</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">&#127963;</div>
+                        <h4>Congressional Record</h4>
+                        <p>Floor speeches and voting records</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">&#128202;</div>
+                        <h4>Committee Explorer</h4>
+                        <p>FEC data with AI insights</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">&#127909;</div>
+                        <h4>YouTube Analysis</h4>
+                        <p>Video controversy detection</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">&#127916;</div>
+                        <h4>TikTok Analysis</h4>
+                        <p>Short-form video analysis</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">&#128241;</div>
+                        <h4>Social Media</h4>
+                        <p>Twitter/X, Threads, BlueSky, Reddit</p>
+                    </div>
                 </div>
 
-                <div class="capability-card">
-                    <div class="capability-icon">&#128260;</div>
-                    <span class="capability-tag">Real-Time</span>
-                    <h3>Live Updates</h3>
-                    <p>Research that refreshes as news breaks. Never work with stale intelligence again.</p>
+                <h3>Vault & War Room</h3>
+                <div class="vault-warroom">
+                    <div class="vault-card">
+                        <div class="vault-icon">&#128451;</div>
+                        <h4>Research Vault</h4>
+                        <p>Your organized research library. Store, tag, and search all findings in one place.</p>
+                    </div>
+                    <div class="warroom-card">
+                        <div class="warroom-icon">&#128640;</div>
+                        <h4>Research War Room</h4>
+                        <p>Transform research into polished reports. AI analysis, charts, tables, and export to Word, Slides, or Audio.</p>
+                    </div>
                 </div>
+            </div>
 
-                <div class="capability-card">
-                    <div class="capability-icon">&#127909;</div>
-                    <span class="capability-tag">Video Analysis</span>
-                    <h3>YouTube & TikTok</h3>
-                    <p>Automatic controversy detection across video platforms. Analyze transcripts, find problematic statements.</p>
-                </div>
+            <div class="command-center-note">
+                <p>Bring your own book or use ours &mdash; the Command Center works with any research.</p>
+            </div>
 
-                <div class="capability-card">
-                    <div class="capability-icon">&#128241;</div>
-                    <span class="capability-tag">5 Platforms</span>
-                    <h3>Social Media Intelligence</h3>
-                    <p>Deep analysis across Twitter/X, Reddit, Instagram, Facebook, and more. Surface patterns and vulnerabilities.</p>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">&#128737;</div>
-                    <span class="capability-tag">40+ Lists</span>
-                    <h3>Compliance Screening</h3>
-                    <p>Automated screening against sanctions lists, LDA lobbyist database, and watchlists. Protect your campaign.</p>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">&#128221;</div>
-                    <span class="capability-tag">Campaign-Ready</span>
-                    <h3>Content Generation</h3>
-                    <p>Generate attack ads, social posts, press releases, and talking points directly from your research.</p>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">&#128451;</div>
-                    <span class="capability-tag">Collaboration</span>
-                    <h3>Research Vault</h3>
-                    <p>Central repository for all findings. Tag, search, and share with your team. No more PDFs via email.</p>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">&#9889;</div>
-                    <span class="capability-tag">Scalable</span>
-                    <h3>Parallel Research</h3>
-                    <p>Research multiple targets simultaneously. Scale your intelligence operation without scaling your team.</p>
-                </div>
+            <div class="command-center-cta">
+                <a href="#contact" class="btn btn-primary">Request a Demo</a>
             </div>
         </div>
     </section>
@@ -1286,7 +1597,7 @@
     <!-- Comparison Table -->
     <section class="comparison">
         <div class="section-container">
-            <h2 class="section-title">Traditional Oppo Book vs. Civly Platform</h2>
+            <h2 class="section-title">Traditional Oppo Book vs. Helios</h2>
             <p class="section-subtitle">See why campaigns are switching to AI-powered intelligence.</p>
             <table class="comparison-table">
                 <thead>
@@ -1352,36 +1663,6 @@
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="how-it-works">
-        <div class="section-container">
-            <h2 class="section-title">Get Started in Minutes</h2>
-            <p class="section-subtitle">Access powerful campaign intelligence with a simple onboarding process.</p>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Schedule a Demo</h3>
-                    <p>See the platform in action. We'll walk you through the War Room and Compliance tools tailored to your campaign needs.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Set Up Your War Room</h3>
-                    <p>Add your research targets and configure your compliance settings. Our team helps you get up and running quickly.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Start Researching</h3>
-                    <p>Access real-time intelligence, generate content, and stay compliant &mdash; all from one integrated platform.</p>
-                </div>
-            </div>
-            <div class="how-it-works-footer">
-                <p>Your campaign command center, ready when you are.</p>
-                <a href="#contact" class="btn btn-primary">Request a Demo</a>
-            </div>
-        </div>
-    </section>
-
-
     <!-- Who We Serve -->
     <section class="who-we-serve">
         <div class="section-container">
@@ -1398,26 +1679,16 @@
                     <p>Research multiple candidates for independent expenditure campaigns</p>
                 </div>
                 <div class="serve-card">
+                    <div class="serve-icon">&#127775;</div>
+                    <h3>Nonprofits</h3>
+                    <p>Research and intelligence tools for advocacy and issue campaigns</p>
+                </div>
+                <div class="serve-card">
                     <div class="serve-icon">&#127919;</div>
                     <h3>Political Consultants</h3>
                     <p>White-label research services for your campaign clients</p>
                 </div>
-                <div class="serve-card">
-                    <div class="serve-icon">&#128200;</div>
-                    <h3>State & Local Campaigns</h3>
-                    <p>Fast, comprehensive opposition research for competitive down-ballot races</p>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Sample Report Section -->
-    <section class="sample-report" id="sample">
-        <div class="sample-report-content">
-            <h2>See the Platform in Action</h2>
-            <p>Experience the power of AI-driven campaign intelligence. Request a demo to see how the War Room and Compliance Engine work together.</p>
-            <a href="#contact" class="btn btn-primary">Request a Demo</a>
-            <p class="note">We'll customize the demo to your campaign's specific needs and show you exactly how Civly can help you win.</p>
         </div>
     </section>
 
@@ -1426,35 +1697,35 @@
     <section class="faq">
         <div class="section-container">
             <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-subtitle">Everything you need to know about the Civly platform.</p>
+            <p class="section-subtitle">Everything you need to know about Helios.</p>
             <div class="faq-list">
                 <div class="faq-item">
-                    <h3 class="faq-question">What makes Civly different from traditional opposition research?</h3>
-                    <p class="faq-answer">Unlike static PDF reports, Civly is a living platform. You can query your research with AI chat, get real-time updates, analyze video content, and generate campaign materials &mdash; all in one place.</p>
+                    <h3 class="faq-question">What's the difference between Helios Books and Command Center?</h3>
+                    <p class="faq-answer">Helios Books are comprehensive opposition research reports &mdash; the foundation. Command Center is the platform where you analyze, store, and transform that research into campaign-ready content. You can use them together or separately.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">How quickly can I get started?</h3>
-                    <p class="faq-answer">After your demo, we can have your War Room set up within 24 hours. Start researching targets and generating content immediately.</p>
+                    <h3 class="faq-question">Can I bring my own research to the Command Center?</h3>
+                    <p class="faq-answer">Yes. If you already have oppo research from another firm, you can upload it to the Command Center and use all our analysis and content generation tools.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How fast can I get a Helios Book?</h3>
+                    <p class="faq-answer">What takes traditional firms weeks, we deliver in days. Rush delivery options are also available for time-sensitive situations.</p>
                 </div>
                 <div class="faq-item">
                     <h3 class="faq-question">What platforms do you analyze for social media?</h3>
-                    <p class="faq-answer">We cover Twitter/X, Reddit, Instagram, Facebook, and TikTok. Our AI detects controversies, contradictions, and patterns across all platforms.</p>
+                    <p class="faq-answer">We cover Twitter/X, Threads, BlueSky, Reddit, Instagram, TikTok, and YouTube. Our AI detects controversies, contradictions, and patterns across all platforms.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">How does the Compliance Engine integrate with research?</h3>
-                    <p class="faq-answer">Both tools work together seamlessly. Screen donors against 40+ sanctions lists, verify contributions, and maintain FEC compliance while running your research operations.</p>
+                    <h3 class="faq-question">Can I research multiple candidates at once?</h3>
+                    <p class="faq-answer">Yes. Unlike traditional firms that work one target at a time, Helios enables parallel research across multiple candidates. Perfect for PACs and consultants.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">Can I use Civly for multiple candidates simultaneously?</h3>
-                    <p class="faq-answer">Yes. Unlike traditional firms that work one target at a time, Civly enables parallel research across multiple candidates. Perfect for PACs and consultants.</p>
+                    <h3 class="faq-question">What is Conigere?</h3>
+                    <p class="faq-answer">Conigere is our white-glove service for campaigns that need a dedicated intelligence team, not just software. You get unlimited research requests, dedicated analysts, and priority turnaround.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">What kind of content can I generate?</h3>
-                    <p class="faq-answer">Create attack ads, social media posts, press releases, debate prep materials, and talking points directly from your research &mdash; all powered by AI.</p>
-                </div>
-                <div class="faq-item">
-                    <h3 class="faq-question">Who uses Civly?</h3>
-                    <p class="faq-answer">Congressional campaigns, PACs, Super PACs, political consultants, and state/local campaigns. We work with organizations of all sizes.</p>
+                    <h3 class="faq-question">Who uses Helios?</h3>
+                    <p class="faq-answer">Congressional campaigns, PACs, Super PACs, nonprofits, and political consultants. We work with organizations of all sizes.</p>
                 </div>
             </div>
         </div>
@@ -1474,55 +1745,46 @@
     </section>
 
     <!-- ============================================== -->
-    <!-- TWO PRODUCT SUITES SECTION -->
+    <!-- CONIGERE - WHITE GLOVE SERVICE -->
     <!-- ============================================== -->
 
-    <!-- Product Suites Section -->
-    <section class="product-suites" id="solutions">
+    <!-- Conigere Section -->
+    <section class="conigere" id="conigere">
         <div class="section-container">
-            <h2 class="section-title">Two Powerful Suites. One Platform.</h2>
-            <p class="section-subtitle">Everything your campaign needs for research and compliance, working together seamlessly.</p>
-
-            <div class="suites-grid">
-                <!-- War Room Suite -->
-                <div class="suite-card" id="warroom">
-                    <div class="suite-header">
-                        <div class="suite-icon">&#128640;</div>
-                        <h3>Civly War Room</h3>
-                        <p class="suite-tagline">Research & Intelligence</p>
-                    </div>
-                    <ul class="suite-features">
-                        <li><strong>Deep Research</strong> &mdash; AI-powered opposition research platform</li>
-                        <li><strong>YouTube & TikTok Analysis</strong> &mdash; Controversy detection with transcript deep-dive</li>
-                        <li><strong>Social Media Intelligence</strong> &mdash; 5 platforms, pattern detection</li>
-                        <li><strong>Content Generation</strong> &mdash; Attack ads, social posts, press releases</li>
-                        <li><strong>Research Vault</strong> &mdash; Collaborative document storage and tagging</li>
-                        <li><strong>Voice Research</strong> &mdash; Real-time voice AI conversations</li>
-                        <li><strong>FEC Committee Explorer</strong> &mdash; AI-powered finance analysis</li>
-                    </ul>
-                </div>
-
-                <!-- Compliance Suite -->
-                <div class="suite-card" id="compliance">
-                    <div class="suite-header">
-                        <div class="suite-icon">&#128737;</div>
-                        <h3>Civly Compliance</h3>
-                        <p class="suite-tagline">Donor & FEC Management</p>
-                    </div>
-                    <ul class="suite-features">
-                        <li><strong>Donor Verification</strong> &mdash; Automated employment, address, identity checks</li>
-                        <li><strong>Compliance Screening</strong> &mdash; 40+ sanctions lists, LDA database</li>
-                        <li><strong>Contribution Limits</strong> &mdash; Real-time aggregate tracking and alerts</li>
-                        <li><strong>FEC Filing</strong> &mdash; Auto-generated .fec and CSV files</li>
-                        <li><strong>Expense Validation</strong> &mdash; AI-powered personal use compliance</li>
-                        <li><strong>Audit Trail</strong> &mdash; Complete verification documentation</li>
-                        <li><strong>Deadline Management</strong> &mdash; Automated FEC deadline tracking</li>
-                    </ul>
-                </div>
+            <div class="product-header">
+                <span class="product-label">White-Glove Service</span>
+                <h2 class="section-title">Conigere</h2>
+                <p class="section-subtitle">For campaigns that need a dedicated intelligence team, not just software.</p>
             </div>
 
-            <div class="suites-cta">
-                <a href="#contact" class="btn btn-primary">Request a Demo</a>
+            <div class="conigere-content">
+                <div class="conigere-features">
+                    <div class="conigere-feature">
+                        <div class="conigere-icon">&#128101;</div>
+                        <h4>Dedicated Analysts</h4>
+                        <p>Your own research team working alongside your campaign. Real humans, real expertise.</p>
+                    </div>
+                    <div class="conigere-feature">
+                        <div class="conigere-icon">&#9889;</div>
+                        <h4>Unlimited Requests</h4>
+                        <p>No caps, no limits. Request as much research as your campaign needs.</p>
+                    </div>
+                    <div class="conigere-feature">
+                        <div class="conigere-icon">&#128221;</div>
+                        <h4>Custom Reports</h4>
+                        <p>Tailored intelligence briefings and reports delivered on your schedule.</p>
+                    </div>
+                    <div class="conigere-feature">
+                        <div class="conigere-icon">&#127942;</div>
+                        <h4>Priority Turnaround</h4>
+                        <p>When news breaks, you're first in line. Rapid response when it matters most.</p>
+                    </div>
+                </div>
+
+                <div class="conigere-cta">
+                    <p class="cta-note">14-day free trial available to demonstrate value.</p>
+                    <a href="#contact" class="btn btn-primary">Contact Us</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1534,11 +1796,11 @@
     <!-- Company Section -->
     <section class="company-section" id="company">
         <div class="section-container">
-            <h2 class="section-title">Empowering Compliance Solutions</h2>
+            <h2 class="section-title">Built by Campaign Veterans</h2>
 
             <div class="company-intro">
-                <p>Our team of non-profit, campaign and compliance professionals know that it is essential to fully integrate our product with the full suite of companion vendors, products, and services.</p>
-                <p>Discover the power of compliance technology with Civly. Our advanced solutions and user-centric designs effectively interface to redefine how compliance is managed, while providing exceptional insights and reliability for all your compliance needs.</p>
+                <p>Civly was built by a team of longtime political campaign workers in partnership with experienced developers and data scientists.</p>
+                <p>We've been in the war room. We know what campaigns need. That's why we built tools that actually work the way campaigns work.</p>
             </div>
 
             <h2 class="section-title" style="font-size: 2rem; margin-bottom: 2rem;">Meet the Team</h2>
