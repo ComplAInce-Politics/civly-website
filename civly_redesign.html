@@ -674,39 +674,6 @@
             font-style: italic;
         }
 
-        /* Guarantee */
-        .guarantee {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .guarantee-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .guarantee h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .guarantee p {
-            font-size: 1.1rem;
-            opacity: 0.95;
-            margin-bottom: 1.5rem;
-        }
-
-        .guarantee-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
         /* FAQ */
         .faq {
             background: var(--bg-dark);
@@ -831,6 +798,139 @@
             color: var(--text-muted);
             font-size: 0.9rem;
             line-height: 1.6;
+        }
+
+        /* Product Suites Section */
+        .product-suites {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+        }
+
+        .suites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+        }
+
+        .suite-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            text-align: left;
+        }
+
+        .suite-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .suite-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .suite-header h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .suite-tagline {
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .suite-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .suite-features li {
+            padding: 0.75rem 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .suite-features li:last-child {
+            border-bottom: none;
+        }
+
+        .suite-features li strong {
+            color: var(--text-primary);
+        }
+
+        .suites-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 850px) {
+            .suites-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Platform Capabilities Section */
+        .capabilities {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .capability-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.2);
+        }
+
+        .capability-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .capability-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-white);
+        }
+
+        .capability-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .capability-tag {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.2);
+            color: var(--accent-bright);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
 
         /* Company Section */
@@ -1055,16 +1155,16 @@
             <img src="images/civly-logo.png" alt="Civly" class="logo-img">
         </a>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
+            <li><a href="#platform">Platform</a></li>
             <li class="dropdown">
-                <span class="dropdown-toggle"><a href="#">Solutions</a></span>
+                <span class="dropdown-toggle"><a href="#solutions">Solutions</a></span>
                 <div class="dropdown-menu">
-                    <a href="#opposition-research" class="primary-solution">
-                        <span class="solution-label">Primary</span>
-                        Opposition Research (Helios)
+                    <a href="#warroom" class="primary-solution">
+                        <span class="solution-label">Research</span>
+                        Civly War Room
                     </a>
                     <a href="#compliance">
-                        Campaign Compliance Engine
+                        Civly Compliance
                     </a>
                 </div>
             </li>
@@ -1079,23 +1179,22 @@
     <!-- ============================================== -->
 
     <!-- Hero Section -->
-    <section class="hero" id="opposition-research">
+    <section class="hero" id="platform">
         <div class="hero-container">
-            <h1>Opposition Research. Delivered in 48 Hours, Not 3 Weeks.</h1>
+            <h1>Your Campaign's AI War Room</h1>
             <p class="hero-subtitle">
-                Comprehensive opposition dossiers on any candidate &mdash; social media archaeology,
-                voting records, contradictions, and vulnerabilities. AI-powered research at half
-                the cost of traditional firms.
+                AI-powered research, real-time intelligence, and content generation &mdash; all in one platform.
+                From opposition research to compliance screening, get the insights you need in hours, not weeks.
             </p>
             <div class="price-banner">
-                48-Hour Delivery Guaranteed
+                Real-Time Intelligence. AI-Powered Analysis. Campaign-Ready Content.
             </div>
             <div class="hero-ctas">
-                <a href="#contact" class="btn btn-primary">Order Research Now</a>
-                <a href="#sample" class="btn btn-secondary">See Sample Report</a>
+                <a href="#contact" class="btn btn-primary">Request a Demo</a>
+                <a href="#capabilities" class="btn btn-secondary">See Platform Features</a>
             </div>
             <p class="trust-indicator">
-                Trusted by campaigns in Texas, Florida, Pennsylvania, and Arizona
+                Trusted by campaigns nationwide
             </p>
         </div>
     </section>
@@ -1103,45 +1202,82 @@
     <!-- Problem Section -->
     <section class="problem">
         <div class="section-container">
-            <h2 class="section-title">Traditional Opposition Research is Broken</h2>
-            <p class="section-subtitle">The old way of doing research costs too much, takes too long, and delivers too little.</p>
+            <h2 class="section-title">Traditional Research Can't Keep Up</h2>
+            <p class="section-subtitle">Static PDFs, weeks of waiting, and no way to ask follow-up questions. Your campaign deserves better.</p>
             <div class="problem-grid">
                 <div class="problem-card">
-                    <h3>Too Slow</h3>
-                    <p>Traditional firms take 3-4 weeks to deliver research. Your opponent isn't waiting. Critical intel arrives too late for debates, ads, and rapid response.</p>
+                    <h3>Static & Stale</h3>
+                    <p>Traditional oppo books become outdated within days. No real-time updates, no way to refresh findings as news breaks.</p>
                 </div>
                 <div class="problem-card">
-                    <h3>Too Expensive</h3>
-                    <p>Traditional firms charge a premium for opposition research. That's budget that could go to voter contact and ads.</p>
-                </div>
-                <div class="problem-card">
-                    <h3>Too Dense</h3>
-                    <p>100-page PDF reports that sit unread. When you need specific info for a press release or debate prep, you're searching through mountains of text.</p>
+                    <h3>No Interaction</h3>
+                    <p>Need to find a specific quote? You're stuck doing Ctrl+F through 100+ pages. No AI to answer questions or surface insights.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solution Section -->
-    <section class="solution">
+    <!-- Platform Capabilities Section -->
+    <section class="capabilities" id="capabilities">
         <div class="section-container">
-            <div class="solution-content">
-                <div class="solution-text">
-                    <h2>Civly Delivers Comprehensive Research in 48 Hours</h2>
-                    <p>Using proprietary AI research technology, we compile everything traditional firms deliver &mdash; 10x faster at half the cost.</p>
+            <h2 class="section-title">Platform Capabilities</h2>
+            <p class="section-subtitle">Everything you need to research, analyze, and win &mdash; powered by AI.</p>
 
-                    <ul class="included-list">
-                        <li><span class="check">&#10003;</span> Complete social media history (Twitter/X, Facebook, Instagram back to 2008)</li>
-                        <li><span class="check">&#10003;</span> Voting records & legislative history</li>
-                        <li><span class="check">&#10003;</span> Public statements & position changes</li>
-                        <li><span class="check">&#10003;</span> Financial disclosures & FEC filings</li>
-                        <li><span class="check">&#10003;</span> News coverage, interviews, & controversies</li>
-                        <li><span class="check">&#10003;</span> Contradictions & vulnerability analysis</li>
-                        <li><span class="check">&#10003;</span> Formatted into 25-35 page actionable brief</li>
-                    </ul>
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="capability-icon">&#128172;</div>
+                    <span class="capability-tag">AI-Powered</span>
+                    <h3>AI Chat Interface</h3>
+                    <p>Ask questions in natural language. Get instant answers from your research. No more Ctrl+F through 100-page PDFs.</p>
                 </div>
-                <div class="solution-highlight">
-                    <p>"Not a data dump. Actionable intelligence you can use immediately."</p>
+
+                <div class="capability-card">
+                    <div class="capability-icon">&#128260;</div>
+                    <span class="capability-tag">Real-Time</span>
+                    <h3>Live Updates</h3>
+                    <p>Research that refreshes as news breaks. Never work with stale intelligence again.</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">&#127909;</div>
+                    <span class="capability-tag">Video Analysis</span>
+                    <h3>YouTube & TikTok</h3>
+                    <p>Automatic controversy detection across video platforms. Analyze transcripts, find problematic statements.</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">&#128241;</div>
+                    <span class="capability-tag">5 Platforms</span>
+                    <h3>Social Media Intelligence</h3>
+                    <p>Deep analysis across Twitter/X, Reddit, Instagram, Facebook, and more. Surface patterns and vulnerabilities.</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">&#128737;</div>
+                    <span class="capability-tag">40+ Lists</span>
+                    <h3>Compliance Screening</h3>
+                    <p>Automated screening against sanctions lists, LDA lobbyist database, and watchlists. Protect your campaign.</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">&#128221;</div>
+                    <span class="capability-tag">Campaign-Ready</span>
+                    <h3>Content Generation</h3>
+                    <p>Generate attack ads, social posts, press releases, and talking points directly from your research.</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">&#128451;</div>
+                    <span class="capability-tag">Collaboration</span>
+                    <h3>Research Vault</h3>
+                    <p>Central repository for all findings. Tag, search, and share with your team. No more PDFs via email.</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">&#9889;</div>
+                    <span class="capability-tag">Scalable</span>
+                    <h3>Parallel Research</h3>
+                    <p>Research multiple targets simultaneously. Scale your intelligence operation without scaling your team.</p>
                 </div>
             </div>
         </div>
@@ -1150,40 +1286,66 @@
     <!-- Comparison Table -->
     <section class="comparison">
         <div class="section-container">
-            <h2 class="section-title">Why Choose Civly?</h2>
+            <h2 class="section-title">Traditional Oppo Book vs. Civly Platform</h2>
+            <p class="section-subtitle">See why campaigns are switching to AI-powered intelligence.</p>
             <table class="comparison-table">
                 <thead>
                     <tr>
-                        <th>Feature</th>
-                        <th class="traditional-col">Traditional Firms</th>
-                        <th class="civly-col">Civly</th>
+                        <th>Capability</th>
+                        <th class="traditional-col">Traditional Oppo Book</th>
+                        <th class="civly-col">Civly Platform</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Delivery Time</td>
-                        <td class="traditional-col">3-4 weeks</td>
-                        <td class="civly-col">48 hours</td>
-                    </tr>
-                    <tr>
-                        <td>Price</td>
-                        <td class="traditional-col">Premium pricing</td>
-                        <td class="civly-col">Affordable</td>
-                    </tr>
-                    <tr>
                         <td>Format</td>
-                        <td class="traditional-col">100+ page PDF</td>
-                        <td class="civly-col">25-35 page actionable brief</td>
+                        <td class="traditional-col">Static 100+ page PDF</td>
+                        <td class="civly-col">Living, queryable platform</td>
                     </tr>
                     <tr>
-                        <td>Updates</td>
-                        <td class="traditional-col">Expensive, slow</td>
-                        <td class="civly-col">Rapid turnaround</td>
+                        <td>Freshness</td>
+                        <td class="traditional-col">Stale within days</td>
+                        <td class="civly-col">Real-time, refreshable</td>
                     </tr>
                     <tr>
-                        <td>Technology</td>
-                        <td class="traditional-col">Manual research</td>
-                        <td class="civly-col">AI-powered analysis</td>
+                        <td>Interaction</td>
+                        <td class="traditional-col">Ctrl+F through 100 pages</td>
+                        <td class="civly-col">AI chat, natural language queries</td>
+                    </tr>
+                    <tr>
+                        <td>Video Analysis</td>
+                        <td class="traditional-col">None</td>
+                        <td class="civly-col">YouTube, TikTok controversy detection</td>
+                    </tr>
+                    <tr>
+                        <td>Social Media</td>
+                        <td class="traditional-col">None</td>
+                        <td class="civly-col">Twitter/X, Reddit, Instagram (5 platforms)</td>
+                    </tr>
+                    <tr>
+                        <td>Compliance Screening</td>
+                        <td class="traditional-col">Manual</td>
+                        <td class="civly-col">Automated (40+ sanctions lists, LDA)</td>
+                    </tr>
+                    <tr>
+                        <td>Content Generation</td>
+                        <td class="traditional-col">Research only</td>
+                        <td class="civly-col">Attack ads, social posts, press releases</td>
+                    </tr>
+                    <tr>
+                        <td>Speed</td>
+                        <td class="traditional-col">Weeks</td>
+                        <td class="civly-col">Hours</td>
+                    </tr>
+                    <tr>
+                        <td>Scalability</td>
+                        <td class="traditional-col">One target at a time</td>
+                        <td class="civly-col">Parallel research</td>
+                    </tr>
+                    <tr>
+                        <td>Collaboration</td>
+                        <td class="traditional-col">PDF via email</td>
+                        <td class="civly-col">Vault, shared findings</td>
                     </tr>
                 </tbody>
             </table>
@@ -1193,28 +1355,28 @@
     <!-- How It Works -->
     <section class="how-it-works">
         <div class="section-container">
-            <h2 class="section-title">Simple Process. Fast Results.</h2>
-            <p class="section-subtitle">Get your opposition research in three easy steps.</p>
+            <h2 class="section-title">Get Started in Minutes</h2>
+            <p class="section-subtitle">Access powerful campaign intelligence with a simple onboarding process.</p>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Order</h3>
-                    <p>Fill out our simple order form with your opponent's name and basic info. Pay securely online.</p>
+                    <h3>Schedule a Demo</h3>
+                    <p>See the platform in action. We'll walk you through the War Room and Compliance tools tailored to your campaign needs.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>We Research</h3>
-                    <p>Our AI-powered platform analyzes millions of data points &mdash; social media posts, voting records, public statements, news coverage, and more.</p>
+                    <h3>Set Up Your War Room</h3>
+                    <p>Add your research targets and configure your compliance settings. Our team helps you get up and running quickly.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>You Receive</h3>
-                    <p>Within 48 hours, receive a comprehensive, formatted dossier with everything you need for debates, ads, and rapid response.</p>
+                    <h3>Start Researching</h3>
+                    <p>Access real-time intelligence, generate content, and stay compliant &mdash; all from one integrated platform.</p>
                 </div>
             </div>
             <div class="how-it-works-footer">
-                <p>That's it. No meetings. No delays. No surprises.</p>
-                <a href="#contact" class="btn btn-primary">Order Research Now</a>
+                <p>Your campaign command center, ready when you are.</p>
+                <a href="#contact" class="btn btn-primary">Request a Demo</a>
             </div>
         </div>
     </section>
@@ -1243,7 +1405,7 @@
                 <div class="serve-card">
                     <div class="serve-icon">&#128200;</div>
                     <h3>State & Local Campaigns</h3>
-                    <p>Affordable opposition research for competitive down-ballot races</p>
+                    <p>Fast, comprehensive opposition research for competitive down-ballot races</p>
                 </div>
             </div>
         </div>
@@ -1252,118 +1414,116 @@
     <!-- Sample Report Section -->
     <section class="sample-report" id="sample">
         <div class="sample-report-content">
-            <h2>See What You'll Receive</h2>
-            <p>We believe in showing our work. Download a sample opposition research dossier to see the format, depth, and quality we deliver.</p>
-            <a href="#" class="btn btn-primary">Download Sample Report</a>
-            <p class="note">Sample shows research on a public figure from a recent race. Your custom dossier will be tailored to your specific opponent and race dynamics.</p>
+            <h2>See the Platform in Action</h2>
+            <p>Experience the power of AI-driven campaign intelligence. Request a demo to see how the War Room and Compliance Engine work together.</p>
+            <a href="#contact" class="btn btn-primary">Request a Demo</a>
+            <p class="note">We'll customize the demo to your campaign's specific needs and show you exactly how Civly can help you win.</p>
         </div>
     </section>
 
-    <!-- Guarantee -->
-    <section class="guarantee">
-        <div class="guarantee-content">
-            <h2>Risk-Free Guarantee</h2>
-            <p>We're confident in our research quality. If you're not satisfied with your opposition dossier, we'll refund your money. No questions asked.</p>
-            <div class="guarantee-badge">30-Day Money-Back Guarantee</div>
-        </div>
-    </section>
 
     <!-- FAQ -->
     <section class="faq">
         <div class="section-container">
             <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-subtitle">Everything you need to know about our opposition research service.</p>
+            <p class="section-subtitle">Everything you need to know about the Civly platform.</p>
             <div class="faq-list">
                 <div class="faq-item">
-                    <h3 class="faq-question">How comprehensive is your research?</h3>
-                    <p class="faq-answer">We cover everything traditional firms deliver: complete social media history (back to 2008), voting records, public statements, FEC filings, news coverage, and contradictions. 25-35 page formatted report.</p>
+                    <h3 class="faq-question">What makes Civly different from traditional opposition research?</h3>
+                    <p class="faq-answer">Unlike static PDF reports, Civly is a living platform. You can query your research with AI chat, get real-time updates, analyze video content, and generate campaign materials &mdash; all in one place.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">What if I need research faster than 48 hours?</h3>
-                    <p class="faq-answer">We offer rush delivery (24 hours) and same-day (8 hours) options. Contact us for details.</p>
+                    <h3 class="faq-question">How quickly can I get started?</h3>
+                    <p class="faq-answer">After your demo, we can have your War Room set up within 24 hours. Start researching targets and generating content immediately.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">Can you update research as the campaign progresses?</h3>
-                    <p class="faq-answer">Yes. We offer ongoing monitoring subscriptions, or you can order rapid research updates as needed. Contact us for details.</p>
+                    <h3 class="faq-question">What platforms do you analyze for social media?</h3>
+                    <p class="faq-answer">We cover Twitter/X, Reddit, Instagram, Facebook, and TikTok. Our AI detects controversies, contradictions, and patterns across all platforms.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">Do you work with PACs and Super PACs?</h3>
-                    <p class="faq-answer">Absolutely. We work with campaigns, PACs, Super PACs, and political consultants. Volume discounts available for multiple candidates.</p>
+                    <h3 class="faq-question">How does the Compliance Engine integrate with research?</h3>
+                    <p class="faq-answer">Both tools work together seamlessly. Screen donors against 40+ sanctions lists, verify contributions, and maintain FEC compliance while running your research operations.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">What if I already have research from another firm?</h3>
-                    <p class="faq-answer">We can supplement existing research with rapid updates, or provide our document analysis tool to make your existing research more searchable and usable.</p>
+                    <h3 class="faq-question">Can I use Civly for multiple candidates simultaneously?</h3>
+                    <p class="faq-answer">Yes. Unlike traditional firms that work one target at a time, Civly enables parallel research across multiple candidates. Perfect for PACs and consultants.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">How does payment work?</h3>
-                    <p class="faq-answer">Secure online payment via credit card or ACH. You pay when you order, we deliver within 48 hours.</p>
+                    <h3 class="faq-question">What kind of content can I generate?</h3>
+                    <p class="faq-answer">Create attack ads, social media posts, press releases, debate prep materials, and talking points directly from your research &mdash; all powered by AI.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">What's your refund policy?</h3>
-                    <p class="faq-answer">30-day money-back guarantee if you're not satisfied with the research quality.</p>
+                    <h3 class="faq-question">Who uses Civly?</h3>
+                    <p class="faq-answer">Congressional campaigns, PACs, Super PACs, political consultants, and state/local campaigns. We work with organizations of all sizes.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA for Opposition Research -->
+    <!-- Final CTA -->
     <section class="final-cta" id="contact">
-        <h2>Ready to Get Started?</h2>
-        <p>Order your opposition research dossier today. Fast delivery. Transparent pricing. Guaranteed results.</p>
+        <h2>Ready to Transform Your Campaign?</h2>
+        <p>See how Civly's AI-powered platform can give you the intelligence advantage.</p>
         <div class="hero-ctas">
-            <a href="mailto:research@civly.ai?subject=Opposition Research Order" class="btn btn-primary">Order Research Now</a>
-            <a href="#" class="btn btn-secondary">Schedule a Call</a>
+            <a href="mailto:research@civly.ai?subject=Demo Request" class="btn btn-primary">Request a Demo</a>
+            <a href="mailto:research@civly.ai?subject=Question about Civly" class="btn btn-secondary">Contact Us</a>
         </div>
         <div class="contact-info">
-            <p>Or contact us: <a href="mailto:research@civly.ai">research@civly.ai</a></p>
+            <p>Questions? Reach out: <a href="mailto:research@civly.ai">research@civly.ai</a></p>
         </div>
     </section>
 
     <!-- ============================================== -->
-    <!-- COMPLIANCE ENGINE - SECONDARY PRODUCT SECTION -->
+    <!-- TWO PRODUCT SUITES SECTION -->
     <!-- ============================================== -->
 
-    <!-- Section Divider -->
-    <div class="section-divider">
-        <h3>Additional Solutions</h3>
-    </div>
-
-    <!-- Compliance Section (Secondary Solution) -->
-    <section class="compliance-section" id="compliance">
+    <!-- Product Suites Section -->
+    <section class="product-suites" id="solutions">
         <div class="section-container">
-            <h2 class="section-title">Campaign Compliance Engine</h2>
-            <div class="compliance-intro">
-                <p>The support you need for your campaign, PAC, or Super PAC. AI-powered compliance management to keep you audit-ready and on schedule.</p>
+            <h2 class="section-title">Two Powerful Suites. One Platform.</h2>
+            <p class="section-subtitle">Everything your campaign needs for research and compliance, working together seamlessly.</p>
+
+            <div class="suites-grid">
+                <!-- War Room Suite -->
+                <div class="suite-card" id="warroom">
+                    <div class="suite-header">
+                        <div class="suite-icon">&#128640;</div>
+                        <h3>Civly War Room</h3>
+                        <p class="suite-tagline">Research & Intelligence</p>
+                    </div>
+                    <ul class="suite-features">
+                        <li><strong>Deep Research</strong> &mdash; AI-powered opposition research platform</li>
+                        <li><strong>YouTube & TikTok Analysis</strong> &mdash; Controversy detection with transcript deep-dive</li>
+                        <li><strong>Social Media Intelligence</strong> &mdash; 5 platforms, pattern detection</li>
+                        <li><strong>Content Generation</strong> &mdash; Attack ads, social posts, press releases</li>
+                        <li><strong>Research Vault</strong> &mdash; Collaborative document storage and tagging</li>
+                        <li><strong>Voice Research</strong> &mdash; Real-time voice AI conversations</li>
+                        <li><strong>FEC Committee Explorer</strong> &mdash; AI-powered finance analysis</li>
+                    </ul>
+                </div>
+
+                <!-- Compliance Suite -->
+                <div class="suite-card" id="compliance">
+                    <div class="suite-header">
+                        <div class="suite-icon">&#128737;</div>
+                        <h3>Civly Compliance</h3>
+                        <p class="suite-tagline">Donor & FEC Management</p>
+                    </div>
+                    <ul class="suite-features">
+                        <li><strong>Donor Verification</strong> &mdash; Automated employment, address, identity checks</li>
+                        <li><strong>Compliance Screening</strong> &mdash; 40+ sanctions lists, LDA database</li>
+                        <li><strong>Contribution Limits</strong> &mdash; Real-time aggregate tracking and alerts</li>
+                        <li><strong>FEC Filing</strong> &mdash; Auto-generated .fec and CSV files</li>
+                        <li><strong>Expense Validation</strong> &mdash; AI-powered personal use compliance</li>
+                        <li><strong>Audit Trail</strong> &mdash; Complete verification documentation</li>
+                        <li><strong>Deadline Management</strong> &mdash; Automated FEC deadline tracking</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="compliance-features">
-                <div class="compliance-feature">
-                    <h4>Contributions</h4>
-                    <p>Real-time checks for source eligibility, aggregate limits, employer/occupation completeness, and earmark handling.</p>
-                </div>
-                <div class="compliance-feature">
-                    <h4>FEC & State Filings</h4>
-                    <p>Preparation, review, and one-click FEC submission (e.g., FEC Form 3/3X/3P and state equivalents).</p>
-                </div>
-                <div class="compliance-feature">
-                    <h4>Audit/Complaint Response</h4>
-                    <p>Audit-ready documentation to prevent FEC errors and fines. Chatbot to assist with questions and answers.</p>
-                </div>
-                <div class="compliance-feature">
-                    <h4>Deadline Management</h4>
-                    <p>Streamline FEC deadline management with tools to track important dates. Customized calendars populated automatically.</p>
-                </div>
-                <div class="compliance-feature">
-                    <h4>Auto-Coding/Anomaly Detection</h4>
-                    <p>Learns your chart of accounts and surfaces outliers before they become problems.</p>
-                </div>
-                <div class="compliance-feature">
-                    <h4>Entity Resolution & Risk Scoring</h4>
-                    <p>Donor, vendor, and payee de-duplication with risk flagged (e.g., foreign national indicators, straw donor patterns).</p>
-                </div>
+            <div class="suites-cta">
+                <a href="#contact" class="btn btn-primary">Request a Demo</a>
             </div>
-
-            <a href="mailto:compliance@civly.ai?subject=Compliance Engine Demo Request" class="btn btn-secondary">Request a Demo</a>
         </div>
     </section>
 
@@ -1434,7 +1594,7 @@
             </div>
 
             <div class="company-mission">
-                <p>"Civly was built and is run by a team of long time political campaign workers and compliance professionals, in partnership with experienced developers and data scientists. Our goal is to make compliance faster, easier, cheaper, and more accurate."</p>
+                <p>"Civly was built and is run by a team of long time political campaign workers and compliance professionals, in partnership with experienced developers and data scientists. Our goal is to make compliance faster, easier, and more accurate."</p>
             </div>
         </div>
     </section>
