@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civly | Campaign Compliance Platform</title>
+    <link rel="icon" type="image/png" href="images/civly-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a0a2e;
+            --primary: #2d1b4e;
+            --primary-mid: #4a1d6e;
+            --primary-light: #7c3aed;
+            --accent: #a855f7;
+            --accent-bright: #c084fc;
+            --accent-magenta: #d946ef;
+            --text-white: #ffffff;
+            --text-light: rgba(255,255,255,0.9);
+            --text-muted: rgba(255,255,255,0.7);
+            --bg-dark: #0f0515;
+            --bg-card: rgba(255,255,255,0.05);
+            --border-light: rgba(255,255,255,0.1);
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-white);
+            background: var(--bg-dark);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 5, 21, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-white);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            border: 1px solid var(--text-muted);
+            padding: 0.6rem 1.25rem;
+            border-radius: 4px;
+            transition: all 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            border-color: var(--text-white);
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 50%, var(--bg-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-bright) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 750px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-white);
+            border: 1px solid var(--text-muted);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-white);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .trust-indicator {
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Section styling */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Features Grid */
+        .features {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-white);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: var(--bg-dark);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .step p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .how-it-works-footer {
+            text-align: center;
+        }
+
+        .how-it-works-footer p {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        /* Who We Serve */
+        .who-we-serve {
+            background: linear-gradient(180deg, var(--primary-dark) 0%, var(--bg-dark) 100%);
+        }
+
+        .serve-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .serve-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+        }
+
+        .serve-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .serve-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-white);
+        }
+
+        .serve-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--bg-dark);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-white);
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta > p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+        }
+
+        .contact-info a {
+            color: var(--accent-bright);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-white);
+        }
+
+        .footer-copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="civly_redesign.html" class="logo">
+            <img src="images/civly-logo.png" alt="Civly" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="civly_redesign.html">Helios</a></li>
+            <li><a href="compliance.html" class="active">Compliance</a></li>
+            <li><a href="civly_redesign.html#company">Company</a></li>
+            <li><a href="#contact" class="nav-cta">Request a Demo</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Campaign Compliance, Simplified</h1>
+            <p class="hero-subtitle">
+                AI-powered donor verification, FEC compliance, and audit-ready documentation.
+                Stay compliant without the complexity.
+            </p>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn btn-primary">Request a Demo</a>
+                <a href="#features" class="btn btn-secondary">See Features</a>
+            </div>
+            <p class="trust-indicator">
+                Trusted by campaigns, PACs, and nonprofits nationwide
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-container">
+            <h2 class="section-title">Compliance Features</h2>
+            <p class="section-subtitle">Everything you need to stay compliant and audit-ready.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&#128100;</div>
+                    <h3>Donor Verification</h3>
+                    <p>Automated employment, address, and identity verification. Catch issues before they become problems.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">&#128737;</div>
+                    <h3>Compliance Screening</h3>
+                    <p>Screen against 40+ sanctions lists, LDA lobbyist database, and watchlists. Detect prohibited sources automatically.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">&#128176;</div>
+                    <h3>Contribution Limits</h3>
+                    <p>Real-time aggregate tracking and alerts. Never exceed limits or miss employer/occupation requirements.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">&#128196;</div>
+                    <h3>FEC Filing</h3>
+                    <p>Auto-generated .fec and CSV files. One-click submission ready for FEC Form 3/3X/3P and state equivalents.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">&#128200;</div>
+                    <h3>Expense Validation</h3>
+                    <p>AI-powered expense legitimacy analysis for personal use compliance. Flag potential issues before filing.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">&#128203;</div>
+                    <h3>Audit Trail</h3>
+                    <p>Complete tracking of all verification decisions and compliance actions. Always ready for review.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">&#128197;</div>
+                    <h3>Deadline Management</h3>
+                    <p>Automated FEC deadline tracking with customized calendars. Never miss a filing deadline.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">&#128270;</div>
+                    <h3>Entity Resolution</h3>
+                    <p>Donor, vendor, and payee de-duplication. Risk scoring for foreign national indicators and straw donor patterns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="section-container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Get compliant in three simple steps.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Connect Your Data</h3>
+                    <p>Import your donor data and contribution records. We integrate with major campaign finance platforms.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Automatic Screening</h3>
+                    <p>Our AI screens every contribution against compliance rules, limits, and watchlists in real-time.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>File with Confidence</h3>
+                    <p>Generate FEC-ready files with complete documentation. Stay audit-ready at all times.</p>
+                </div>
+            </div>
+            <div class="how-it-works-footer">
+                <p>Compliance made simple.</p>
+                <a href="#contact" class="btn btn-primary">Request a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Serve -->
+    <section class="who-we-serve">
+        <div class="section-container">
+            <h2 class="section-title">Who We Serve</h2>
+            <div class="serve-grid">
+                <div class="serve-card">
+                    <div class="serve-icon">&#127963;</div>
+                    <h3>Federal Campaigns</h3>
+                    <p>Congressional and Senate campaigns with FEC reporting requirements</p>
+                </div>
+                <div class="serve-card">
+                    <div class="serve-icon">&#128202;</div>
+                    <h3>PACs & Super PACs</h3>
+                    <p>Political action committees with complex contribution rules</p>
+                </div>
+                <div class="serve-card">
+                    <div class="serve-icon">&#127775;</div>
+                    <h3>Nonprofits</h3>
+                    <p>501(c)(4) organizations with donor compliance needs</p>
+                </div>
+                <div class="serve-card">
+                    <div class="serve-icon">&#127919;</div>
+                    <h3>State Campaigns</h3>
+                    <p>State and local campaigns with varied reporting requirements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="section-container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about Civly Compliance.</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-question">What compliance databases do you screen against?</h3>
+                    <p class="faq-answer">We screen against 40+ sanctions lists including OFAC, UN sanctions, EU sanctions, the LDA lobbyist database, and various watchlists for prohibited sources.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Does this work with my existing campaign finance software?</h3>
+                    <p class="faq-answer">Yes. We integrate with major campaign finance platforms and can import data from most common formats including CSV, FEC files, and direct API connections.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How does the FEC filing feature work?</h3>
+                    <p class="faq-answer">We automatically generate properly formatted .fec files ready for submission. The system handles all the complex formatting requirements for Form 3, 3X, and 3P filings.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What if we get audited?</h3>
+                    <p class="faq-answer">Every verification decision and compliance action is documented with timestamps and reasoning. You can export complete audit trails at any time.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Is this separate from the Helios research platform?</h3>
+                    <p class="faq-answer">Yes. Civly Compliance is a separate product focused entirely on donor verification and FEC compliance. You can use it independently or alongside Helios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="contact">
+        <h2>Ready to Simplify Compliance?</h2>
+        <p>See how Civly Compliance can keep your campaign audit-ready.</p>
+        <div class="hero-ctas">
+            <a href="mailto:compliance@civly.ai?subject=Compliance Demo Request" class="btn btn-primary">Request a Demo</a>
+            <a href="mailto:compliance@civly.ai?subject=Question about Compliance" class="btn btn-secondary">Contact Us</a>
+        </div>
+        <div class="contact-info">
+            <p>Questions? Reach out: <a href="mailto:compliance@civly.ai">compliance@civly.ai</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="civly_redesign.html">Helios</a>
+                <a href="compliance.html">Compliance</a>
+                <a href="civly_redesign.html#company">Company</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2025 Civly. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
