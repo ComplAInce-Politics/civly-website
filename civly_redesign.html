@@ -289,7 +289,7 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width: 900px;
             margin: 0 auto 3rem;
         }
 
@@ -609,39 +609,45 @@
 
         .serve-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .serve-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .serve-card {
             background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
+            padding: 1.75rem;
+            border-radius: 8px;
+            text-align: left;
             border: 1px solid var(--border-light);
+            border-left: 4px solid var(--success);
             transition: all 0.3s;
         }
 
         .serve-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.2);
-        }
-
-        .serve-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            transform: translateY(-2px);
+            border-left-color: var(--success);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.15);
         }
 
         .serve-card h3 {
             font-size: 1.1rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             color: var(--text-white);
+            font-weight: 600;
         }
 
         .serve-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
 
         /* Sample Report Section */
@@ -686,19 +692,50 @@
 
         .faq-item {
             border-bottom: 1px solid var(--border-light);
-            padding: 1.5rem 0;
+            margin-bottom: 0;
         }
 
         .faq-question {
             font-weight: 600;
             font-size: 1.1rem;
-            margin-bottom: 0.75rem;
             color: var(--text-white);
+            cursor: pointer;
+            padding: 1.5rem 3rem 1.5rem 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: var(--success);
+        }
+
+        .faq-arrow {
+            position: absolute;
+            right: 0;
+            font-size: 1.25rem;
+            color: var(--success);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
         }
 
         .faq-answer {
             color: var(--text-muted);
             line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
         }
 
         /* Final CTA */
@@ -902,40 +939,149 @@
         }
 
         .helios-books-content {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
         .helios-books-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            list-style: none;
         }
 
         .feature-item {
             display: flex;
             gap: 1rem;
-            padding: 1.5rem;
-            background: var(--bg-card);
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
         }
 
         .feature-icon {
-            font-size: 2rem;
+            font-size: 1.75rem;
             flex-shrink: 0;
+            color: var(--success);
+            font-weight: bold;
         }
 
         .feature-text h4 {
             color: var(--text-white);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
         }
 
         .feature-text p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.5;
+        }
+
+        .helios-dashboard {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .dashboard-icon {
+            font-size: 1.5rem;
+        }
+
+        .dashboard-header h4 {
+            color: var(--text-white);
+            font-size: 1.1rem;
+        }
+
+        .dashboard-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-field label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-field input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: var(--text-white);
+            font-family: inherit;
+        }
+
+        .form-field input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .dashboard-submit {
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .dashboard-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            color: var(--success);
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .helios-books-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         .helios-books-cta {
@@ -955,138 +1101,138 @@
             background: var(--bg-dark);
         }
 
-        .command-center-flow {
+        .command-center-hub {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+            position: relative;
         }
 
-        .flow-step {
-            text-align: center;
-            padding: 1.5rem;
-            background: var(--bg-card);
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-            min-width: 180px;
+        .hub-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .flow-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .flow-step h4 {
-            color: var(--text-white);
-            margin-bottom: 0.25rem;
-        }
-
-        .flow-step p {
-            color: var(--text-muted);
+        .hub-section-title {
+            color: var(--success);
             font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
-        .flow-arrow {
-            font-size: 1.5rem;
-            color: var(--accent);
-        }
-
-        @media (max-width: 700px) {
-            .flow-arrow {
-                transform: rotate(90deg);
-            }
-        }
-
-        .command-center-tools h3 {
-            color: var(--text-white);
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .tools-grid {
+        .hub-tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            width: 100%;
         }
 
-        .tool-card {
+        .hub-tool-compact {
             background: var(--bg-card);
-            padding: 1.25rem;
-            border-radius: 8px;
+            padding: 0.75rem;
+            border-radius: 6px;
             border: 1px solid var(--border-light);
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
-        .tool-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
+        .hub-tool-compact:hover {
+            border-color: var(--success);
+            transform: scale(1.05);
         }
 
-        .tool-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .tool-card h4 {
+        .hub-tool-compact h4 {
             color: var(--text-white);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             margin-bottom: 0.25rem;
         }
 
-        .tool-card p {
+        .hub-tool-compact p {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            line-height: 1.3;
+        }
+
+        .hub-connector {
+            font-size: 2.5rem;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .hub-vault {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, var(--bg-card) 100%);
+            padding: 2.5rem 2rem;
+            border-radius: 50%;
+            border: 3px solid var(--success);
+            text-align: center;
+            min-width: 220px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
+        }
+
+        .hub-vault h3 {
+            color: var(--text-white);
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .hub-vault p {
             color: var(--text-muted);
             font-size: 0.8rem;
+            line-height: 1.5;
         }
 
-        .vault-warroom {
+        .hub-output-box {
+            background: var(--bg-card);
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--success);
+            text-align: center;
+            width: 100%;
+            min-height: 220px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
         }
 
-        .vault-arrow {
-            font-size: 2rem;
-            color: var(--accent);
+        .hub-output-box h4 {
+            color: var(--text-white);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
-        @media (max-width: 700px) {
-            .vault-arrow {
+        .hub-output-box p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1000px) {
+            .command-center-hub {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hub-connector {
                 transform: rotate(90deg);
             }
-        }
 
-        .vault-card, .warroom-card {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-            text-align: center;
-            flex: 1;
-            max-width: 350px;
-            min-width: 280px;
-        }
-
-        .vault-icon, .warroom-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .vault-card h4, .warroom-card h4 {
-            color: var(--text-white);
-            margin-bottom: 0.5rem;
-        }
-
-        .vault-card p, .warroom-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            .hub-tools-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         .command-center-note {
@@ -1109,44 +1255,97 @@
         }
 
         .conigere-content {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
         .conigere-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            list-style: none;
         }
 
         .conigere-feature {
-            background: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-            text-align: center;
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .conigere-feature:last-child {
+            border-bottom: none;
         }
 
         .conigere-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            color: var(--success);
+            font-weight: bold;
         }
 
         .conigere-feature h4 {
             color: var(--text-white);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
         }
 
         .conigere-feature p {
             color: var(--text-muted);
             font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        .conigere-cta {
+        .conigere-premium-card {
+            background: var(--bg-card);
+            border: 2px solid var(--success);
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-light);
+        }
+
+        .conigere-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .conigere-premium-card h3 {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .conigere-premium-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .conigere-highlight {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .conigere-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         /* Platform Capabilities Section (legacy - can be removed if not used) */
@@ -1437,12 +1636,12 @@
                         Helios Command Center
                     </a>
                     <a href="#conigere">
-                        Conigere (White-Glove)
+                        Concierge (White-Glove)
                     </a>
                 </div>
             </li>
             <li><a href="compliance.html">Compliance</a></li>
-            <li><a href="#company">Company</a></li>
+            <li><a href="company.html">Company</a></li>
             <li><a href="#contact" class="nav-cta">Request a Demo</a></li>
         </ul>
         <button class="mobile-nav-toggle">&#9776;</button>
@@ -1457,11 +1656,11 @@
         <div class="hero-container">
             <h1>Campaign Intelligence Starts Here</h1>
             <p class="hero-subtitle">
-                From deep opposition research to real-time analysis and content generation.
+                From deep research to real-time analysis and content generation.
                 Everything your campaign needs to win. It all starts with the book.
             </p>
             <div class="price-banner">
-                Helios Books &rarr; Helios Command Center &rarr; Victory
+                Helios Book &rarr; Command Center &rarr; Competitive Advantage
             </div>
             <div class="hero-ctas">
                 <a href="#helios-books" class="btn btn-primary">Start with a Book</a>
@@ -1479,44 +1678,66 @@
             <div class="product-header">
                 <span class="product-label">The Foundation</span>
                 <h2 class="section-title">Helios Books</h2>
-                <p class="section-subtitle">Deep opposition research in days, not weeks. The foundation for everything that follows.</p>
+                <p class="section-subtitle">Deep research in days, not weeks. The foundation for everything that follows.</p>
             </div>
 
             <div class="helios-books-content">
-                <div class="helios-books-features">
-                    <div class="feature-item">
-                        <div class="feature-icon">&#9889;</div>
-                        <div class="feature-text">
-                            <h4>10x Faster</h4>
-                            <p>What takes traditional firms weeks, we deliver in days. AI-powered research at scale.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">&#128260;</div>
-                        <div class="feature-text">
-                            <h4>Refreshable</h4>
-                            <p>News breaks. Scandals emerge. Your book stays current with on-demand refresh capability.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">&#127919;</div>
-                        <div class="feature-text">
-                            <h4>Campaign-Ready</h4>
-                            <p>Attack lines, sourced vulnerabilities, and messaging. Ready for debates, ads, and rapid response.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">&#128218;</div>
-                        <div class="feature-text">
-                            <h4>Comprehensive</h4>
-                            <p>Social media history, voting records, public statements, FEC filings, news coverage, and contradictions.</p>
-                        </div>
-                    </div>
+                <div>
+                    <ul class="helios-books-features">
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <h4>10x Faster</h4>
+                                <p>What takes traditional firms weeks, we deliver in days. AI-powered research at scale.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <h4>Refreshable</h4>
+                                <p>News breaks. Scandals emerge. Your book stays current with on-demand refresh capability.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <h4>Campaign-Ready</h4>
+                                <p>Attack lines, sourced vulnerabilities, and messaging. Ready for debates, ads, and rapid response.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <h4>Comprehensive</h4>
+                                <p>Social media history, voting records, public statements, FEC filings, news coverage, and contradictions.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="helios-books-cta">
-                    <p class="cta-note">Order a Helios Book as a standalone product, or bundle with Command Center access.</p>
-                    <a href="#contact" class="btn btn-primary">Order a Book</a>
+                <div class="helios-dashboard">
+                    <div class="dashboard-badge">Fast & Easy</div>
+                    <div class="dashboard-header">
+                        <h4>Request a Helios Book</h4>
+                    </div>
+                    <form class="dashboard-form" id="heliosBookForm">
+                        <div class="form-field">
+                            <label>Candidate Name</label>
+                            <input type="text" name="candidate" placeholder="e.g., John Smith" required>
+                        </div>
+                        <div class="form-field">
+                            <label>Office</label>
+                            <input type="text" name="office" placeholder="e.g., U.S. Senate, State House" required>
+                        </div>
+                        <div class="form-field">
+                            <label>Your Email</label>
+                            <input type="email" name="email" placeholder="you@campaign.com" required>
+                        </div>
+                        <button type="submit" class="dashboard-submit">Request Book &rarr;</button>
+                        <div class="success-message" id="successMessage">
+                            We received your request. We will be in touch soon.
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1531,73 +1752,59 @@
                 <p class="section-subtitle">Your research hub. Analyze, store, and transform intelligence into campaign-ready content.</p>
             </div>
 
-            <div class="command-center-flow">
-                <div class="flow-step">
-                    <div class="flow-icon">&#128269;</div>
-                    <h4>Gather Intelligence</h4>
-                    <p>Deep research tools for every source</p>
-                </div>
-                <div class="flow-arrow">&rarr;</div>
-                <div class="flow-step">
-                    <div class="flow-icon">&#128451;</div>
-                    <h4>Organize in Vault</h4>
-                    <p>Store, tag, and search findings</p>
-                </div>
-                <div class="flow-arrow">&rarr;</div>
-                <div class="flow-step">
-                    <div class="flow-icon">&#128221;</div>
-                    <h4>Generate Content</h4>
-                    <p>Attack ads, debate prep, and more</p>
-                </div>
-            </div>
-
-            <div class="command-center-tools">
-                <h3>Research Tools</h3>
-                <div class="tools-grid">
-                    <div class="tool-card">
-                        <div class="tool-icon">&#128270;</div>
-                        <h4>Helios</h4>
-                        <p>Deep opposition research in minutes</p>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icon">&#127963;</div>
-                        <h4>Congressional Record</h4>
-                        <p>Floor speeches and voting records</p>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icon">&#128202;</div>
-                        <h4>Committee Explorer</h4>
-                        <p>FEC data with AI insights</p>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icon">&#127909;</div>
-                        <h4>YouTube Analysis</h4>
-                        <p>Video controversy detection</p>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icon">&#127916;</div>
-                        <h4>TikTok Analysis</h4>
-                        <p>Short-form video analysis</p>
-                    </div>
-                    <div class="tool-card">
-                        <div class="tool-icon">&#128241;</div>
-                        <h4>Social Media</h4>
-                        <p>Twitter/X, Threads, BlueSky, Reddit</p>
+            <div class="command-center-hub">
+                <!-- Left: Research Tools -->
+                <div class="hub-section">
+                    <div class="hub-section-title">Research Tools</div>
+                    <div class="hub-tools-grid">
+                        <div class="hub-tool-compact">
+                            <h4>Helios</h4>
+                            <p>Deep research</p>
+                        </div>
+                        <div class="hub-tool-compact">
+                            <h4>Congressional</h4>
+                            <p>Voting records</p>
+                        </div>
+                        <div class="hub-tool-compact">
+                            <h4>FEC Data</h4>
+                            <p>Finance tracking</p>
+                        </div>
+                        <div class="hub-tool-compact">
+                            <h4>YouTube</h4>
+                            <p>Video analysis</p>
+                        </div>
+                        <div class="hub-tool-compact">
+                            <h4>TikTok</h4>
+                            <p>Short-form video</p>
+                        </div>
+                        <div class="hub-tool-compact">
+                            <h4>Social Media</h4>
+                            <p>Multi-platform</p>
+                        </div>
                     </div>
                 </div>
 
-                <h3>Vault & War Room</h3>
-                <div class="vault-warroom">
-                    <div class="vault-card">
-                        <div class="vault-icon">&#128451;</div>
-                        <h4>Research Vault</h4>
-                        <p>Your organized research library. Store, tag, and search all findings in one place.</p>
+                <!-- Connector Arrow -->
+                <div class="hub-connector">&rarr;</div>
+
+                <!-- Center: Vault (Hub) -->
+                <div class="hub-section">
+                    <div class="hub-section-title">Central Hub</div>
+                    <div class="hub-vault">
+                        <h3>Research<br/>Vault</h3>
+                        <p>Store, organize & search all intelligence</p>
                     </div>
-                    <div class="vault-arrow">&rarr;</div>
-                    <div class="warroom-card">
-                        <div class="warroom-icon">&#128640;</div>
-                        <h4>Research War Room</h4>
-                        <p>Transform research into polished reports. AI analysis, charts, tables, and export to Word, Slides, or Audio.</p>
+                </div>
+
+                <!-- Connector Arrow -->
+                <div class="hub-connector">&rarr;</div>
+
+                <!-- Right: War Room Output -->
+                <div class="hub-section">
+                    <div class="hub-section-title">Content Output</div>
+                    <div class="hub-output-box">
+                        <h4>War Room</h4>
+                        <p>Transform research into campaign-ready content: attack ads, debate prep, press releases, and reports</p>
                     </div>
                 </div>
             </div>
@@ -1615,13 +1822,13 @@
     <!-- Comparison Table -->
     <section class="comparison">
         <div class="section-container">
-            <h2 class="section-title">Traditional Oppo Book vs. Helios</h2>
+            <h2 class="section-title">Traditional Research Book vs. Helios</h2>
             <p class="section-subtitle">See why campaigns are switching to AI-powered intelligence.</p>
             <table class="comparison-table">
                 <thead>
                     <tr>
                         <th>Capability</th>
-                        <th class="traditional-col">Traditional Oppo Book</th>
+                        <th class="traditional-col">Traditional Research Book</th>
                         <th class="civly-col">Civly Platform</th>
                     </tr>
                 </thead>
@@ -1687,22 +1894,18 @@
             <h2 class="section-title">Built for Campaigns & Political Organizations</h2>
             <div class="serve-grid">
                 <div class="serve-card">
-                    <div class="serve-icon">&#127963;</div>
                     <h3>Congressional & Senate Campaigns</h3>
                     <p>Get comprehensive intel on primary and general election opponents</p>
                 </div>
                 <div class="serve-card">
-                    <div class="serve-icon">&#128202;</div>
                     <h3>PACs & Super PACs</h3>
                     <p>Research multiple candidates for independent expenditure campaigns</p>
                 </div>
                 <div class="serve-card">
-                    <div class="serve-icon">&#127775;</div>
                     <h3>Nonprofits</h3>
                     <p>Research and intelligence tools for advocacy and issue campaigns</p>
                 </div>
                 <div class="serve-card">
-                    <div class="serve-icon">&#127919;</div>
                     <h3>Political Consultants</h3>
                     <p>White-label research services for your campaign clients</p>
                 </div>
@@ -1710,6 +1913,62 @@
         </div>
     </section>
 
+    <!-- ============================================== -->
+    <!-- CONCIERGE - WHITE GLOVE SERVICE -->
+    <!-- ============================================== -->
+
+    <!-- Concierge Section -->
+    <section class="conigere" id="conigere">
+        <div class="section-container">
+            <div class="product-header">
+                <span class="product-label">White-Glove Service</span>
+                <h2 class="section-title">Concierge</h2>
+                <p class="section-subtitle">For campaigns that need a dedicated intelligence team, not just software.</p>
+            </div>
+
+            <div class="conigere-content">
+                <div>
+                    <ul class="conigere-features">
+                        <li class="conigere-feature">
+                            <div class="conigere-icon">✓</div>
+                            <div>
+                                <h4>Dedicated Analysts</h4>
+                                <p>Your own research team working alongside your campaign. Real humans, real expertise.</p>
+                            </div>
+                        </li>
+                        <li class="conigere-feature">
+                            <div class="conigere-icon">✓</div>
+                            <div>
+                                <h4>Unlimited Requests</h4>
+                                <p>No caps, no limits. Request as much research as your campaign needs.</p>
+                            </div>
+                        </li>
+                        <li class="conigere-feature">
+                            <div class="conigere-icon">✓</div>
+                            <div>
+                                <h4>Custom Reports</h4>
+                                <p>Tailored intelligence briefings and reports delivered on your schedule.</p>
+                            </div>
+                        </li>
+                        <li class="conigere-feature">
+                            <div class="conigere-icon">✓</div>
+                            <div>
+                                <h4>Priority Turnaround</h4>
+                                <p>When news breaks, you're first in line. Rapid response when it matters most.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="conigere-premium-card">
+                    <div class="conigere-badge">Premium Service</div>
+                    <h3>Ready to Elevate?</h3>
+                    <p>Get a dedicated intelligence team working for your campaign.</p>
+                    <a href="#contact" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FAQ -->
     <section class="faq">
@@ -1718,31 +1977,52 @@
             <p class="section-subtitle">Everything you need to know about Helios.</p>
             <div class="faq-list">
                 <div class="faq-item">
-                    <h3 class="faq-question">What's the difference between Helios Books and Command Center?</h3>
-                    <p class="faq-answer">Helios Books are comprehensive opposition research reports: the foundation. Command Center is the platform where you analyze, store, and transform that research into campaign-ready content. You can use them together or separately.</p>
+                    <h3 class="faq-question">
+                        What's the difference between Helios Books and Command Center?
+                        <span class="faq-arrow">▼</span>
+                    </h3>
+                    <p class="faq-answer">Helios Books are comprehensive deep research reports: the foundation. Command Center is the platform where you analyze, store, and transform that research into campaign-ready content. You can use them together or separately.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">Can I bring my own research to the Command Center?</h3>
-                    <p class="faq-answer">Yes. If you already have oppo research from another firm, you can upload it to the Command Center and use all our analysis and content generation tools.</p>
+                    <h3 class="faq-question">
+                        Can I bring my own research to the Command Center?
+                        <span class="faq-arrow">▼</span>
+                    </h3>
+                    <p class="faq-answer">Yes. If you already have research from another firm, you can upload it to the Command Center and use all our analysis and content generation tools.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">How fast can I get a Helios Book?</h3>
+                    <h3 class="faq-question">
+                        How fast can I get a Helios Book?
+                        <span class="faq-arrow">▼</span>
+                    </h3>
                     <p class="faq-answer">What takes traditional firms weeks, we deliver in days. Rush delivery options are also available for time-sensitive situations.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">What platforms do you analyze for social media?</h3>
+                    <h3 class="faq-question">
+                        What platforms do you analyze for social media?
+                        <span class="faq-arrow">▼</span>
+                    </h3>
                     <p class="faq-answer">We cover Twitter/X, Threads, BlueSky, Reddit, Instagram, TikTok, and YouTube. Our AI detects controversies, contradictions, and patterns across all platforms.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">Can I research multiple candidates at once?</h3>
+                    <h3 class="faq-question">
+                        Can I research multiple candidates at once?
+                        <span class="faq-arrow">▼</span>
+                    </h3>
                     <p class="faq-answer">Yes. Unlike traditional firms that work one target at a time, Helios enables parallel research across multiple candidates. Perfect for PACs and consultants.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">What is Conigere?</h3>
-                    <p class="faq-answer">Conigere is our white-glove service for campaigns that need a dedicated intelligence team, not just software. You get unlimited research requests, dedicated analysts, and priority turnaround.</p>
+                    <h3 class="faq-question">
+                        What is Concierge?
+                        <span class="faq-arrow">▼</span>
+                    </h3>
+                    <p class="faq-answer">Concierge is our white-glove service for campaigns that need a dedicated intelligence team, not just software. You get unlimited research requests, dedicated analysts, and priority turnaround.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">Who uses Helios?</h3>
+                    <h3 class="faq-question">
+                        Who can benefit from these tools?
+                        <span class="faq-arrow">▼</span>
+                    </h3>
                     <p class="faq-answer">Congressional campaigns, PACs, Super PACs, nonprofits, and political consultants. We work with organizations of all sizes.</p>
                 </div>
             </div>
@@ -1754,128 +2034,11 @@
         <h2>Ready to Transform Your Campaign?</h2>
         <p>See how Civly's AI-powered platform can give you the intelligence advantage.</p>
         <div class="hero-ctas">
-            <a href="mailto:research@civly.ai?subject=Demo Request" class="btn btn-primary">Request a Demo</a>
-            <a href="mailto:research@civly.ai?subject=Question about Civly" class="btn btn-secondary">Contact Us</a>
+            <a href="mailto:sales@civly.ai?subject=Demo Request" class="btn btn-primary">Request a Demo</a>
+            <a href="mailto:sales@civly.ai?subject=Question about Civly" class="btn btn-secondary">Contact Us</a>
         </div>
         <div class="contact-info">
-            <p>Questions? Reach out: <a href="mailto:research@civly.ai">research@civly.ai</a></p>
-        </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- CONIGERE - WHITE GLOVE SERVICE -->
-    <!-- ============================================== -->
-
-    <!-- Conigere Section -->
-    <section class="conigere" id="conigere">
-        <div class="section-container">
-            <div class="product-header">
-                <span class="product-label">White-Glove Service</span>
-                <h2 class="section-title">Conigere</h2>
-                <p class="section-subtitle">For campaigns that need a dedicated intelligence team, not just software.</p>
-            </div>
-
-            <div class="conigere-content">
-                <div class="conigere-features">
-                    <div class="conigere-feature">
-                        <div class="conigere-icon">&#128101;</div>
-                        <h4>Dedicated Analysts</h4>
-                        <p>Your own research team working alongside your campaign. Real humans, real expertise.</p>
-                    </div>
-                    <div class="conigere-feature">
-                        <div class="conigere-icon">&#9889;</div>
-                        <h4>Unlimited Requests</h4>
-                        <p>No caps, no limits. Request as much research as your campaign needs.</p>
-                    </div>
-                    <div class="conigere-feature">
-                        <div class="conigere-icon">&#128221;</div>
-                        <h4>Custom Reports</h4>
-                        <p>Tailored intelligence briefings and reports delivered on your schedule.</p>
-                    </div>
-                    <div class="conigere-feature">
-                        <div class="conigere-icon">&#127942;</div>
-                        <h4>Priority Turnaround</h4>
-                        <p>When news breaks, you're first in line. Rapid response when it matters most.</p>
-                    </div>
-                </div>
-
-                <div class="conigere-cta">
-                    <p class="cta-note">14-day free trial available to demonstrate value.</p>
-                    <a href="#contact" class="btn btn-primary">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- COMPANY SECTION -->
-    <!-- ============================================== -->
-
-    <!-- Company Section -->
-    <section class="company-section" id="company">
-        <div class="section-container">
-            <h2 class="section-title">Built by Campaign Veterans</h2>
-
-            <div class="company-intro">
-                <p>Civly was built by a team of longtime political campaign workers in partnership with experienced developers and data scientists.</p>
-                <p>We've been in the war room. We know what campaigns need. That's why we built tools that actually work the way campaigns work.</p>
-            </div>
-
-            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 2rem;">Meet the Team</h2>
-
-            <div class="team-grid">
-                <!-- Daniel Barkhuff -->
-                <div class="team-card">
-                    <div class="team-photo">
-                        <img src="images/daniel-barkhuff.jpg" alt="Daniel Barkhuff">
-                    </div>
-                    <div class="team-info">
-                        <h3>Daniel Barkhuff</h3>
-                        <p class="title">Chief Executive Officer & Founder</p>
-                        <p class="bio">A 2001 US Naval Academy graduate and combat decorated Navy SEAL with deployments to Iraq, Afghanistan, and Africa. After military service, he attended Harvard Medical School and completed Residency Training in Emergency Medicine at the University of New Mexico. Currently an attending physician at the University of Vermont and Director of Trauma Care in the Department of Emergency Medicine. Founded Veterans for Responsible Leadership and the Vermont Afghan Alliance. Lives in Vermont with his wife Whittney and 4 children.</p>
-                    </div>
-                </div>
-
-                <!-- Zack Czajkowski -->
-                <div class="team-card">
-                    <div class="team-photo">
-                        <img src="images/zack-czajkowski.jpg" alt="Zack Czajkowski">
-                    </div>
-                    <div class="team-info">
-                        <h3>Zack Czajkowski</h3>
-                        <p class="title">Co-Founder & Chief Operating Officer</p>
-                        <p class="bio">A political consultant, public affairs professional, and strategist who began his career as a field organizer for Obama's 2012 reelection campaign in Florida. Has managed campaigns from school board to US Senate. After managing Katie Hill's successful red to blue campaign, served as Political Director of The Lincoln Project during the 2020 cycle. Founder and CEO of Brackish Solutions and Director of Public Affairs at Four Corners Strategies. Lives in Durham, NC with his wife Dr. Sarah Cunningham and their rescue bulldog Petunia.</p>
-                    </div>
-                </div>
-
-                <!-- Matthew Hanauer -->
-                <div class="team-card">
-                    <div class="team-photo">
-                        <img src="images/matthew-hanauer.jpg" alt="Matthew Hanauer">
-                    </div>
-                    <div class="team-info">
-                        <h3>Matthew Hanauer, PhD</h3>
-                        <p class="title">Chief Technology Officer</p>
-                        <p class="bio">Transforms complex AI concepts into market-ready products that drive measurable business impact. With 15+ years in data science leadership, has delivered over 15 production-grade products generating $15M+ in quantifiable savings. Track record includes revitalizing stalled AI initiatives and bringing them to market within 6-9 months while reducing time-to-market by 4x. Specializes in building healthcare AI solutions and excels at translating stakeholder requirements into scalable AI products with end-to-end expertise from ideation through deployment.</p>
-                    </div>
-                </div>
-
-                <!-- Jordyn Geruso -->
-                <div class="team-card">
-                    <div class="team-photo">
-                        <img src="images/jordyn-geruso.jpg" alt="Jordyn Geruso">
-                    </div>
-                    <div class="team-info">
-                        <h3>Jordyn Geruso</h3>
-                        <p class="title">Chief Marketing Officer</p>
-                        <p class="bio">A dedicated professional with a deep passion for public service and community advocacy. After earning her bachelor's degree in Healthcare Management and Marketing, transitioned from Human Resources to the political arena in 2023. Now serves as the Executive Director of Veterans for Responsible Leadership and has contributed to other pro-democracy organizations including Women4US and Valor Media Network. Lives in Montana with her fianc&eacute;, their dog, and horse.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="company-mission">
-                <p>"Civly was built and is run by a team of long time political campaign workers and compliance professionals, in partnership with experienced developers and data scientists. Our goal is to make compliance faster, easier, and more accurate."</p>
-            </div>
+            <p>Questions? Reach out: <a href="mailto:sales@civly.ai">sales@civly.ai</a></p>
         </div>
     </section>
 
@@ -1893,8 +2056,8 @@
             <div class="footer-section">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="#company">About Us</a></li>
-                    <li><a href="#company">Our Team</a></li>
+                    <li><a href="company.html">About Us</a></li>
+                    <li><a href="company.html">Our Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -1917,5 +2080,59 @@
             &copy; 2025 Civly.AI. All rights reserved.
         </div>
     </footer>
+
+    <script>
+        document.getElementById('heliosBookForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const candidate = formData.get('candidate');
+            const office = formData.get('office');
+            const email = formData.get('email');
+
+            // Create mailto link with form data
+            const subject = encodeURIComponent('Helios Book Request - ' + candidate);
+            const body = encodeURIComponent(
+                'New Helios Book Request:\n\n' +
+                'Candidate Name: ' + candidate + '\n' +
+                'Office: ' + office + '\n' +
+                'Contact Email: ' + email + '\n\n' +
+                'Please follow up with this request.'
+            );
+            const mailtoLink = 'mailto:sales@civly.ai?subject=' + subject + '&body=' + body;
+
+            // Open mailto
+            window.location.href = mailtoLink;
+
+            // Show success message
+            document.getElementById('successMessage').classList.add('show');
+
+            // Reset form
+            this.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 5000);
+        });
+
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(function(question) {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(function(item) {
+                    item.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

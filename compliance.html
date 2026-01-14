@@ -221,43 +221,141 @@
             background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            max-width: 1000px;
+        .features-content {
+            max-width: 1100px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
         }
 
-        .feature-card {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-            transition: all 0.3s;
+        .features-list {
+            list-style: none;
         }
 
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.2);
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
         }
 
         .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            color: var(--success);
+            font-weight: bold;
         }
 
-        .feature-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
             color: var(--text-white);
         }
 
-        .feature-card p {
+        .feature-item p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .compliance-dashboard {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            border-left: 4px solid var(--success);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .dashboard-title {
+            color: var(--text-white);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .dashboard-badge {
+            background: var(--success);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .dashboard-stat {
+            background: rgba(255,255,255,0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--success);
+        }
+
+        .dashboard-stat-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-stat-value {
+            color: var(--text-white);
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .dashboard-stat-subtext {
+            color: var(--success);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .dashboard-progress {
+            margin-top: 1.5rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.1);
+            height: 8px;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--success) 0%, #34d399 100%);
+            height: 100%;
+            border-radius: 50px;
+            transition: width 0.3s;
+        }
+
+        @media (max-width: 900px) {
+            .features-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         /* How It Works */
@@ -503,53 +601,105 @@
             <h2 class="section-title">Compliance Features</h2>
             <p class="section-subtitle">Everything you need to stay compliant and audit-ready.</p>
 
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">&#128100;</div>
-                    <h3>Donor Verification</h3>
-                    <p>Automated employment, address, and identity verification. Catch issues before they become problems.</p>
+            <div class="features-content">
+                <div>
+                    <ul class="features-list">
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h3>Donor Verification</h3>
+                                <p>Automated employment, address, and identity verification. Catch issues before they become problems.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h3>Compliance Screening</h3>
+                                <p>Screen against 40+ sanctions lists, LDA lobbyist database, and watchlists. Detect prohibited sources automatically.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h3>Contribution Limits</h3>
+                                <p>Real-time aggregate tracking and alerts. Never exceed limits or miss employer/occupation requirements.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h3>FEC Filing</h3>
+                                <p>Auto-generated .fec and CSV files. One-click submission ready for FEC Form 3/3X/3P and state equivalents.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h3>Expense Validation</h3>
+                                <p>AI-powered expense legitimacy analysis for personal use compliance. Flag potential issues before filing.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h3>Audit Trail</h3>
+                                <p>Complete tracking of all verification decisions and compliance actions. Always ready for review.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h3>Deadline Management</h3>
+                                <p>Automated FEC deadline tracking with customized calendars. Never miss a filing deadline.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <h3>Entity Resolution</h3>
+                                <p>Donor, vendor, and payee de-duplication. Risk scoring for foreign national indicators and straw donor patterns.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">&#128737;</div>
-                    <h3>Compliance Screening</h3>
-                    <p>Screen against 40+ sanctions lists, LDA lobbyist database, and watchlists. Detect prohibited sources automatically.</p>
-                </div>
+                <div class="compliance-dashboard">
+                    <div class="dashboard-header">
+                        <div class="dashboard-title">Compliance Dashboard</div>
+                        <div class="dashboard-badge">Live</div>
+                    </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">&#128176;</div>
-                    <h3>Contribution Limits</h3>
-                    <p>Real-time aggregate tracking and alerts. Never exceed limits or miss employer/occupation requirements.</p>
-                </div>
+                    <div class="dashboard-stat">
+                        <div class="dashboard-stat-label">Contributions Screened</div>
+                        <div class="dashboard-stat-value">2,847</div>
+                        <div class="dashboard-stat-subtext">✓ 100% Verified</div>
+                    </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">&#128196;</div>
-                    <h3>FEC Filing</h3>
-                    <p>Auto-generated .fec and CSV files. One-click submission ready for FEC Form 3/3X/3P and state equivalents.</p>
-                </div>
+                    <div class="dashboard-stat">
+                        <div class="dashboard-stat-label">Compliance Issues</div>
+                        <div class="dashboard-stat-value">0</div>
+                        <div class="dashboard-stat-subtext">✓ All Clear</div>
+                    </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">&#128200;</div>
-                    <h3>Expense Validation</h3>
-                    <p>AI-powered expense legitimacy analysis for personal use compliance. Flag potential issues before filing.</p>
-                </div>
+                    <div class="dashboard-progress">
+                        <div class="progress-label">
+                            <span>Next FEC Filing</span>
+                            <span>15 days</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">&#128203;</div>
-                    <h3>Audit Trail</h3>
-                    <p>Complete tracking of all verification decisions and compliance actions. Always ready for review.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">&#128197;</div>
-                    <h3>Deadline Management</h3>
-                    <p>Automated FEC deadline tracking with customized calendars. Never miss a filing deadline.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">&#128270;</div>
-                    <h3>Entity Resolution</h3>
-                    <p>Donor, vendor, and payee de-duplication. Risk scoring for foreign national indicators and straw donor patterns.</p>
+                    <div class="dashboard-progress">
+                        <div class="progress-label">
+                            <span>Audit Readiness</span>
+                            <span>98%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 98%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
