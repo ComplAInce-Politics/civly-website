@@ -37,20 +37,130 @@
             background: var(--bg-dark);
         }
 
-        /* Navigation */
-        nav {
+        /* Animated Background Effects */
+        .bg-effects {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(15, 5, 21, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-magenta) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: -7s;
+        }
+
+        .bg-orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--success) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+            opacity: 0.2;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 10px) scale(1.02); }
+        }
+
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 30s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .bg-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 4s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 20%; left: 80%; animation-delay: 0.5s; }
+        .particle:nth-child(3) { top: 40%; left: 40%; animation-delay: 1s; }
+        .particle:nth-child(4) { top: 60%; left: 70%; animation-delay: 1.5s; }
+        .particle:nth-child(5) { top: 80%; left: 30%; animation-delay: 2s; }
+        .particle:nth-child(6) { top: 30%; left: 90%; animation-delay: 2.5s; }
+        .particle:nth-child(7) { top: 70%; left: 10%; animation-delay: 3s; }
+        .particle:nth-child(8) { top: 50%; left: 60%; animation-delay: 3.5s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 0.8; transform: scale(1); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 10, 30, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0.6rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid var(--border-light);
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 90%;
         }
 
         .logo {
@@ -60,13 +170,13 @@
         }
 
         .logo-img {
-            height: 40px;
+            height: 32px;
             width: auto;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 0.5rem;
             align-items: center;
             list-style: none;
         }
@@ -75,47 +185,59 @@
             text-decoration: none;
             color: var(--text-muted);
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
         }
 
         .nav-links a:hover {
             color: var(--text-white);
+            background: rgba(255,255,255,0.1);
         }
 
         .nav-links a.active {
-            color: var(--accent);
+            background: white;
+            color: var(--primary-dark);
         }
 
         .nav-cta {
-            border: 1px solid var(--text-muted);
-            padding: 0.6rem 1.25rem;
-            border-radius: 4px;
+            background: var(--success) !important;
+            padding: 0.5rem 1.25rem !important;
+            border-radius: 50px !important;
             transition: all 0.2s !important;
+            color: white !important;
+            border: none !important;
         }
 
-        .nav-cta:hover {
-            border-color: var(--text-white);
-            background: rgba(255,255,255,0.1);
+        .nav-cta:hover,
+        .nav-cta:active {
+            background: #0ea573 !important;
+            transform: scale(1.05);
+        }
+
+        .login-btn {
+            position: fixed;
+            top: 1.5rem;
+            right: 2rem;
+            z-index: 1001;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .login-btn:hover {
+            color: var(--text-white);
         }
 
         /* Hero Section */
         .hero {
             padding: 10rem 2rem 6rem;
-            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 50%, var(--bg-dark) 100%);
+            background: transparent;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
         }
 
         .hero-container {
@@ -218,7 +340,7 @@
 
         /* Features Grid */
         .features {
-            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+            background: transparent;
         }
 
         .features-content {
@@ -360,47 +482,118 @@
 
         /* How It Works */
         .how-it-works {
-            background: var(--bg-dark);
+            background: transparent;
         }
 
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+        .workflow-container {
+            max-width: 1100px;
+            margin: 0 auto 3rem;
         }
 
-        .step {
+        .workflow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .workflow-step {
+            flex: 1;
+            max-width: 280px;
             background: var(--bg-card);
-            padding: 2.5rem;
-            border-radius: 12px;
-            text-align: center;
             border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
         }
 
-        .step-number {
-            width: 50px;
-            height: 50px;
+        .workflow-step:hover {
+            transform: translateY(-4px);
+            border-color: var(--success);
+            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.2);
+        }
+
+        .workflow-step-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, var(--bg-card) 100%);
+            border: 2px solid var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 1.75rem;
+        }
+
+        .workflow-step-number {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
             background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
             color: white;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.25rem;
-            margin: 0 auto 1.5rem;
+            font-size: 0.85rem;
         }
 
-        .step h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
+        .workflow-step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
             color: var(--text-white);
         }
 
-        .step p {
+        .workflow-step p {
             color: var(--text-muted);
-            line-height: 1.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .workflow-arrow {
+            font-size: 2rem;
+            color: var(--success);
+            flex-shrink: 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .workflow-result {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .workflow-result-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, var(--bg-card) 100%);
+            border: 2px solid var(--success);
+            border-radius: 12px;
+            padding: 1.5rem 3rem;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .workflow-result-box h4 {
+            color: var(--success);
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .workflow-result-box p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         .how-it-works-footer {
@@ -414,44 +607,95 @@
             margin-bottom: 2rem;
         }
 
-        /* Who We Serve */
-        .who-we-serve {
-            background: linear-gradient(180deg, var(--primary-dark) 0%, var(--bg-dark) 100%);
+        @media (max-width: 900px) {
+            .workflow {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .workflow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .workflow-step {
+                max-width: 100%;
+                width: 100%;
+            }
         }
 
-        .serve-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        /* Who We Serve */
+        .who-we-serve {
+            background: transparent;
+        }
+
+        .serve-list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
             gap: 1.5rem;
         }
 
-        .serve-card {
+        .serve-item {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
             background: var(--bg-card);
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             border-radius: 12px;
-            text-align: center;
             border: 1px solid var(--border-light);
+            border-left: 4px solid var(--success);
+            transition: all 0.3s;
         }
 
-        .serve-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .serve-item:hover {
+            transform: translateX(4px);
+            border-left-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.15);
         }
 
-        .serve-card h3 {
-            font-size: 1.1rem;
+        .serve-image {
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .serve-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .serve-content h3 {
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--text-white);
         }
 
-        .serve-card p {
+        .serve-content p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .serve-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .serve-image {
+                width: 100%;
+                height: 120px;
+            }
         }
 
         /* FAQ */
         .faq {
-            background: var(--bg-dark);
+            background: transparent;
         }
 
         .faq-list {
@@ -460,28 +704,56 @@
         }
 
         .faq-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 0;
         }
 
         .faq-question {
-            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
             color: var(--text-white);
+            cursor: pointer;
+            padding: 1.5rem 3rem 1.5rem 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: var(--success);
+        }
+
+        .faq-arrow {
+            position: absolute;
+            right: 0;
+            font-size: 1.25rem;
+            color: var(--success);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
         }
 
         .faq-answer {
             color: var(--text-muted);
             line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
         }
 
         /* Final CTA */
         .final-cta {
-            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+            background: transparent;
             text-align: center;
         }
 
@@ -564,6 +836,23 @@
     </style>
 </head>
 <body>
+    <!-- Animated Background Effects -->
+    <div class="bg-effects">
+        <div class="bg-grid"></div>
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+        <div class="bg-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
 
     <nav>
         <a href="civly_redesign.html" class="logo">
@@ -573,9 +862,12 @@
             <li><a href="civly_redesign.html">Helios</a></li>
             <li><a href="compliance.html" class="active">Compliance</a></li>
             <li><a href="civly_redesign.html#company">Company</a></li>
-            <li><a href="#contact" class="nav-cta">Request a Demo</a></li>
+            <li><a href="contact.html" class="nav-cta">Request a Demo</a></li>
         </ul>
     </nav>
+
+    <!-- Login Button (Far Right) -->
+    <a href="#" class="login-btn">Sign In</a>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -653,13 +945,6 @@
                                 <p>Automated FEC deadline tracking with customized calendars. Never miss a filing deadline.</p>
                             </div>
                         </li>
-                        <li class="feature-item">
-                            <div class="feature-icon">✓</div>
-                            <div>
-                                <h3>Entity Resolution</h3>
-                                <p>Donor, vendor, and payee de-duplication. Risk scoring for foreign national indicators and straw donor patterns.</p>
-                            </div>
-                        </li>
                     </ul>
                 </div>
 
@@ -710,26 +995,62 @@
         <div class="section-container">
             <h2 class="section-title">How It Works</h2>
             <p class="section-subtitle">Get compliant in three simple steps.</p>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Connect Your Data</h3>
-                    <p>Import your donor data and contribution records. We integrate with major campaign finance platforms.</p>
+
+            <div class="workflow-container">
+                <div class="workflow">
+                    <div class="workflow-step">
+                        <div class="workflow-step-number">1</div>
+                        <div class="workflow-step-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                        <h3>Connect Your Data</h3>
+                        <p>Import donor data and contribution records from major campaign finance platforms</p>
+                    </div>
+
+                    <div class="workflow-arrow">&rarr;</div>
+
+                    <div class="workflow-step">
+                        <div class="workflow-step-number">2</div>
+                        <div class="workflow-step-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="M9 12l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h3>Automatic Screening</h3>
+                        <p>AI screens every contribution against compliance rules, limits, and watchlists</p>
+                    </div>
+
+                    <div class="workflow-arrow">&rarr;</div>
+
+                    <div class="workflow-step">
+                        <div class="workflow-step-number">3</div>
+                        <div class="workflow-step-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <path d="M9 15l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h3>File with Confidence</h3>
+                        <p>Generate FEC-ready files with complete documentation and audit trails</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Automatic Screening</h3>
-                    <p>Our AI screens every contribution against compliance rules, limits, and watchlists in real-time.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>File with Confidence</h3>
-                    <p>Generate FEC-ready files with complete documentation. Stay audit-ready at all times.</p>
+
+                <div class="workflow-result">
+                    <div class="workflow-result-box">
+                        <h4>Audit-Ready Compliance</h4>
+                        <p>Complete documentation, zero surprises</p>
+                    </div>
                 </div>
             </div>
+
             <div class="how-it-works-footer">
-                <p>Compliance made simple.</p>
-                <a href="#contact" class="btn btn-primary">Request a Demo</a>
+                <a href="contact.html" class="btn btn-primary">Request a Demo</a>
             </div>
         </div>
     </section>
@@ -738,26 +1059,42 @@
     <section class="who-we-serve">
         <div class="section-container">
             <h2 class="section-title">Who We Serve</h2>
-            <div class="serve-grid">
-                <div class="serve-card">
-                    <div class="serve-icon">&#127963;</div>
-                    <h3>Federal Campaigns</h3>
-                    <p>Congressional and Senate campaigns with FEC reporting requirements</p>
+            <div class="serve-list">
+                <div class="serve-item">
+                    <div class="serve-image">
+                        <img src="https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=240&h=160&fit=crop" alt="Capitol Building">
+                    </div>
+                    <div class="serve-content">
+                        <h3>Federal Campaigns</h3>
+                        <p>Congressional and Senate campaigns with FEC reporting requirements</p>
+                    </div>
                 </div>
-                <div class="serve-card">
-                    <div class="serve-icon">&#128202;</div>
-                    <h3>PACs & Super PACs</h3>
-                    <p>Political action committees with complex contribution rules</p>
+                <div class="serve-item">
+                    <div class="serve-image">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=240&h=160&fit=crop" alt="Business meeting">
+                    </div>
+                    <div class="serve-content">
+                        <h3>PACs & Super PACs</h3>
+                        <p>Political action committees with complex contribution rules</p>
+                    </div>
                 </div>
-                <div class="serve-card">
-                    <div class="serve-icon">&#127775;</div>
-                    <h3>Nonprofits</h3>
-                    <p>501(c)(4) organizations with donor compliance needs</p>
+                <div class="serve-item">
+                    <div class="serve-image">
+                        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=240&h=160&fit=crop" alt="Advocacy nonprofit">
+                    </div>
+                    <div class="serve-content">
+                        <h3>Nonprofits</h3>
+                        <p>501(c)(4) organizations with donor compliance needs</p>
+                    </div>
                 </div>
-                <div class="serve-card">
-                    <div class="serve-icon">&#127919;</div>
-                    <h3>State Campaigns</h3>
-                    <p>State and local campaigns with varied reporting requirements</p>
+                <div class="serve-item">
+                    <div class="serve-image">
+                        <img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=240&h=160&fit=crop" alt="State capitol building">
+                    </div>
+                    <div class="serve-content">
+                        <h3>State Campaigns</h3>
+                        <p>State and local campaigns with varied reporting requirements</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -770,23 +1107,38 @@
             <p class="section-subtitle">Everything you need to know about Civly Compliance.</p>
             <div class="faq-list">
                 <div class="faq-item">
-                    <h3 class="faq-question">What compliance databases do you screen against?</h3>
+                    <h3 class="faq-question">
+                        What compliance databases do you screen against?
+                        <span class="faq-arrow">&#9660;</span>
+                    </h3>
                     <p class="faq-answer">We screen against 40+ sanctions lists including OFAC, UN sanctions, EU sanctions, the LDA lobbyist database, and various watchlists for prohibited sources.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">Does this work with my existing campaign finance software?</h3>
+                    <h3 class="faq-question">
+                        Does this work with my existing campaign finance software?
+                        <span class="faq-arrow">&#9660;</span>
+                    </h3>
                     <p class="faq-answer">Yes. We integrate with major campaign finance platforms and can import data from most common formats including CSV, FEC files, and direct API connections.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">How does the FEC filing feature work?</h3>
+                    <h3 class="faq-question">
+                        How does the FEC filing feature work?
+                        <span class="faq-arrow">&#9660;</span>
+                    </h3>
                     <p class="faq-answer">We automatically generate properly formatted .fec files ready for submission. The system handles all the complex formatting requirements for Form 3, 3X, and 3P filings.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">What if we get audited?</h3>
+                    <h3 class="faq-question">
+                        What if we get audited?
+                        <span class="faq-arrow">&#9660;</span>
+                    </h3>
                     <p class="faq-answer">Every verification decision and compliance action is documented with timestamps and reasoning. You can export complete audit trails at any time.</p>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">Is this separate from the Helios research platform?</h3>
+                    <h3 class="faq-question">
+                        Is this separate from the Helios research platform?
+                        <span class="faq-arrow">&#9660;</span>
+                    </h3>
                     <p class="faq-answer">Yes. Civly Compliance is a separate product focused entirely on donor verification and FEC compliance. You can use it independently or alongside Helios.</p>
                 </div>
             </div>
@@ -798,11 +1150,10 @@
         <h2>Ready to Simplify Compliance?</h2>
         <p>See how Civly Compliance can keep your campaign audit-ready.</p>
         <div class="hero-ctas">
-            <a href="mailto:compliance@civly.ai?subject=Compliance Demo Request" class="btn btn-primary">Request a Demo</a>
-            <a href="mailto:compliance@civly.ai?subject=Question about Compliance" class="btn btn-secondary">Contact Us</a>
+            <a href="contact.html" class="btn btn-primary">Request a Demo</a>
         </div>
         <div class="contact-info">
-            <p>Questions? Reach out: <a href="mailto:compliance@civly.ai">compliance@civly.ai</a></p>
+            <p>Questions? Reach out: <a href="mailto:sales@civly.ai">sales@civly.ai</a></p>
         </div>
     </section>
 
@@ -814,6 +1165,7 @@
                 <a href="compliance.html">Compliance</a>
                 <a href="civly_redesign.html#company">Company</a>
                 <a href="#contact">Contact</a>
+                <a href="#">Sign In</a>
             </div>
             <div class="footer-copyright">
                 &copy; 2025 Civly. All rights reserved.
@@ -821,5 +1173,24 @@
         </div>
     </footer>
 
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(function(question) {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(function(item) {
+                    item.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

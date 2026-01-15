@@ -40,17 +40,21 @@
         /* Navigation */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(15, 5, 21, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 10, 30, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0.6rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid var(--border-light);
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 90%;
         }
 
         .logo {
@@ -60,13 +64,13 @@
         }
 
         .logo-img {
-            height: 40px;
+            height: 32px;
             width: auto;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 0.5rem;
             align-items: center;
             list-style: none;
         }
@@ -79,12 +83,20 @@
             text-decoration: none;
             color: var(--text-muted);
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
         }
 
         .nav-links a:hover {
             color: var(--text-white);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-links a.active {
+            background: white;
+            color: var(--primary-dark);
         }
 
         /* Dropdown */
@@ -153,35 +165,151 @@
         }
 
         .nav-cta {
-            border: 1px solid var(--text-muted);
-            padding: 0.6rem 1.25rem;
-            border-radius: 4px;
+            background: var(--success) !important;
+            padding: 0.5rem 1.25rem !important;
+            border-radius: 50px !important;
             transition: all 0.2s !important;
+            color: white !important;
+            border: none !important;
         }
 
-        .nav-cta:hover {
-            border-color: var(--text-white);
-            background: rgba(255,255,255,0.1);
+        .nav-cta:hover,
+        .nav-cta:active {
+            background: #0ea573 !important;
+            transform: scale(1.05);
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 10rem 2rem 6rem;
-            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 50%, var(--bg-dark) 100%);
-            position: relative;
+        .login-btn {
+            position: fixed;
+            top: 1.5rem;
+            right: 2rem;
+            z-index: 1001;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .login-btn:hover {
+            color: var(--text-white);
+        }
+
+        /* Animated Background Effects */
+        .bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
             overflow: hidden;
         }
 
-        .hero::before {
-            content: "";
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-magenta) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: -7s;
+        }
+
+        .bg-orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--success) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+            opacity: 0.2;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 10px) scale(1.02); }
+        }
+
+        .bg-grid {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
+            background-image:
+                linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 30s linear infinite;
         }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .bg-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 4s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 20%; left: 80%; animation-delay: 0.5s; }
+        .particle:nth-child(3) { top: 40%; left: 40%; animation-delay: 1s; }
+        .particle:nth-child(4) { top: 60%; left: 70%; animation-delay: 1.5s; }
+        .particle:nth-child(5) { top: 80%; left: 30%; animation-delay: 2s; }
+        .particle:nth-child(6) { top: 30%; left: 90%; animation-delay: 2.5s; }
+        .particle:nth-child(7) { top: 70%; left: 10%; animation-delay: 3s; }
+        .particle:nth-child(8) { top: 50%; left: 60%; animation-delay: 3.5s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 0.8; transform: scale(1); }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
 
         .hero-container {
             max-width: 1000px;
@@ -295,7 +423,7 @@
 
         /* Problem Section */
         .problem {
-            background: var(--bg-dark);
+            background: transparent;
         }
 
         .problem-grid {
@@ -327,7 +455,7 @@
 
         /* Solution Section */
         .solution {
-            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+            background: transparent;
         }
 
         .solution-content {
@@ -385,7 +513,7 @@
 
         /* Comparison Table */
         .comparison {
-            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+            background: transparent;
         }
 
         .comparison-table {
@@ -491,7 +619,7 @@
 
         /* Pricing Section */
         .pricing {
-            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+            background: transparent;
         }
 
         .pricing-container {
@@ -652,7 +780,7 @@
 
         /* Sample Report Section */
         .sample-report {
-            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+            background: transparent;
             text-align: center;
         }
 
@@ -682,7 +810,7 @@
 
         /* FAQ */
         .faq {
-            background: var(--bg-dark);
+            background: transparent;
         }
 
         .faq-list {
@@ -741,7 +869,7 @@
         /* Final CTA */
         .final-cta {
             padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+            background: transparent;
             color: white;
             text-align: center;
         }
@@ -788,7 +916,7 @@
 
         /* Compliance Section (Secondary) */
         .compliance-section {
-            background: linear-gradient(180deg, var(--primary-dark) 0%, var(--bg-dark) 100%);
+            background: transparent;
             text-align: center;
         }
 
@@ -839,7 +967,7 @@
 
         /* Product Suites Section */
         .product-suites {
-            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+            background: transparent;
         }
 
         .suites-grid {
@@ -935,7 +1063,7 @@
 
         /* Helios Books Section */
         .helios-books {
-            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+            background: transparent;
         }
 
         .helios-books-content {
@@ -1096,143 +1224,218 @@
             font-size: 0.95rem;
         }
 
-        /* Helios Command Center Section */
+        /* Command Center Section */
         .command-center {
-            background: var(--bg-dark);
+            background: transparent;
         }
 
-        .command-center-hub {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            max-width: 1100px;
+        .command-center-flow {
+            max-width: 1000px;
             margin: 0 auto 3rem;
-            position: relative;
         }
 
-        .hub-section {
-            flex: 1;
+        .flow-row {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            align-items: stretch;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .hub-section-title {
-            color: var(--success);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
+        .flow-section {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flow-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-magenta) 0%, var(--success) 100%);
+        }
+
+        .flow-section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .flow-section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flow-section-header h3 {
+            color: var(--text-white);
+            font-size: 1.1rem;
             font-weight: 600;
         }
 
-        .hub-tools-grid {
+        .flow-tools-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-            width: 100%;
+            gap: 0.75rem;
         }
 
-        .hub-tool-compact {
-            background: var(--bg-card);
-            padding: 0.75rem;
-            border-radius: 6px;
-            border: 1px solid var(--border-light);
-            text-align: center;
+        .flow-tool {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 0.75rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            border: 1px solid transparent;
             transition: all 0.2s;
         }
 
-        .hub-tool-compact:hover {
+        .flow-tool:hover {
             border-color: var(--success);
-            transform: scale(1.05);
+            background: rgba(16, 185, 129, 0.1);
         }
 
-        .hub-tool-compact h4 {
-            color: var(--text-white);
-            font-size: 0.85rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .hub-tool-compact p {
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            line-height: 1.3;
-        }
-
-        .hub-connector {
-            font-size: 2.5rem;
-            color: var(--success);
-            font-weight: bold;
-        }
-
-        .hub-vault {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, var(--bg-card) 100%);
-            padding: 2.5rem 2rem;
-            border-radius: 50%;
-            border: 3px solid var(--success);
-            text-align: center;
-            min-width: 220px;
-            min-height: 220px;
+        .flow-tool-icon {
+            width: 28px;
+            height: 28px;
+            background: rgba(16, 185, 129, 0.15);
+            border-radius: 6px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            box-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
+            justify-content: center;
+            flex-shrink: 0;
         }
 
-        .hub-vault h3 {
-            color: var(--text-white);
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-            font-weight: 700;
+        .flow-tool span {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
-        .hub-vault p {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            line-height: 1.5;
+        .flow-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 0;
         }
 
-        .hub-output-box {
-            background: var(--bg-card);
-            padding: 2rem 1.5rem;
-            border-radius: 12px;
-            border: 2px solid var(--success);
-            text-align: center;
-            width: 100%;
-            min-height: 220px;
+        .flow-arrow-down {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .hub-output-box h4 {
-            color: var(--text-white);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+        .flow-arrow-down .arrow-line {
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(180deg, var(--success) 0%, var(--accent-magenta) 100%);
+        }
+
+        .flow-arrow-down .arrow-head {
+            color: var(--success);
+            font-size: 1.5rem;
+            line-height: 1;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(4px); }
+        }
+
+        .flow-center-hub {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, var(--bg-card) 100%);
+            border: 2px solid var(--success);
+            border-radius: 16px;
+            padding: 2rem;
+            padding-top: 2.5rem;
+            margin-top: 1rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.15);
+        }
+
+        .flow-center-hub::before {
+            display: none;
+        }
+
+        .flow-center-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .hub-output-box p {
+        .flow-center-hub h3 {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-center-hub p {
             color: var(--text-muted);
-            font-size: 0.85rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
-        @media (max-width: 1000px) {
-            .command-center-hub {
-                flex-direction: column;
-                gap: 2rem;
-            }
+        .flow-outputs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
 
-            .hub-connector {
-                transform: rotate(90deg);
-            }
+        .flow-output-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
 
-            .hub-tools-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .flow-output-item:hover {
+            border-color: var(--accent-magenta);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(217, 70, 239, 0.2);
+        }
+
+        .flow-output-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, rgba(217, 70, 239, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+        }
+
+        .flow-output-item h4 {
+            color: var(--text-white);
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .command-center-note {
@@ -1249,9 +1452,19 @@
             text-align: center;
         }
 
+        @media (max-width: 768px) {
+            .flow-tools-list {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-outputs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         /* Conigere Section */
         .conigere {
-            background: linear-gradient(180deg, var(--primary-dark) 0%, var(--bg-dark) 100%);
+            background: transparent;
         }
 
         .conigere-content {
@@ -1350,7 +1563,7 @@
 
         /* Platform Capabilities Section (legacy - can be removed if not used) */
         .capabilities {
-            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+            background: transparent;
         }
 
         .capabilities-grid {
@@ -1405,7 +1618,7 @@
 
         /* Company Section */
         .company-section {
-            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--primary-dark) 100%);
+            background: transparent;
         }
 
         .company-intro {
@@ -1616,9 +1829,190 @@
                 display: block;
             }
         }
+
+        /* Email Popup */
+        .email-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .email-popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .email-popup {
+            background: var(--primary-dark);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 440px;
+            width: 90%;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .email-popup-overlay.show .email-popup {
+            transform: translateY(0);
+        }
+
+        .email-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .email-popup-close:hover {
+            color: var(--text-white);
+        }
+
+        .email-popup-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .email-popup h3 {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .email-popup > p {
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .email-popup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .email-popup-form input {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 0.875rem 1rem;
+            color: var(--text-white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .email-popup-form input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .email-popup-form input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .email-popup-form button {
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .email-popup-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
+        }
+
+        .email-popup-success {
+            text-align: center;
+            color: var(--success);
+            display: none;
+        }
+
+        .email-popup-success.show {
+            display: block;
+        }
+
+        .email-popup-success svg {
+            margin-bottom: 1rem;
+        }
+
+        .email-popup-form.hide {
+            display: none;
+        }
+
+        .email-popup-skip {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .email-popup-skip button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .email-popup-skip button:hover {
+            color: var(--text-white);
+        }
     </style>
 </head>
 <body>
+    <!-- Animated Background Effects -->
+    <div class="bg-effects">
+        <div class="bg-grid"></div>
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+        <div class="bg-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <a href="#" class="logo">
@@ -1633,7 +2027,7 @@
                         Helios Books
                     </a>
                     <a href="#command-center">
-                        Helios Command Center
+                        Command Center
                     </a>
                     <a href="#conigere">
                         Concierge (White-Glove)
@@ -1642,10 +2036,13 @@
             </li>
             <li><a href="compliance.html">Compliance</a></li>
             <li><a href="company.html">Company</a></li>
-            <li><a href="#contact" class="nav-cta">Request a Demo</a></li>
+            <li><a href="contact.html" class="nav-cta">Request a Demo</a></li>
         </ul>
         <button class="mobile-nav-toggle">&#9776;</button>
     </nav>
+
+    <!-- Login Button (Far Right) -->
+    <a href="#" class="login-btn">Sign In</a>
 
     <!-- ============================================== -->
     <!-- OPPOSITION RESEARCH - PRIMARY PRODUCT SECTION -->
@@ -1743,78 +2140,124 @@
         </div>
     </section>
 
-    <!-- Helios Command Center Section -->
+    <!-- Command Center Section -->
     <section class="command-center" id="command-center">
         <div class="section-container">
             <div class="product-header">
                 <span class="product-label">The Platform</span>
-                <h2 class="section-title">Helios Command Center</h2>
+                <h2 class="section-title">Command Center</h2>
                 <p class="section-subtitle">Your research hub. Analyze, store, and transform intelligence into campaign-ready content.</p>
             </div>
 
-            <div class="command-center-hub">
-                <!-- Left: Research Tools -->
-                <div class="hub-section">
-                    <div class="hub-section-title">Research Tools</div>
-                    <div class="hub-tools-grid">
-                        <div class="hub-tool-compact">
-                            <h4>Helios</h4>
-                            <p>Deep research</p>
+            <div class="command-center-flow">
+                <!-- Research Tools Section -->
+                <div class="flow-section">
+                    <div class="flow-section-header">
+                        <div class="flow-section-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                            </svg>
                         </div>
-                        <div class="hub-tool-compact">
-                            <h4>Congressional</h4>
-                            <p>Voting records</p>
+                        <h3>Research Tools</h3>
+                    </div>
+                    <div class="flow-tools-list">
+                        <div class="flow-tool">
+                            <div class="flow-tool-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 3v18m9-9H3"/></svg>
+                            </div>
+                            <span>Helios Deep Research</span>
                         </div>
-                        <div class="hub-tool-compact">
-                            <h4>FEC Data</h4>
-                            <p>Finance tracking</p>
+                        <div class="flow-tool">
+                            <div class="flow-tool-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                            </div>
+                            <span>Congressional Records</span>
                         </div>
-                        <div class="hub-tool-compact">
-                            <h4>YouTube</h4>
-                            <p>Video analysis</p>
+                        <div class="flow-tool">
+                            <div class="flow-tool-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <span>FEC Finance Data</span>
                         </div>
-                        <div class="hub-tool-compact">
-                            <h4>TikTok</h4>
-                            <p>Short-form video</p>
+                        <div class="flow-tool">
+                            <div class="flow-tool-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                            </div>
+                            <span>YouTube Analysis</span>
                         </div>
-                        <div class="hub-tool-compact">
-                            <h4>Social Media</h4>
-                            <p>Multi-platform</p>
+                        <div class="flow-tool">
+                            <div class="flow-tool-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                            </div>
+                            <span>TikTok Monitoring</span>
+                        </div>
+                        <div class="flow-tool">
+                            <div class="flow-tool-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                            </div>
+                            <span>Social Media (5+ platforms)</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Connector Arrow -->
-                <div class="hub-connector">&rarr;</div>
-
-                <!-- Center: Vault (Hub) -->
-                <div class="hub-section">
-                    <div class="hub-section-title">Central Hub</div>
-                    <div class="hub-vault">
-                        <h3>Research<br/>Vault</h3>
-                        <p>Store, organize & search all intelligence</p>
+                <!-- Arrow Down -->
+                <div class="flow-connector">
+                    <div class="flow-arrow-down">
+                        <div class="arrow-line"></div>
+                        <div class="arrow-head">&#9660;</div>
                     </div>
                 </div>
 
-                <!-- Connector Arrow -->
-                <div class="hub-connector">&rarr;</div>
+                <!-- Central Vault -->
+                <div class="flow-section flow-center-hub">
+                    <div class="flow-center-badge">Central Hub</div>
+                    <h3>Research Vault</h3>
+                    <p>Store, organize, search, and query all your intelligence in one secure location</p>
+                </div>
 
-                <!-- Right: War Room Output -->
-                <div class="hub-section">
-                    <div class="hub-section-title">Content Output</div>
-                    <div class="hub-output-box">
-                        <h4>War Room</h4>
-                        <p>Transform research into campaign-ready content: attack ads, debate prep, press releases, and reports</p>
+                <!-- Arrow Down -->
+                <div class="flow-connector">
+                    <div class="flow-arrow-down">
+                        <div class="arrow-line"></div>
+                        <div class="arrow-head">&#9660;</div>
+                    </div>
+                </div>
+
+                <!-- Output Section -->
+                <div class="flow-outputs">
+                    <div class="flow-output-item">
+                        <div class="flow-output-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d946ef" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <h4>Attack Ads</h4>
+                    </div>
+                    <div class="flow-output-item">
+                        <div class="flow-output-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d946ef" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h4>Debate Prep</h4>
+                    </div>
+                    <div class="flow-output-item">
+                        <div class="flow-output-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d946ef" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+                        </div>
+                        <h4>Press Releases</h4>
+                    </div>
+                    <div class="flow-output-item">
+                        <div class="flow-output-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d946ef" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <h4>Social Posts</h4>
                     </div>
                 </div>
             </div>
 
             <div class="command-center-note">
-                <p>Bring your own book or use ours. The Command Center works with any research.</p>
+                <p>Bring your own research or use ours. The Command Center works with any intelligence.</p>
             </div>
 
             <div class="command-center-cta">
-                <a href="#contact" class="btn btn-primary">Request a Demo</a>
+                <a href="contact.html" class="btn btn-primary">Request a Demo</a>
             </div>
         </div>
     </section>
@@ -2034,8 +2477,7 @@
         <h2>Ready to Transform Your Campaign?</h2>
         <p>See how Civly's AI-powered platform can give you the intelligence advantage.</p>
         <div class="hero-ctas">
-            <a href="mailto:sales@civly.ai?subject=Demo Request" class="btn btn-primary">Request a Demo</a>
-            <a href="mailto:sales@civly.ai?subject=Question about Civly" class="btn btn-secondary">Contact Us</a>
+            <a href="contact.html" class="btn btn-primary">Request a Demo</a>
         </div>
         <div class="contact-info">
             <p>Questions? Reach out: <a href="mailto:sales@civly.ai">sales@civly.ai</a></p>
@@ -2066,13 +2508,14 @@
                 <ul>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Sign In</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Connect</h4>
                 <ul>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">Twitter/X</a></li>
+                    <li><a href="https://www.linkedin.com/company/civly/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://x.com/civly_ai" target="_blank">Twitter/X</a></li>
                 </ul>
             </div>
         </div>
@@ -2133,6 +2576,102 @@
                 }
             });
         });
+
+        // Email Popup functionality
+        (function() {
+            const popup = document.getElementById('emailPopup');
+            const closeBtn = document.getElementById('emailPopupClose');
+            const skipBtn = document.getElementById('emailPopupSkip');
+            const form = document.getElementById('emailPopupForm');
+            const successMsg = document.getElementById('emailPopupSuccess');
+            let popupShown = false;
+
+            // Check if popup was already shown this session
+            if (sessionStorage.getItem('emailPopupShown')) {
+                popupShown = true;
+            }
+
+            // Show popup after scrolling past a few sections
+            function checkScroll() {
+                if (popupShown) return;
+
+                // Show popup when user has scrolled 800px down
+                if (window.scrollY > 800) {
+                    showPopup();
+                }
+            }
+
+            function showPopup() {
+                if (popupShown) return;
+                popupShown = true;
+                sessionStorage.setItem('emailPopupShown', 'true');
+                popup.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function hidePopup() {
+                popup.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Event listeners
+            window.addEventListener('scroll', checkScroll);
+
+            closeBtn.addEventListener('click', hidePopup);
+            skipBtn.addEventListener('click', hidePopup);
+
+            popup.addEventListener('click', function(e) {
+                if (e.target === popup) {
+                    hidePopup();
+                }
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = form.querySelector('input').value;
+
+                // Create mailto with email signup
+                const subject = encodeURIComponent('Email List Signup');
+                const body = encodeURIComponent('New email signup:\n\nEmail: ' + email + '\n\nPlease add to product updates list.');
+                window.location.href = 'mailto:sales@civly.ai?subject=' + subject + '&body=' + body;
+
+                // Show success
+                form.classList.add('hide');
+                successMsg.classList.add('show');
+
+                // Close after delay
+                setTimeout(hidePopup, 2500);
+            });
+        })();
     </script>
+
+    <!-- Email Signup Popup -->
+    <div class="email-popup-overlay" id="emailPopup">
+        <div class="email-popup">
+            <button class="email-popup-close" id="emailPopupClose">&times;</button>
+            <div class="email-popup-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+            </div>
+            <h3>Stay Updated</h3>
+            <p>Join our email list to stay up to date on product updates and campaign intelligence insights.</p>
+            <form class="email-popup-form" id="emailPopupForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <div class="email-popup-success" id="emailPopupSuccess">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <p>Thanks for subscribing!</p>
+            </div>
+            <div class="email-popup-skip">
+                <button id="emailPopupSkip">No thanks, maybe later</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

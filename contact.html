@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team | Civly</title>
+    <title>Request a Demo | Civly</title>
     <link rel="icon" type="image/png" href="images/civly-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -35,6 +35,7 @@
             line-height: 1.6;
             color: var(--text-white);
             background: var(--bg-dark);
+            min-height: 100vh;
         }
 
         /* Animated Background Effects */
@@ -303,191 +304,6 @@
             color: var(--text-white);
         }
 
-        /* Section styling */
-        section {
-            padding: 6rem 2rem;
-            margin-top: 80px;
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-white);
-        }
-
-        /* Company Section */
-        .company-section {
-            background: transparent;
-        }
-
-        .company-intro {
-            max-width: 800px;
-            margin: 0 auto 4rem;
-            text-align: center;
-        }
-
-        .company-intro p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 700px) {
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .team-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            border: 1px solid var(--border-light);
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .team-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.2);
-        }
-
-        .team-photo {
-            width: 100%;
-            height: 280px;
-            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--accent);
-        }
-
-        .team-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .team-info {
-            padding: 1.5rem;
-        }
-
-        .team-info h3 {
-            font-size: 1.25rem;
-            color: var(--text-white);
-            margin-bottom: 0.25rem;
-        }
-
-        .team-info .title {
-            color: var(--accent-magenta);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .team-info .bio {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        .company-mission {
-            max-width: 800px;
-            margin: 4rem auto 0;
-            text-align: center;
-            padding: 2rem;
-            background: var(--bg-card);
-            border-radius: 16px;
-            border: 1px solid var(--border-light);
-        }
-
-        .company-mission p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            font-style: italic;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--bg-dark);
-            color: white;
-            padding: 3rem 2rem;
-            border-top: 1px solid var(--border-light);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-section h4 {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: var(--text-muted);
-            text-decoration: none;
-            display: block;
-            padding: 0.25rem 0;
-            transition: color 0.2s;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent-bright);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 2rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-light);
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .section-title {
-                font-size: 1.75rem;
-            }
-        }
-
         /* Mobile Nav Toggle */
         .mobile-nav-toggle {
             display: none;
@@ -501,6 +317,191 @@
         @media (max-width: 768px) {
             .mobile-nav-toggle {
                 display: block;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 10rem 2rem 6rem;
+            background: transparent;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-bright) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .contact-form-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 0.875rem 1rem;
+            color: var(--text-white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c084fc' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .form-group select option {
+            background: var(--primary-dark);
+            color: var(--text-white);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
+        }
+
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            color: var(--success);
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-link a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .back-link a:hover {
+            color: var(--accent-bright);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 2rem;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        .footer-bottom {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            .contact-header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-form-card {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -547,7 +548,7 @@
             </li>
             <li><a href="compliance.html">Compliance</a></li>
             <li><a href="company.html">Company</a></li>
-            <li><a href="contact.html" class="nav-cta">Request a Demo</a></li>
+            <li><a href="contact.html" class="nav-cta active">Request a Demo</a></li>
         </ul>
         <button class="mobile-nav-toggle">&#9776;</button>
     </nav>
@@ -555,111 +556,124 @@
     <!-- Login Button (Far Right) -->
     <a href="#" class="login-btn">Sign In</a>
 
-    <!-- Company Section -->
-    <section class="company-section">
-        <div class="section-container">
-            <h2 class="section-title">Meet the Team</h2>
-
-            <div class="team-grid">
-                <!-- Daniel Barkhuff -->
-                <div class="team-card">
-                    <div class="team-photo">
-                        <img src="images/daniel-barkhuff.jpg" alt="Daniel Barkhuff">
-                    </div>
-                    <div class="team-info">
-                        <h3>Daniel Barkhuff</h3>
-                        <p class="title">Chief Executive Officer & Founder</p>
-                        <p class="bio">A 2001 US Naval Academy graduate and combat decorated Navy SEAL with deployments to Iraq, Afghanistan, and Africa. After military service, he attended Harvard Medical School and completed Residency Training in Emergency Medicine at the University of New Mexico. Currently an attending physician at the University of Vermont and Director of Trauma Care in the Department of Emergency Medicine. Founded Veterans for Responsible Leadership and the Vermont Afghan Alliance. Lives in Vermont with his wife Whittney and 4 children.</p>
-                    </div>
-                </div>
-
-                <!-- Zack Czajkowski -->
-                <div class="team-card">
-                    <div class="team-photo">
-                        <img src="images/zack-czajkowski.jpg" alt="Zack Czajkowski">
-                    </div>
-                    <div class="team-info">
-                        <h3>Zack Czajkowski</h3>
-                        <p class="title">Co-Founder & Chief Operating Officer</p>
-                        <p class="bio">A political consultant, public affairs professional, and strategist who began his career as a field organizer for Obama's 2012 reelection campaign in Florida. Has managed campaigns from school board to US Senate. After managing Katie Hill's successful red to blue campaign, served as Political Director of The Lincoln Project during the 2020 cycle. Founder and CEO of Brackish Solutions and Director of Public Affairs at Four Corners Strategies. Lives in Durham, NC with his wife Dr. Sarah Cunningham and their rescue bulldog Petunia.</p>
-                    </div>
-                </div>
-
-                <!-- Matthew Hanauer -->
-                <div class="team-card">
-                    <div class="team-photo">
-                        <img src="images/matthew-hanauer.jpg" alt="Matthew Hanauer">
-                    </div>
-                    <div class="team-info">
-                        <h3>Matthew Hanauer, PhD</h3>
-                        <p class="title">Chief Technology Officer</p>
-                        <p class="bio">Transforms complex AI concepts into market-ready products that drive measurable business impact. With 15+ years in data science leadership, has delivered over 15 production-grade products generating $15M+ in quantifiable savings. Track record includes revitalizing stalled AI initiatives and bringing them to market within 6-9 months while reducing time-to-market by 4x. Specializes in building healthcare AI solutions and excels at translating stakeholder requirements into scalable AI products with end-to-end expertise from ideation through deployment.</p>
-                    </div>
-                </div>
-
-                <!-- Jordyn Geruso -->
-                <div class="team-card">
-                    <div class="team-photo">
-                        <img src="images/jordyn-geruso.jpg" alt="Jordyn Geruso">
-                    </div>
-                    <div class="team-info">
-                        <h3>Jordyn Geruso</h3>
-                        <p class="title">Chief Marketing Officer</p>
-                        <p class="bio">A dedicated professional with a deep passion for public service and community advocacy. After earning her bachelor's degree in Healthcare Management and Marketing, transitioned from Human Resources to the political arena in 2023. Now serves as the Executive Director of Veterans for Responsible Leadership and has contributed to other pro-democracy organizations including Women4US and Valor Media Network. Lives in Montana with her fianc&eacute;, their dog, and horse.</p>
-                    </div>
-                </div>
+    <!-- Contact Form Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1>Request a Demo</h1>
+                <p>Fill out the form below and we'll be in touch to schedule your personalized demo.</p>
             </div>
 
-            <h2 class="section-title" style="font-size: 2rem; margin-top: 4rem; margin-bottom: 2rem;">Built by Campaign Veterans</h2>
+            <div class="contact-form-card">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
 
-            <div class="company-intro">
-                <p>Civly was built by a team of longtime political campaign workers in partnership with experienced developers and data scientists.</p>
-                <p>We've been in the war room. We know what campaigns need. That's why we built tools that actually work the way campaigns work.</p>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="organization">Organization *</label>
+                        <input type="text" id="organization" name="organization" placeholder="Campaign or organization name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Your Role</label>
+                        <select id="role" name="role">
+                            <option value="">Select your role</option>
+                            <option value="Campaign Manager">Campaign Manager</option>
+                            <option value="Political Consultant">Political Consultant</option>
+                            <option value="Communications Director">Communications Director</option>
+                            <option value="Research Director">Research Director</option>
+                            <option value="PAC Director">PAC Director</option>
+                            <option value="Nonprofit Leader">Nonprofit Leader</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">What are you interested in?</label>
+                        <select id="interest" name="interest">
+                            <option value="">Select an option</option>
+                            <option value="Helios Book">Helios Book (Deep Research)</option>
+                            <option value="Command Center">Command Center</option>
+                            <option value="Concierge">Concierge (White-Glove Service)</option>
+                            <option value="Compliance">Compliance Solutions</option>
+                            <option value="Full Platform">Full Platform Demo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Additional Details</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your campaign or organization and what you're looking for..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+
+                    <div class="success-message" id="successMessage">
+                        Thank you for your interest! We've received your request and will be in touch shortly.
+                    </div>
+                </form>
             </div>
 
-            <div class="company-mission">
-                <p>"Civly was built and is run by a team of long time political campaign workers and compliance professionals, in partnership with experienced developers and data scientists. Our goal is to make compliance faster, easier, and more accurate."</p>
+            <div class="back-link">
+                <a href="civly_redesign.html">&larr; Back to Home</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Solutions</h4>
-                <ul>
-                    <li><a href="civly_redesign.html#helios-books">Helios Books</a></li>
-                    <li><a href="civly_redesign.html#command-center">Command Center</a></li>
-                    <li><a href="compliance.html">Compliance</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="company.html">Our Team</a></li>
-                    <li><a href="civly_redesign.html#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Sign In</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Connect</h4>
-                <ul>
-                    <li><a href="https://www.linkedin.com/company/civly/" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://x.com/civly_ai" target="_blank">Twitter/X</a></li>
-                </ul>
-            </div>
-        </div>
         <div class="footer-bottom">
+            <a href="#" style="color: var(--text-muted); text-decoration: none; margin-right: 2rem;">Sign In</a>
             &copy; 2025 Civly.AI. All rights reserved.
         </div>
     </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const organization = formData.get('organization');
+            const role = formData.get('role');
+            const interest = formData.get('interest');
+            const message = formData.get('message');
+
+            // Create mailto link with form data
+            const subject = encodeURIComponent('Demo Request from ' + name);
+            const body = encodeURIComponent(
+                'New Demo Request:\n\n' +
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n' +
+                'Organization: ' + organization + '\n' +
+                'Role: ' + (role || 'Not specified') + '\n' +
+                'Interest: ' + (interest || 'Not specified') + '\n\n' +
+                'Additional Details:\n' + (message || 'None provided') + '\n\n' +
+                'Please follow up with this demo request.'
+            );
+            const mailtoLink = 'mailto:sales@civly.ai?subject=' + subject + '&body=' + body;
+
+            // Open mailto
+            window.location.href = mailtoLink;
+
+            // Show success message
+            document.getElementById('successMessage').classList.add('show');
+
+            // Reset form
+            this.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
