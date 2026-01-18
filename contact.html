@@ -635,44 +635,77 @@
     </footer>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Pre-select interest based on URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const interestParam = urlParams.get('interest');
+        if (interestParam === 'helios') {
+            document.getElementById('interest').value = 'Helios Book';
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const organization = formData.get('organization');
-            const role = formData.get('role');
-            const interest = formData.get('interest');
-            const message = formData.get('message');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const successMessage = document.getElementById('successMessage');
 
-            // Create mailto link with form data
-            const subject = encodeURIComponent('Demo Request from ' + name);
-            const body = encodeURIComponent(
-                'New Demo Request:\n\n' +
-                'Name: ' + name + '\n' +
-                'Email: ' + email + '\n' +
-                'Organization: ' + organization + '\n' +
-                'Role: ' + (role || 'Not specified') + '\n' +
-                'Interest: ' + (interest || 'Not specified') + '\n\n' +
-                'Additional Details:\n' + (message || 'None provided') + '\n\n' +
-                'Please follow up with this demo request.'
-            );
-            const mailtoLink = 'mailto:sales@civly.ai?subject=' + subject + '&body=' + body;
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
 
-            // Open mailto
-            window.location.href = mailtoLink;
+            const requestData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                organization: formData.get('organization'),
+                role: formData.get('role') || null,
+                interest: formData.get('interest') || null,
+                message: formData.get('message') || null
+            };
 
-            // Show success message
-            document.getElementById('successMessage').classList.add('show');
+            try {
+                // Call the API
+                const response = await fetch('https://verify.compliance-ai-politics.com/api/v1/public/demo-request', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
 
-            // Reset form
-            this.reset();
+                const result = await response.json();
 
-            // Hide success message after 5 seconds
-            setTimeout(function() {
-                document.getElementById('successMessage').classList.remove('show');
-            }, 5000);
+                if (response.ok && result.success) {
+                    // Update success message with ticket number
+                    successMessage.innerHTML = `Thank you! Your request has been submitted <strong>(#${result.issue_number})</strong>. Check your email for confirmation - we'll be in touch soon!`;
+                    successMessage.classList.add('show');
+
+                    // Reset form
+                    this.reset();
+
+                    // Hide success message after 8 seconds
+                    setTimeout(function() {
+                        successMessage.classList.remove('show');
+                    }, 8000);
+                } else {
+                    throw new Error(result.detail || 'Failed to submit request');
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                successMessage.innerHTML = 'Sorry, there was an error submitting your request. Please try again or email us at <a href="mailto:support@civly.ai">support@civly.ai</a>';
+                successMessage.style.background = 'rgba(239, 68, 68, 0.1)';
+                successMessage.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+                successMessage.classList.add('show');
+
+                setTimeout(function() {
+                    successMessage.classList.remove('show');
+                    successMessage.style.background = '';
+                    successMessage.style.borderColor = '';
+                }, 8000);
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Request';
+            }
         });
     </script>
 </body>

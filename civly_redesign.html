@@ -1167,15 +1167,33 @@
             color: var(--text-muted);
         }
 
+        .dashboard-cta {
+            text-align: center;
+        }
+
+        .dashboard-cta p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
         .dashboard-submit {
+            display: inline-block;
             background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--primary-light) 100%);
             color: white;
-            padding: 1rem;
+            padding: 1rem 2rem;
             border: none;
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 0.5rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .dashboard-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
         }
 
         .dashboard-badge {
@@ -2118,24 +2136,10 @@
                     <div class="dashboard-header">
                         <h4>Request a Helios Book</h4>
                     </div>
-                    <form class="dashboard-form" id="heliosBookForm">
-                        <div class="form-field">
-                            <label>Candidate Name</label>
-                            <input type="text" name="candidate" placeholder="e.g., John Smith" required>
-                        </div>
-                        <div class="form-field">
-                            <label>Office</label>
-                            <input type="text" name="office" placeholder="e.g., U.S. Senate, State House" required>
-                        </div>
-                        <div class="form-field">
-                            <label>Your Email</label>
-                            <input type="email" name="email" placeholder="you@campaign.com" required>
-                        </div>
-                        <button type="submit" class="dashboard-submit">Request Book &rarr;</button>
-                        <div class="success-message" id="successMessage">
-                            We received your request. We will be in touch soon.
-                        </div>
-                    </form>
+                    <div class="dashboard-cta">
+                        <p>Ready to get opposition research on your opponent? Request a book and we'll show you how Helios can give your campaign the edge.</p>
+                        <a href="contact.html?interest=helios" class="dashboard-submit">Request a Book &rarr;</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2526,40 +2530,6 @@
     </footer>
 
     <script>
-        document.getElementById('heliosBookForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const candidate = formData.get('candidate');
-            const office = formData.get('office');
-            const email = formData.get('email');
-
-            // Create mailto link with form data
-            const subject = encodeURIComponent('Helios Book Request - ' + candidate);
-            const body = encodeURIComponent(
-                'New Helios Book Request:\n\n' +
-                'Candidate Name: ' + candidate + '\n' +
-                'Office: ' + office + '\n' +
-                'Contact Email: ' + email + '\n\n' +
-                'Please follow up with this request.'
-            );
-            const mailtoLink = 'mailto:sales@civly.ai?subject=' + subject + '&body=' + body;
-
-            // Open mailto
-            window.location.href = mailtoLink;
-
-            // Show success message
-            document.getElementById('successMessage').classList.add('show');
-
-            // Reset form
-            this.reset();
-
-            // Hide success message after 5 seconds
-            setTimeout(function() {
-                document.getElementById('successMessage').classList.remove('show');
-            }, 5000);
-        });
-
         // FAQ Accordion functionality
         document.querySelectorAll('.faq-question').forEach(function(question) {
             question.addEventListener('click', function() {
