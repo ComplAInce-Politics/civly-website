@@ -1835,6 +1835,59 @@
             .comparison-table td {
                 padding: 1rem;
             }
+
+            /* Touch Target Sizes - WCAG 2.1 minimum 44px */
+            .btn,
+            .btn-primary,
+            .btn-outline {
+                min-height: 48px;
+                padding: 0.875rem 1.5rem;
+            }
+
+            .faq-question {
+                min-height: 48px;
+                padding: 1rem 3rem 1rem 0;
+            }
+
+            .footer-section a {
+                min-height: 44px;
+                padding: 0.75rem 0;
+                display: flex;
+                align-items: center;
+            }
+
+            /* Background orb sizing for mobile */
+            .bg-orb-1, .bg-orb-2, .bg-orb-3 {
+                width: 300px;
+                height: 300px;
+                filter: blur(60px);
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* Tablet breakpoint */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+        }
+
+        /* Small mobile - hide orbs for performance */
+        @media (max-width: 480px) {
+            .bg-orb-1, .bg-orb-2, .bg-orb-3 {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.875rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
         }
 
         /* Mobile Nav Toggle */
@@ -1851,6 +1904,125 @@
             .mobile-nav-toggle {
                 display: block;
             }
+
+            .login-btn {
+                display: none;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: var(--primary-dark);
+            z-index: 1999;
+            transition: right 0.3s ease;
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+            border-left: 1px solid var(--border-light);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 1.75rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-menu-links a {
+            display: block;
+            padding: 1rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .mobile-menu-links a:hover {
+            background: var(--bg-card);
+            color: var(--text-white);
+        }
+
+        .mobile-menu-links .mobile-cta {
+            background: var(--success);
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .mobile-menu-links .mobile-cta:hover {
+            background: #0ea573;
+        }
+
+        .mobile-menu-links .mobile-login {
+            border: 1px solid var(--border-light);
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-menu-section {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .mobile-menu-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            padding-left: 1rem;
+        }
+
+        .mobile-menu-section a {
+            font-size: 0.95rem;
+            padding: 0.75rem 1rem;
         }
 
         /* Email Popup */
@@ -2061,9 +2233,36 @@
             <li><a href="company.html">Company</a></li>
             <li><a href="contact.html" class="nav-cta">Request a Demo</a></li>
         </ul>
-        <button class="mobile-nav-toggle">&#9776;</button>
+        <button class="mobile-nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <div class="mobile-menu-header">
+            <a href="civly_redesign.html" class="logo">
+                <img src="images/civly-logo.png" alt="Civly" class="logo-img">
+            </a>
+            <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+        </div>
+        <ul class="mobile-menu-links">
+            <li><a href="civly_redesign.html">Home</a></li>
+            <li><a href="compliance.html">Compliance</a></li>
+            <li><a href="company.html">Company</a></li>
+        </ul>
+        <div class="mobile-menu-section">
+            <div class="mobile-menu-section-title">Products</div>
+            <ul class="mobile-menu-links">
+                <li><a href="#helios-books">Helios Books</a></li>
+                <li><a href="#command-center">Command Center</a></li>
+                <li><a href="#conigere">Concierge (White-Glove)</a></li>
+            </ul>
+        </div>
+        <ul class="mobile-menu-links">
+            <li><a href="contact.html" class="mobile-cta">Request a Demo</a></li>
+            <li><a href="https://app.civly.ai" class="mobile-login">Login</a></li>
+        </ul>
+    </div>
 
     <!-- ============================================== -->
     <!-- RESEARCH - PRIMARY PRODUCT SECTION -->
@@ -2650,5 +2849,51 @@
             </div>
         </div>
     </div>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        (function() {
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileClose = document.querySelector('.mobile-menu-close');
+
+            function openMenu() {
+                mobileMenu.classList.add('active');
+                mobileOverlay.classList.add('active');
+                mobileToggle.setAttribute('aria-expanded', 'true');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            mobileToggle.addEventListener('click', openMenu);
+            mobileClose.addEventListener('click', closeMenu);
+            mobileOverlay.addEventListener('click', closeMenu);
+
+            // Close menu when clicking a link (for anchor links)
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        closeMenu();
+                    }
+                });
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
