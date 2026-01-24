@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Civly</title>
+    <link rel="icon" type="image/png" href="images/civly-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a0a2e;
+            --primary: #2d1b4e;
+            --primary-mid: #4a1d6e;
+            --primary-light: #7c3aed;
+            --accent: #a855f7;
+            --accent-bright: #c084fc;
+            --accent-magenta: #d946ef;
+            --text-white: #ffffff;
+            --text-light: rgba(255,255,255,0.9);
+            --text-muted: rgba(255,255,255,0.7);
+            --bg-dark: #0f0515;
+            --bg-card: rgba(255,255,255,0.05);
+            --border-light: rgba(255,255,255,0.1);
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-white);
+            background: var(--bg-dark);
+            min-height: 100vh;
+        }
+
+        /* Animated Background Effects */
+        .bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--success) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: -7s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 10px) scale(1.02); }
+        }
+
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 10, 30, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-white);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-white);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Thank You Section */
+        .thankyou-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .thankyou-container {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .success-icon svg {
+            width: 50px;
+            height: 50px;
+            color: var(--success);
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .thankyou-container h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--success) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .thankyou-container .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .confirmation-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .confirmation-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+        }
+
+        .next-steps {
+            list-style: none;
+        }
+
+        .next-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-light);
+        }
+
+        .next-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-white);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .contact-note {
+            margin-top: 2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-note a {
+            color: var(--accent-bright);
+            text-decoration: none;
+        }
+
+        .contact-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 2rem;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .thankyou-container h1 {
+                font-size: 2rem;
+            }
+
+            .bg-orb-1, .bg-orb-2 {
+                width: 300px;
+                height: 300px;
+                filter: blur(60px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bg-orb-1, .bg-orb-2 {
+                display: none;
+            }
+
+            .thankyou-container h1 {
+                font-size: 1.75rem;
+            }
+
+            .success-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .success-icon svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Effects -->
+    <div class="bg-effects">
+        <div class="bg-grid"></div>
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="civly_redesign.html" class="logo">
+            <img src="images/civly-logo.png" alt="Civly" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="civly_redesign.html">Home</a></li>
+            <li><a href="company.html">Company</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="mobile-nav-toggle" aria-label="Menu">&#9776;</button>
+    </nav>
+
+    <!-- Thank You Section -->
+    <section class="thankyou-section">
+        <div class="thankyou-container">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+            </div>
+
+            <h1>Payment Successful!</h1>
+            <p class="subtitle">Thank you for your purchase. Your Helios Core research is now in progress.</p>
+
+            <div class="confirmation-card">
+                <h3>What Happens Next</h3>
+                <ul class="next-steps">
+                    <li>
+                        <span class="step-number">1</span>
+                        <span>You'll receive a confirmation email with your order details and ticket number.</span>
+                    </li>
+                    <li>
+                        <span class="step-number">2</span>
+                        <span>Our research team will begin work on your Helios Core report immediately.</span>
+                    </li>
+                    <li>
+                        <span class="step-number">3</span>
+                        <span>Expect delivery within 3-5 business days via email (Word doc + AI-formatted version).</span>
+                    </li>
+                </ul>
+            </div>
+
+            <a href="civly_redesign.html" class="btn btn-secondary">Return to Home</a>
+
+            <p class="contact-note">
+                Questions? Email us at <a href="mailto:support@civly.ai">support@civly.ai</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            &copy; 2025 Civly.AI. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request a Demo | Civly</title>
+    <title>Purchase Helios Core | Civly</title>
     <link rel="icon" type="image/png" href="images/civly-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -288,22 +288,6 @@
             transform: scale(1.05);
         }
 
-        .login-btn {
-            position: fixed;
-            top: 1.5rem;
-            right: 2rem;
-            z-index: 1001;
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            font-size: 0.85rem;
-            transition: all 0.2s;
-        }
-
-        .login-btn:hover {
-            color: var(--text-white);
-        }
-
         /* Mobile Nav Toggle */
         .mobile-nav-toggle {
             display: none;
@@ -319,9 +303,6 @@
                 display: block;
             }
             .nav-links {
-                display: none;
-            }
-            .login-btn {
                 display: none;
             }
         }
@@ -429,29 +410,41 @@
             margin-top: 0.5rem;
         }
 
-        /* Contact Section */
-        .contact-section {
-            padding: 10rem 2rem 6rem;
-            background: transparent;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            padding-top: 8rem;
         }
 
-        .contact-container {
-            max-width: 600px;
-            width: 100%;
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        .contact-header {
+        /* Hero Section */
+        .purchase-hero {
             text-align: center;
-            margin-bottom: 3rem;
+            padding: 2rem 2rem 4rem;
         }
 
-        .contact-header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .product-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-magenta), var(--primary-light));
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .purchase-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-bright) 100%);
             -webkit-background-clip: text;
@@ -459,84 +452,119 @@
             background-clip: text;
         }
 
-        .contact-header p {
+        .purchase-hero .subtitle {
+            font-size: 1.25rem;
             color: var(--text-muted);
-            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .contact-form-card {
+        /* Product Details + Pricing Grid */
+        .purchase-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* What's Included */
+        .whats-included {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: 16px;
-            padding: 2.5rem;
+            padding: 2rem;
         }
 
-        .form-group {
+        .whats-included h2 {
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            padding: 0.875rem 1rem;
             color: var(--text-white);
-            font-family: inherit;
+        }
+
+        .included-list {
+            list-style: none;
+        }
+
+        .included-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .included-item:last-child {
+            border-bottom: none;
+        }
+
+        .included-icon {
+            font-size: 1.5rem;
+            color: var(--success);
+            flex-shrink: 0;
+        }
+
+        .included-text h4 {
             font-size: 1rem;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-white);
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
+        .included-text p {
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
-        .form-group select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c084fc' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            padding-right: 2.5rem;
+        /* Pricing Card */
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(217, 70, 239, 0.1), rgba(124, 58, 237, 0.1));
+            border: 2px solid var(--accent-magenta);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            position: sticky;
+            top: 8rem;
         }
 
-        .form-group select option {
-            background: var(--primary-dark);
+        .pricing-label {
+            display: inline-block;
+            background: var(--accent-magenta);
+            color: white;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.25rem;
             color: var(--text-white);
+            margin-bottom: 0.5rem;
         }
 
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
         }
 
         .btn {
+            display: inline-block;
             padding: 1rem 2rem;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             transition: all 0.2s;
-            display: inline-block;
             cursor: pointer;
             border: none;
             width: 100%;
@@ -552,35 +580,181 @@
             box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
         }
 
-        .success-message {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid var(--success);
-            border-radius: 8px;
-            padding: 1.5rem;
+        .pricing-footer {
             margin-top: 1.5rem;
-            text-align: center;
-            color: var(--success);
-            display: none;
-        }
-
-        .success-message.show {
-            display: block;
-        }
-
-        .back-link {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .back-link a {
+            font-size: 0.85rem;
             color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.2s;
         }
 
-        .back-link a:hover {
+        .pricing-footer a {
             color: var(--accent-bright);
+            text-decoration: none;
+        }
+
+        .pricing-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Big Book Coming Soon */
+        .coming-soon-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .coming-soon-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .coming-soon-section p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .coming-soon-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .coming-soon-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .coming-soon-feature span {
+            color: var(--success);
+        }
+
+        .notify-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .notify-form input {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 0.875rem 1rem;
+            color: var(--text-white);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .notify-form input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+        }
+
+        .notify-form input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .notify-form button {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .notify-form button:hover {
+            background: #0ea573;
+        }
+
+        /* FAQ */
+        .faq-section {
+            margin-bottom: 4rem;
+        }
+
+        .faq-section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-white);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-white);
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .faq-arrow {
+            font-size: 0.75rem;
+            transition: transform 0.2s;
+            color: var(--text-muted);
+        }
+
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
         }
 
         /* Footer */
@@ -597,38 +771,36 @@
             font-size: 0.9rem;
         }
 
+        /* Responsive */
+        @media (max-width: 900px) {
+            .purchase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card {
+                position: static;
+            }
+        }
+
         @media (max-width: 768px) {
-            .contact-section {
-                padding: 8rem 1.5rem 4rem;
+            .purchase-hero {
+                padding: 1rem 1.5rem 3rem;
             }
 
-            .contact-header h1 {
-                font-size: 2rem;
+            .purchase-hero h1 {
+                font-size: 2.25rem;
             }
 
-            .contact-form-card {
-                padding: 1.5rem;
+            .section-container {
+                padding: 0 1.5rem;
             }
 
-            /* Touch Target Sizes - WCAG 2.1 minimum 44px */
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                min-height: 48px;
-                font-size: 16px; /* Prevents iOS zoom on focus */
+            .notify-form {
+                flex-direction: column;
             }
 
-            .btn,
-            .btn-primary {
-                min-height: 48px;
-                padding: 0.875rem 1.5rem;
-            }
-
-            .back-link a {
-                min-height: 44px;
-                display: inline-flex;
-                align-items: center;
-                padding: 0.75rem 0;
+            .notify-form button {
+                width: 100%;
             }
 
             /* Background orb sizing for mobile */
@@ -639,18 +811,17 @@
             }
         }
 
-        /* Small mobile - hide orbs for performance */
         @media (max-width: 480px) {
             .bg-orb-1, .bg-orb-2, .bg-orb-3 {
                 display: none;
             }
 
-            .contact-header h1 {
-                font-size: 1.75rem;
+            .purchase-hero h1 {
+                font-size: 1.875rem;
             }
 
-            .contact-section {
-                padding: 7rem 1rem 3rem;
+            .price {
+                font-size: 2.75rem;
             }
         }
     </style>
@@ -697,7 +868,7 @@
             </li>
             <li><a href="compliance.html">Compliance</a></li>
             <li><a href="company.html">Company</a></li>
-            <li><a href="purchase.html" class="nav-cta">Get Started</a></li>
+            <li><a href="purchase.html" class="nav-cta active">Get Started</a></li>
         </ul>
         <button class="mobile-nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
     </nav>
@@ -720,80 +891,171 @@
             <li><a href="civly_redesign.html#conigere">Concierge</a></li>
             <li><a href="compliance.html">Compliance</a></li>
             <li><a href="company.html">Company</a></li>
-            <li><a href="purchase.html" class="mobile-cta">Get Started</a></li>
+            <li><a href="purchase.html" class="mobile-cta active">Get Started</a></li>
             <li><a href="https://app.civly.ai" class="mobile-login">Login</a></li>
         </ul>
     </div>
 
-    <!-- Contact Form Section -->
-    <section class="contact-section">
-        <div class="contact-container">
-            <div class="contact-header">
-                <h1>Request a Demo</h1>
-                <p>Fill out the form below and we'll be in touch to schedule your personalized demo.</p>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="purchase-hero">
+            <span class="product-badge">Opposition Research</span>
+            <h1>Helios Core</h1>
+            <p class="subtitle">Focused opposition research delivered in days. The intelligence edge your campaign needs to win.</p>
+        </section>
+
+        <!-- Product Details + Pricing -->
+        <section class="section-container">
+            <div class="purchase-grid">
+                <!-- What's Included -->
+                <div class="whats-included">
+                    <h2>What's Included</h2>
+                    <ul class="included-list">
+                        <li class="included-item">
+                            <div class="included-icon">&#10003;</div>
+                            <div class="included-text">
+                                <h4>Key Vulnerabilities</h4>
+                                <p>Sourced attack lines and contradictions ready for campaign use.</p>
+                            </div>
+                        </li>
+                        <li class="included-item">
+                            <div class="included-icon">&#10003;</div>
+                            <div class="included-text">
+                                <h4>Social Media Analysis</h4>
+                                <p>Deep dive into your opponent's social media history across multiple platforms.</p>
+                            </div>
+                        </li>
+                        <li class="included-item">
+                            <div class="included-icon">&#10003;</div>
+                            <div class="included-text">
+                                <h4>Voting Record Summary</h4>
+                                <p>Key votes, missed votes, and controversial positions documented.</p>
+                            </div>
+                        </li>
+                        <li class="included-item">
+                            <div class="included-icon">&#10003;</div>
+                            <div class="included-text">
+                                <h4>Public Statements</h4>
+                                <p>Quotes and statements that reveal policy positions and potential flip-flops.</p>
+                            </div>
+                        </li>
+                        <li class="included-item">
+                            <div class="included-icon">&#10003;</div>
+                            <div class="included-text">
+                                <h4>News Coverage Analysis</h4>
+                                <p>Media mentions, controversies, and coverage patterns analyzed.</p>
+                            </div>
+                        </li>
+                        <li class="included-item">
+                            <div class="included-icon">&#10003;</div>
+                            <div class="included-text">
+                                <h4>FEC Data Search</h4>
+                                <p>Campaign finance records, donor patterns, and financial disclosures examined.</p>
+                            </div>
+                        </li>
+                        <li class="included-item">
+                            <div class="included-icon">&#10003;</div>
+                            <div class="included-text">
+                                <h4>20+ Pages with Citations</h4>
+                                <p>Delivered as both a traditional Word document and an AI-formatted version for the Command Center.</p>
+                            </div>
+                        </li>
+                        <li class="included-item">
+                            <div class="included-icon">&#10003;</div>
+                            <div class="included-text">
+                                <h4>Delivered in 3-5 Business Days</h4>
+                                <p>Fast turnaround so you can act while the intelligence is fresh.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Pricing Card -->
+                <div class="pricing-card">
+                    <span class="pricing-label">Helios Core</span>
+                    <h3>Helios Opposition Research</h3>
+                    <div class="price">$5,000</div>
+                    <p class="price-note">One-time purchase per target</p>
+                    <a href="intake.html" class="btn btn-primary">Purchase Now</a>
+                    <p class="pricing-footer">
+                        Questions? <a href="contact.html">Contact us</a> or email <a href="mailto:sales@civly.ai">sales@civly.ai</a>
+                    </p>
+                </div>
             </div>
+        </section>
 
-            <div class="contact-form-card">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" placeholder="Your name" required>
+        <!-- Big Book Coming Soon -->
+        <section class="section-container">
+            <div class="coming-soon-section">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <h2>Helios Complete</h2>
+                <p>Our comprehensive deep-dive research package for campaigns that need exhaustive intelligence on their opponents.</p>
+                <div class="coming-soon-features">
+                    <div class="coming-soon-feature">
+                        <span>&#10003;</span> Full historical analysis
                     </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    <div class="coming-soon-feature">
+                        <span>&#10003;</span> Detailed source documentation
                     </div>
-
-                    <div class="form-group">
-                        <label for="organization">Organization *</label>
-                        <input type="text" id="organization" name="organization" placeholder="Campaign or organization name" required>
+                    <div class="coming-soon-feature">
+                        <span>&#10003;</span> Strategic recommendations
                     </div>
-
-                    <div class="form-group">
-                        <label for="role">Your Role</label>
-                        <select id="role" name="role">
-                            <option value="">Select your role</option>
-                            <option value="Campaign Manager">Campaign Manager</option>
-                            <option value="Political Consultant">Political Consultant</option>
-                            <option value="Communications Director">Communications Director</option>
-                            <option value="Research Director">Research Director</option>
-                            <option value="PAC Director">PAC Director</option>
-                            <option value="Nonprofit Leader">Nonprofit Leader</option>
-                            <option value="Other">Other</option>
-                        </select>
+                    <div class="coming-soon-feature">
+                        <span>&#10003;</span> Extended coverage depth
                     </div>
-
-                    <div class="form-group">
-                        <label for="interest">What are you interested in?</label>
-                        <select id="interest" name="interest">
-                            <option value="">Select an option</option>
-                            <option value="Helios Book">Helios Book (Deep Research)</option>
-                            <option value="Command Center">Command Center</option>
-                            <option value="Concierge">Concierge (White-Glove Service)</option>
-                            <option value="Compliance">Compliance Solutions</option>
-                            <option value="Full Platform">Full Platform Demo</option>
-                        </select>
+                    <div class="coming-soon-feature">
+                        <span>&#10003;</span> FEC filings deep dive
                     </div>
-
-                    <div class="form-group">
-                        <label for="message">Additional Details</label>
-                        <textarea id="message" name="message" placeholder="Tell us about your campaign or organization and what you're looking for..."></textarea>
+                    <div class="coming-soon-feature">
+                        <span>&#10003;</span> Video content analysis
                     </div>
+                </div>
+                            </div>
+        </section>
 
-                    <button type="submit" class="btn btn-primary">Submit Request</button>
-
-                    <div class="success-message" id="successMessage">
-                        Thank you for your interest! We've received your request and will be in touch shortly.
-                    </div>
-                </form>
+        <!-- FAQ -->
+        <section class="section-container faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        What's the difference between Helios Core and Helios Complete?
+                        <span class="faq-arrow">&#9660;</span>
+                    </h3>
+                    <p class="faq-answer">Helios Core provides focused opposition research with key vulnerabilities, social media analysis, and voting records. Helios Complete (coming soon) is a comprehensive deep-dive with exhaustive historical analysis, detailed source documentation, and strategic recommendations.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        How long does delivery take?
+                        <span class="faq-arrow">&#9660;</span>
+                    </h3>
+                    <p class="faq-answer">Helios Core is delivered within 3-5 business days. Rush delivery options are available for time-sensitive situations.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        What information do you need from me?
+                        <span class="faq-arrow">&#9660;</span>
+                    </h3>
+                    <p class="faq-answer">After purchase, we'll ask for basic information about your research target: their name, position/office, and any specific areas of concern you'd like us to focus on.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        Can I get research on multiple candidates?
+                        <span class="faq-arrow">&#9660;</span>
+                    </h3>
+                    <p class="faq-answer">Yes! Each Helios Core covers one target. For multiple candidates, you can purchase additional books. Contact us for volume pricing if you need research on 3+ candidates.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        Is there a refund policy?
+                        <span class="faq-arrow">&#9660;</span>
+                    </h3>
+                    <p class="faq-answer">Due to the nature of custom research, we don't offer refunds once work has begun. However, if you're not satisfied with the research quality, contact us and we'll work to make it right.</p>
+                </div>
             </div>
-
-            <div class="back-link">
-                <a href="civly_redesign.html">&larr; Back to Home</a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -803,77 +1065,22 @@
     </footer>
 
     <script>
-        // Pre-select interest based on URL parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        const interestParam = urlParams.get('interest');
-        if (interestParam === 'helios') {
-            document.getElementById('interest').value = 'Helios Book';
-        }
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(function(question) {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const isActive = faqItem.classList.contains('active');
 
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const successMessage = document.getElementById('successMessage');
-
-            // Disable button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
-
-            const requestData = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                organization: formData.get('organization'),
-                role: formData.get('role') || null,
-                interest: formData.get('interest') || null,
-                message: formData.get('message') || null
-            };
-
-            try {
-                // Call the API
-                const response = await fetch('https://verify.compliance-ai-politics.com/api/v1/public/demo-request', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(requestData)
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(function(item) {
+                    item.classList.remove('active');
                 });
 
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    // Update success message with ticket number
-                    successMessage.innerHTML = `Thank you! Your request has been submitted <strong>(#${result.issue_number})</strong>. Check your email for confirmation - we'll be in touch soon!`;
-                    successMessage.classList.add('show');
-
-                    // Reset form
-                    this.reset();
-
-                    // Hide success message after 8 seconds
-                    setTimeout(function() {
-                        successMessage.classList.remove('show');
-                    }, 8000);
-                } else {
-                    throw new Error(result.detail || 'Failed to submit request');
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
                 }
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                successMessage.innerHTML = 'Sorry, there was an error submitting your request. Please try again or email us at <a href="mailto:support@civly.ai">support@civly.ai</a>';
-                successMessage.style.background = 'rgba(239, 68, 68, 0.1)';
-                successMessage.style.borderColor = 'rgba(239, 68, 68, 0.3)';
-                successMessage.classList.add('show');
-
-                setTimeout(function() {
-                    successMessage.classList.remove('show');
-                    successMessage.style.background = '';
-                    successMessage.style.borderColor = '';
-                }, 8000);
-            } finally {
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Request';
-            }
+            });
         });
 
         // Mobile Menu functionality
@@ -904,8 +1111,7 @@
             mobileOverlay.addEventListener('click', closeMenu);
 
             // Close menu when clicking a link
-            const menuLinks = mobileMenu.querySelectorAll('a');
-            menuLinks.forEach(function(link) {
+            mobileMenu.querySelectorAll('a').forEach(function(link) {
                 link.addEventListener('click', closeMenu);
             });
 
