@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsroom | Civly</title>
+    <link rel="icon" type="image/png" href="images/civly-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a0a2e;
+            --primary: #2d1b4e;
+            --primary-mid: #4a1d6e;
+            --primary-light: #7c3aed;
+            --accent: #a855f7;
+            --accent-bright: #c084fc;
+            --accent-magenta: #d946ef;
+            --text-white: #ffffff;
+            --text-light: rgba(255,255,255,0.9);
+            --text-muted: rgba(255,255,255,0.7);
+            --bg-dark: #0f0515;
+            --bg-card: rgba(255,255,255,0.05);
+            --border-light: rgba(255,255,255,0.1);
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-white);
+            background: var(--bg-dark);
+        }
+
+        /* Animated Background Effects */
+        .bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-magenta) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: -7s;
+        }
+
+        .bg-orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--success) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+            opacity: 0.2;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 10px) scale(1.02); }
+        }
+
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(15, 5, 21, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-white);
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-white);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-bright) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        .newsroom-section {
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 1.5rem;
+            background: linear-gradient(180deg, var(--accent) 0%, var(--accent-magenta) 100%);
+            border-radius: 2px;
+        }
+
+        /* News Cards */
+        .news-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .news-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .news-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .news-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-magenta) 100%);
+            color: var(--text-white);
+        }
+
+        .news-tag.press {
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+        }
+
+        .news-tag.media {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+
+        .news-tag.blog {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-magenta) 100%);
+        }
+
+        .news-date {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .news-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-white);
+        }
+
+        .news-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .news-card a {
+            color: var(--accent-bright);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.2s;
+        }
+
+        .news-card a:hover {
+            color: var(--text-white);
+        }
+
+        /* Media Contact Section */
+        .media-contact {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .media-contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .media-contact p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .media-contact a {
+            color: var(--accent-bright);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .media-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state p {
+            font-size: 1.1rem;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding: 0.5rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+        }
+
+        .filter-tab {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .filter-tab:hover {
+            color: var(--text-white);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .filter-tab.active {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-magenta) 100%);
+            color: var(--text-white);
+        }
+
+        .filter-count {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-left: 0.25rem;
+        }
+
+        /* Hidden items */
+        .news-card.hidden {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-light);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            padding: 0.25rem 0;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-bright);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-effects">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+        <div class="bg-grid"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="civly_redesign.html" class="logo">
+                <img src="images/civly-logo.png" alt="Civly">
+            </a>
+            <ul class="nav-links">
+                <li><a href="civly_redesign.html#helios-books">Helios</a></li>
+                <li><a href="civly_redesign.html#command-center">Command Center</a></li>
+                <li><a href="compliance.html">Compliance</a></li>
+                <li><a href="company.html">Company</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Newsroom</h1>
+        <p>Press releases, media coverage, and insights from the Civly&nbsp;team.</p>
+    </header>
+
+    <!-- Main Newsroom Section -->
+    <section class="newsroom-section">
+        <div class="section-container">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All</button>
+                <button class="filter-tab" data-filter="press">Press Releases</button>
+                <button class="filter-tab" data-filter="media">Media Coverage</button>
+                <button class="filter-tab" data-filter="blog">Blog & Insights</button>
+            </div>
+
+            <!-- News Grid -->
+            <div class="news-grid" id="news-grid">
+                <!-- Press Release: Launch Announcement -->
+                <div class="news-card" data-category="press" id="launch-press-release">
+                    <div class="news-card-header">
+                        <span class="news-tag press">Press Release</span>
+                        <span class="news-date">January 2026</span>
+                    </div>
+                    <h3>Civly Launched AI-Powered Campaign Intelligence Platform, Transforming Research for Political Campaigns</h3>
+                    <p><em>North Carolina-based startup delivers comprehensive candidate research in days instead of weeks</em></p>
+                    <p><strong>Durham, NC.</strong> &mdash; Civly, a North Carolina-based technology company, today announced the launch of its AI-powered campaign intelligence platform designed to revolutionize how political campaigns, PACs, advocacy organizations, and public affairs firms conduct opposition research.</p>
+                    <p>A core product, branded as Helios, addresses a longstanding pain point in political campaigns: the time-intensive process of compiling comprehensive research on opponents. What traditionally takes research firms weeks to deliver, Civly's technology accomplishes in days.</p>
+                    <p>"Political campaigns operate on tight timelines, and the research that informs strategy shouldn't be a bottleneck," said Dan Barkhuff, CEO of Civly. "We built Helios to give campaigns a decisive edge, actionable intelligence delivered at the speed modern campaigns demand."</p>
+
+                    <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--text-white);">A Complete Intelligence Suite</h4>
+                    <p>Civly offers several core products designed to work together as a comprehensive campaign intelligence system:</p>
+                    <p><strong>Helios:</strong> Deep research books that serve as the foundation for campaign strategy. Aggregates and analyzes data from social media history, voting records, public statements, FEC filings, news coverage, and documented contradictions. Helios delivers in days with on-demand refresh capability as news breaks.</p>
+                    <p><strong>Command Center:</strong> Tracks social media, issues, voting records, FEC data, and media coverage continuously, alerting campaigns to relevant developments as they happen so rapid response teams can act before narratives take hold. Our Command Center helps keep all your research organized with the vault.</p>
+                    <p><strong>Compliance:</strong> Supports campaign compliance needs, helping teams navigate the complex regulatory landscape of political campaigns. From FEC filing requirements to disclosure obligations, Civly ensures campaigns stay on the right side of the rules while focusing on winning.</p>
+
+                    <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--text-white);">Built by Campaign Professionals</h4>
+                    <p>Civly was founded by a team combining over 100 races of campaign experience and multi-million dollar PAC leadership. This isn't technology built in a vacuum. It's built by people who have lived the campaign cycle and understand the pressure of rapid response and debate prep.</p>
+
+                    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light);">
+                        <p style="margin-bottom: 0.5rem;"><strong>PRESS CONTACT</strong></p>
+                        <p style="margin-bottom: 0.25rem;">Jordyn Geruso</p>
+                        <p style="margin-bottom: 0.25rem;">Chief Operations Officer</p>
+                        <p><a href="mailto:info@civly.ai">info@civly.ai</a> &nbsp;|&nbsp; <a href="https://civly.ai">civly.ai</a></p>
+                    </div>
+                </div>
+
+                <!-- Add more news items here with data-category="press", "media", or "blog" -->
+
+            </div>
+
+            <!-- Media Contact -->
+            <div class="media-contact">
+                <h3>Media Inquiries</h3>
+                <p>For press inquiries, interview requests, or media information, please contact:</p>
+                <a href="mailto:info@civly.ai">info@civly.ai</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="civly_redesign.html#helios-books">Helios Books</a></li>
+                    <li><a href="civly_redesign.html#command-center">Command Center</a></li>
+                    <li><a href="compliance.html">Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="company.html">Our Team</a></li>
+                    <li><a href="newsroom.html">Newsroom</a></li>
+                    <li><a href="civly_redesign.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://www.linkedin.com/company/civly/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://x.com/civly_ai" target="_blank">Twitter/X</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Civly.AI. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-tab').forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                document.querySelectorAll('.filter-tab').forEach(function(t) {
+                    t.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                // Get filter value
+                const filter = this.getAttribute('data-filter');
+
+                // Filter news cards
+                document.querySelectorAll('.news-card').forEach(function(card) {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
