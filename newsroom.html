@@ -108,55 +108,264 @@
         /* Navigation */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            background: rgba(15, 5, 21, 0.9);
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 10, 30, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 0.6rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 1000;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 90%;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-white);
             text-decoration: none;
         }
 
-        .logo img {
+        .logo-img {
             height: 32px;
             width: auto;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
-            list-style: none;
+            gap: 0.5rem;
             align-items: center;
+            list-style: none;
+        }
+
+        .nav-links > li {
+            position: relative;
         }
 
         .nav-links a {
-            color: var(--text-muted);
             text-decoration: none;
+            color: var(--text-muted);
             font-weight: 500;
-            transition: color 0.2s;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
         }
 
         .nav-links a:hover {
             color: var(--text-white);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-links a.active {
+            background: white;
+            color: var(--primary-dark);
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .dropdown-toggle::after {
+            content: "▼";
+            font-size: 0.5rem;
+            margin-left: 0.25rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: -1rem;
+            background: rgba(20, 10, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 0.5rem 0;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s;
+            margin-top: 0.75rem;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            border-radius: 0;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-white);
+        }
+
+        .dropdown-menu .primary-solution {
+            border-left: 3px solid var(--accent-magenta);
+        }
+
+        .dropdown-menu .solution-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent-magenta);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-cta {
+            background: var(--success) !important;
+            padding: 0.5rem 1.25rem !important;
+            border-radius: 50px !important;
+            transition: all 0.2s !important;
+            color: white !important;
+            border: none !important;
+        }
+
+        .nav-cta:hover,
+        .nav-cta:active {
+            background: #0ea573 !important;
+            transform: scale(1.05);
+        }
+
+        /* Mobile Nav Toggle */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-white);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background: var(--primary-dark);
+            z-index: 1999;
+            transition: right 0.3s ease;
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+            border-left: 1px solid var(--border-light);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-menu-links a {
+            display: block;
+            padding: 0.875rem 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s;
+            min-height: 44px;
+        }
+
+        .mobile-menu-links a:hover,
+        .mobile-menu-links a:focus {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
+        }
+
+        .mobile-menu-links a.active {
+            background: white;
+            color: var(--primary-dark);
+        }
+
+        .mobile-menu-links .mobile-cta {
+            background: var(--success);
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .mobile-menu-links .mobile-cta:hover {
+            background: #0ea573;
+        }
+
+        .mobile-menu-links .mobile-login {
+            border: 1px solid var(--border-light);
+            text-align: center;
+            margin-top: 0.5rem;
         }
 
         /* Page Header */
@@ -186,128 +395,364 @@
 
         /* Section Styles */
         .newsroom-section {
-            padding: 4rem 2rem;
+            padding: 2rem 2rem 4rem;
             position: relative;
             z-index: 1;
         }
 
         .section-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--text-white);
+        /* Filter Dropdown */
+        .filter-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 3rem;
+        }
+
+        .filter-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .filter-dropdown-toggle {
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 50px;
+            color: var(--text-white);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .section-title::before {
+        .filter-dropdown-toggle:hover {
+            border-color: var(--accent);
+            background: rgba(168, 85, 247, 0.1);
+        }
+
+        .filter-dropdown-toggle svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .filter-dropdown.open .filter-dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .filter-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            left: 0;
+            min-width: 200px;
+            background: rgba(20, 10, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 0.5rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s ease;
+            z-index: 100;
+        }
+
+        .filter-dropdown.open .filter-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .filter-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+        }
+
+        .filter-dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
+        }
+
+        .filter-dropdown-item.active {
+            color: var(--accent-bright);
+        }
+
+        .filter-dropdown-item.active::before {
             content: '';
-            width: 4px;
-            height: 1.5rem;
-            background: linear-gradient(180deg, var(--accent) 0%, var(--accent-magenta) 100%);
-            border-radius: 2px;
+            display: block;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
         }
 
-        /* News Cards */
+        .filter-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Featured Article */
+        .featured-article {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+            padding: 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .featured-article:hover {
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(168, 85, 247, 0.15);
+        }
+
+        .featured-image {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-image-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: var(--accent);
+        }
+
+        .featured-image-placeholder svg {
+            width: 64px;
+            height: 64px;
+            opacity: 0.5;
+        }
+
+        .featured-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .featured-badge {
+            background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--accent) 100%);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+        }
+
+        .featured-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--text-white);
+        }
+
+        .featured-content .excerpt {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-bright);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .read-more-btn:hover {
+            color: var(--text-white);
+            gap: 0.75rem;
+        }
+
+        .read-more-btn svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.2s;
+        }
+
+        .read-more-btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* News Cards Grid */
         .news-grid {
             display: grid;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
         }
 
         .news-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            overflow: hidden;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .news-card:hover {
             border-color: var(--accent);
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.15);
+        }
+
+        .news-card-image {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .news-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-card-image-placeholder {
+            color: var(--accent);
+            opacity: 0.4;
+        }
+
+        .news-card-image-placeholder svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .news-card-body {
+            padding: 1.5rem;
         }
 
         .news-card-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.75rem;
+            align-items: center;
+            margin-bottom: 1rem;
         }
 
         .news-tag {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-magenta) 100%);
+            letter-spacing: 0.5px;
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
             color: var(--text-white);
         }
 
         .news-tag.press {
-            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+            background: var(--success);
         }
 
         .news-tag.media {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            background: #3b82f6;
         }
 
         .news-tag.blog {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-magenta) 100%);
+            background: var(--accent);
         }
 
         .news-date {
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
         }
 
         .news-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             color: var(--text-white);
+            line-height: 1.4;
         }
 
-        .news-card p {
+        .news-card .excerpt {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .news-card a {
-            color: var(--accent-bright);
-            text-decoration: none;
-            font-weight: 500;
             font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: color 0.2s;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .news-card a:hover {
-            color: var(--text-white);
+        /* Full Article Expanded View */
+        .article-full {
+            display: none;
+        }
+
+        .news-card.expanded .article-full {
+            display: block;
+        }
+
+        .news-card.expanded .excerpt {
+            display: none;
         }
 
         /* Media Contact Section */
         .media-contact {
-            background: var(--bg-card);
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(217, 70, 239, 0.1) 100%);
             border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 2.5rem;
+            border-radius: 20px;
+            padding: 3rem;
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 4rem;
         }
 
         .media-contact h3 {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
+            font-weight: 700;
             margin-bottom: 1rem;
             color: var(--text-white);
         }
@@ -315,74 +760,63 @@
         .media-contact p {
             color: var(--text-muted);
             margin-bottom: 1.5rem;
+            font-size: 1.05rem;
         }
 
-        .media-contact a {
-            color: var(--accent-bright);
+        .media-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .media-contact a:hover {
-            text-decoration: underline;
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-muted);
-        }
-
-        .empty-state p {
-            font-size: 1.1rem;
-        }
-
-        /* Filter Tabs */
-        .filter-tabs {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-            padding: 0.5rem;
-            background: var(--bg-card);
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-        }
-
-        .filter-tab {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            background: transparent;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 8px;
+            font-size: 1rem;
             transition: all 0.2s;
-            font-family: inherit;
         }
 
-        .filter-tab:hover {
-            color: var(--text-white);
-            background: rgba(255,255,255,0.05);
-        }
-
-        .filter-tab.active {
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-magenta) 100%);
-            color: var(--text-white);
-        }
-
-        .filter-count {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            margin-left: 0.25rem;
+        .media-contact-btn:hover {
+            background: var(--accent-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
         }
 
         /* Hidden items */
         .news-card.hidden {
             display: none;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-divider span {
+            background: var(--bg-dark);
+            padding: 0 1.5rem;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 1px;
+            background: var(--border-light);
+        }
+
+        .section-divider {
+            position: relative;
         }
 
         /* Footer */
@@ -436,17 +870,66 @@
         }
 
         /* Responsive */
+        @media (max-width: 968px) {
+            .featured-article {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .featured-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 2rem;
+            }
+
+            .page-header {
+                padding: 7rem 1.5rem 2rem;
             }
 
             .nav-links {
                 display: none;
             }
 
-            .section-title {
-                font-size: 1.5rem;
+            nav {
+                padding: 0.5rem 1rem;
+            }
+
+            .newsroom-section {
+                padding: 1.5rem 1.5rem 3rem;
+            }
+
+            .featured-article {
+                padding: 1.5rem;
+                border-radius: 16px;
+            }
+
+            .featured-content h2 {
+                font-size: 1.35rem;
+            }
+
+            .filter-dropdown-toggle {
+                padding: 0.625rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .filter-dropdown-menu {
+                min-width: 180px;
+            }
+
+            .media-contact {
+                padding: 2rem 1.5rem;
+            }
+
+            .media-contact h3 {
+                font-size: 1.35rem;
             }
         }
     </style>
@@ -462,77 +945,141 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="nav-container">
-            <a href="civly_redesign.html" class="logo">
-                <img src="images/civly-logo.png" alt="Civly">
-            </a>
-            <ul class="nav-links">
-                <li><a href="civly_redesign.html#helios-books">Helios</a></li>
-                <li><a href="civly_redesign.html#command-center">Command Center</a></li>
-                <li><a href="compliance.html">Compliance</a></li>
-                <li><a href="company.html">Company</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
+        <a href="civly_redesign.html" class="logo">
+            <img src="images/civly-logo.png" alt="Civly" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li class="dropdown">
+                <span class="dropdown-toggle"><a href="civly_redesign.html#helios-books">Helios</a></span>
+                <div class="dropdown-menu">
+                    <a href="civly_redesign.html#helios-books" class="primary-solution">
+                        <span class="solution-label">Foundation</span>
+                        Helios Books
+                    </a>
+                    <a href="civly_redesign.html#command-center">
+                        Command Center
+                    </a>
+                    <a href="civly_redesign.html#conigere">
+                        Concierge (White-Glove)
+                    </a>
+                </div>
+            </li>
+            <li><a href="compliance.html">Compliance</a></li>
+            <li><a href="company.html">Company</a></li>
+            <li><a href="purchase.html" class="nav-cta">Get Started</a></li>
+        </ul>
+        <button class="mobile-nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <div class="mobile-menu-header">
+            <a href="civly_redesign.html" class="logo">
+                <img src="images/civly-logo.png" alt="Civly" class="logo-img">
+            </a>
+            <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+        </div>
+        <ul class="mobile-menu-links">
+            <li><a href="civly_redesign.html">Home</a></li>
+            <li><a href="civly_redesign.html#helios-books">Helios Books</a></li>
+            <li><a href="civly_redesign.html#command-center">Command Center</a></li>
+            <li><a href="civly_redesign.html#conigere">Concierge</a></li>
+            <li><a href="compliance.html">Compliance</a></li>
+            <li><a href="company.html">Company</a></li>
+            <li><a href="newsroom.html" class="active">Newsroom</a></li>
+            <li><a href="purchase.html" class="mobile-cta">Get Started</a></li>
+            <li><a href="https://app.civly.ai" class="mobile-login">Login</a></li>
+        </ul>
+    </div>
 
     <!-- Page Header -->
     <header class="page-header">
         <h1>Newsroom</h1>
-        <p>Press releases, media coverage, and insights from the Civly&nbsp;team.</p>
+        <p style="white-space: nowrap;">Press releases, media coverage, and insights from the Civly team.</p>
     </header>
 
     <!-- Main Newsroom Section -->
     <section class="newsroom-section">
         <div class="section-container">
-            <!-- Filter Tabs -->
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">All</button>
-                <button class="filter-tab" data-filter="press">Press Releases</button>
-                <button class="filter-tab" data-filter="media">Media Coverage</button>
-                <button class="filter-tab" data-filter="blog">Blog & Insights</button>
+            <!-- Filter Dropdown -->
+            <div class="filter-container">
+                <div class="filter-dropdown" id="filterDropdown">
+                    <button class="filter-dropdown-toggle" id="filterToggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                        </svg>
+                        <span id="filterLabel">All Content</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="chevron">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="filter-dropdown-menu">
+                        <button class="filter-dropdown-item active" data-filter="all">All Content</button>
+                        <button class="filter-dropdown-item" data-filter="press">Press Releases</button>
+                        <button class="filter-dropdown-item" data-filter="media">Media Coverage</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- News Grid -->
-            <div class="news-grid" id="news-grid">
-                <!-- Press Release: Launch Announcement -->
-                <div class="news-card" data-category="press" id="launch-press-release">
-                    <div class="news-card-header">
+            <!-- Featured Article -->
+            <article class="featured-article" data-category="press">
+                <div class="featured-image">
+                    <img src="images/civly-logo.png" alt="Civly" style="width: 70%; max-width: 280px; height: auto; object-fit: contain;">
+                </div>
+                <div class="featured-content">
+                    <div class="featured-meta">
+                        <span class="featured-badge">Featured</span>
                         <span class="news-tag press">Press Release</span>
                         <span class="news-date">January 2026</span>
                     </div>
-                    <h3>Civly Launched AI-Powered Campaign Intelligence Platform, Transforming Research for Political Campaigns</h3>
-                    <p><em>North Carolina-based startup delivers comprehensive candidate research in days instead of weeks</em></p>
-                    <p><strong>Durham, NC.</strong> &mdash; Civly, a North Carolina-based technology company, today announced the launch of its AI-powered campaign intelligence platform designed to revolutionize how political campaigns, PACs, advocacy organizations, and public affairs firms conduct opposition research.</p>
-                    <p>A core product, branded as Helios, addresses a longstanding pain point in political campaigns: the time-intensive process of compiling comprehensive research on opponents. What traditionally takes research firms weeks to deliver, Civly's technology accomplishes in days.</p>
-                    <p>"Political campaigns operate on tight timelines, and the research that informs strategy shouldn't be a bottleneck," said Dan Barkhuff, CEO of Civly. "We built Helios to give campaigns a decisive edge, actionable intelligence delivered at the speed modern campaigns demand."</p>
+                    <h2>Civly Launches AI-Powered Campaign Intelligence Platform</h2>
+                    <p class="excerpt">North Carolina-based startup delivers comprehensive candidate research in days instead of weeks, transforming how political campaigns conduct opposition research.</p>
+                    <a href="press-release-launch.html" class="read-more-btn">
+                        Read full release
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
 
-                    <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--text-white);">A Complete Intelligence Suite</h4>
-                    <p>Civly offers several core products designed to work together as a comprehensive campaign intelligence system:</p>
-                    <p><strong>Helios:</strong> Deep research books that serve as the foundation for campaign strategy. Aggregates and analyzes data from social media history, voting records, public statements, FEC filings, news coverage, and documented contradictions. Helios delivers in days with on-demand refresh capability as news breaks.</p>
-                    <p><strong>Command Center:</strong> Tracks social media, issues, voting records, FEC data, and media coverage continuously, alerting campaigns to relevant developments as they happen so rapid response teams can act before narratives take hold. Our Command Center helps keep all your research organized with the vault.</p>
-                    <p><strong>Compliance:</strong> Supports campaign compliance needs, helping teams navigate the complex regulatory landscape of political campaigns. From FEC filing requirements to disclosure obligations, Civly ensures campaigns stay on the right side of the rules while focusing on winning.</p>
-
-                    <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--text-white);">Built by Campaign Professionals</h4>
-                    <p>Civly was founded by a team combining over 100 races of campaign experience and multi-million dollar PAC leadership. This isn't technology built in a vacuum. It's built by people who have lived the campaign cycle and understand the pressure of rapid response and debate prep.</p>
-
-                    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light);">
-                        <p style="margin-bottom: 0.5rem;"><strong>PRESS CONTACT</strong></p>
-                        <p style="margin-bottom: 0.25rem;">Jordyn Geruso</p>
-                        <p style="margin-bottom: 0.25rem;">Chief Operations Officer</p>
-                        <p><a href="mailto:info@civly.ai">info@civly.ai</a> &nbsp;|&nbsp; <a href="https://civly.ai">civly.ai</a></p>
+            <!-- News Grid for additional articles -->
+            <div class="news-grid" id="news-grid" style="margin-top: 3rem;">
+                <!-- Additional news cards will go here -->
+                <!-- Example card structure for future articles:
+                <div class="news-card" data-category="media">
+                    <div class="news-card-image">
+                        <div class="news-card-image-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="news-card-body">
+                        <div class="news-card-header">
+                            <span class="news-tag media">Media Coverage</span>
+                            <span class="news-date">January 2026</span>
+                        </div>
+                        <h3>Article Title Here</h3>
+                        <p class="excerpt">Brief description of the article content goes here...</p>
                     </div>
                 </div>
-
-                <!-- Add more news items here with data-category="press", "media", or "blog" -->
-
+                -->
             </div>
 
             <!-- Media Contact -->
             <div class="media-contact">
                 <h3>Media Inquiries</h3>
-                <p>For press inquiries, interview requests, or media information, please contact:</p>
-                <a href="mailto:info@civly.ai">info@civly.ai</a>
+                <p>For press inquiries, interview requests, or media information, please contact our team.</p>
+                <a href="mailto:info@civly.ai" class="media-contact-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Contact Us
+                </a>
             </div>
         </div>
     </section>
@@ -577,17 +1124,81 @@
     </footer>
 
     <script>
-        // Filter functionality
-        document.querySelectorAll('.filter-tab').forEach(function(tab) {
-            tab.addEventListener('click', function() {
-                // Update active tab
-                document.querySelectorAll('.filter-tab').forEach(function(t) {
-                    t.classList.remove('active');
+        // Mobile menu functionality
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            mobileNavToggle.setAttribute('aria-expanded', 'true');
+            mobileMenu.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            mobileNavToggle.setAttribute('aria-expanded', 'false');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        mobileNavToggle.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Filter dropdown functionality
+        const filterDropdown = document.getElementById('filterDropdown');
+        const filterToggle = document.getElementById('filterToggle');
+        const filterLabel = document.getElementById('filterLabel');
+        const filterItems = document.querySelectorAll('.filter-dropdown-item');
+
+        // Toggle dropdown open/close
+        filterToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            filterDropdown.classList.toggle('open');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!filterDropdown.contains(e.target)) {
+                filterDropdown.classList.remove('open');
+            }
+        });
+
+        // Handle filter selection
+        filterItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                // Update active item
+                filterItems.forEach(function(i) {
+                    i.classList.remove('active');
                 });
                 this.classList.add('active');
 
+                // Update button label
+                filterLabel.textContent = this.textContent;
+
                 // Get filter value
                 const filter = this.getAttribute('data-filter');
+
+                // Filter featured article
+                const featuredArticle = document.querySelector('.featured-article');
+                if (featuredArticle) {
+                    if (filter === 'all' || featuredArticle.getAttribute('data-category') === filter) {
+                        featuredArticle.style.display = 'grid';
+                    } else {
+                        featuredArticle.style.display = 'none';
+                    }
+                }
 
                 // Filter news cards
                 document.querySelectorAll('.news-card').forEach(function(card) {
@@ -597,6 +1208,9 @@
                         card.classList.add('hidden');
                     }
                 });
+
+                // Close dropdown
+                filterDropdown.classList.remove('open');
             });
         });
     </script>

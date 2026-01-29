@@ -312,6 +312,25 @@
             z-index: 1;
         }
 
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-bright);
+        }
+
         .footer-bottom {
             color: var(--text-muted);
             font-size: 0.9rem;
@@ -412,6 +431,11 @@
 
     <!-- Footer -->
     <footer>
+        <div class="footer-links">
+            <a href="civly_redesign.html">Home</a>
+            <a href="company.html">Company</a>
+            <a href="newsroom.html">Newsroom</a>
+        </div>
         <div class="footer-bottom">
             &copy; 2025 Civly.AI. All rights reserved.
         </div>

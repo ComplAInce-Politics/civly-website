@@ -10,7 +10,14 @@
       "Bash(git remote add:*)",
       "Bash(git push:*)",
       "Bash(git merge:*)",
-      "WebFetch(domain:www.civly.ai)"
+      "WebFetch(domain:www.civly.ai)",
+      "Bash(npm run dev)",
+      "Bash(pgrep:*)",
+      "Bash(git clone:*)",
+      "Bash(curl:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)"
     ]
   }
 }
