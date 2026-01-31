@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Civly Launches AI-Powered Campaign Intelligence Platform | Civly</title>
+    <title>In Action | Civly</title>
     <link rel="icon" type="image/png" href="images/civly-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -162,6 +162,11 @@
             background: rgba(255,255,255,0.1);
         }
 
+        .nav-links a.active {
+            background: white;
+            color: var(--primary-dark);
+        }
+
         /* Dropdown */
         .dropdown {
             position: relative;
@@ -175,7 +180,7 @@
         }
 
         .dropdown-toggle::after {
-            content: "▼";
+            content: "\25BC";
             font-size: 0.5rem;
             margin-left: 0.25rem;
         }
@@ -341,6 +346,11 @@
             color: var(--text-white);
         }
 
+        .mobile-menu-links a.active {
+            background: white;
+            color: var(--primary-dark);
+        }
+
         .mobile-menu-links .mobile-cta {
             background: var(--success);
             color: white;
@@ -358,53 +368,170 @@
             margin-top: 0.5rem;
         }
 
-        /* Article Header */
-        .article-header {
-            padding: 8rem 2rem 3rem;
+        .mobile-menu-section {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .mobile-menu-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            padding-left: 1rem;
+        }
+
+        .mobile-menu-section a {
+            font-size: 0.95rem;
+            padding: 0.75rem 1rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 8rem 2rem 4rem;
             text-align: center;
             position: relative;
             z-index: 1;
-            max-width: 900px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-bright) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .back-link {
-            display: inline-flex;
+        /* Content Section */
+        .action-section {
+            padding: 2rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Case Study Cards */
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .case-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.15);
+        }
+
+        .case-card-icon {
+            padding: 2rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-bright);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 2rem;
-            transition: all 0.2s;
+            gap: 1.25rem;
         }
 
-        .back-link:hover {
-            color: var(--text-white);
-            gap: 0.75rem;
+        .case-card-icon .doc-preview {
+            width: 56px;
+            height: 72px;
+            background: white;
+            border-radius: 4px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        .back-link svg {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.2s;
-        }
-
-        .back-link:hover svg {
-            transform: translateX(-4px);
-        }
-
-        .article-meta {
+        .case-card-icon .doc-preview .doc-bar {
+            width: 100%;
+            height: 20px;
+            background: #dc2626;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
         }
 
-        .news-tag {
+        .case-card-icon .doc-preview .doc-bar span {
+            font-size: 0.5rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+
+        .case-card-icon .doc-preview .doc-lines {
+            flex: 1;
+            width: 100%;
+            padding: 8px 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .case-card-icon .doc-preview .doc-lines span {
+            display: block;
+            height: 2px;
+            background: #d1d5db;
+            border-radius: 1px;
+        }
+
+        .case-card-icon .doc-preview .doc-lines span:nth-child(odd) {
+            width: 85%;
+        }
+
+        .case-card-icon .doc-preview .doc-lines span:nth-child(even) {
+            width: 65%;
+        }
+
+        .case-card-icon .doc-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .case-card-icon .doc-info p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .case-card-body {
+            padding: 1.5rem;
+        }
+
+        .case-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .case-tag {
             font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -412,113 +539,52 @@
             padding: 0.3rem 0.75rem;
             border-radius: 4px;
             color: var(--text-white);
-            background: var(--success);
+            background: var(--accent);
         }
 
-        .news-date {
+        .case-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .case-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-white);
+            line-height: 1.4;
+        }
+
+        .case-card .case-description {
+            color: var(--text-muted);
             font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .article-header h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-bright) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .article-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        /* Article Content */
-        .article-content {
-            padding: 0 2rem 4rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .article-body {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 3rem;
-        }
-
-        .article-body p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.9;
+            line-height: 1.6;
             margin-bottom: 1.5rem;
         }
 
-        .article-body p strong {
-            color: var(--text-white);
-        }
-
-        .article-body h2 {
-            color: var(--text-white);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .quote-block {
-            padding: 1.5rem 2rem;
-            margin: 2rem 0;
-            border-left: 4px solid var(--accent);
-            background: rgba(168, 85, 247, 0.1);
-            border-radius: 0 12px 12px 0;
-        }
-
-        .quote-block p {
-            font-style: italic;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem !important;
-        }
-
-        .quote-block .quote-author {
-            font-style: normal;
-            font-size: 0.9rem;
-            color: var(--accent-bright);
-        }
-
-        .press-contact {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-light);
-        }
-
-        .press-contact h3 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-white);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.75rem;
-        }
-
-        .press-contact p {
-            margin-bottom: 0.25rem !important;
-            font-size: 1rem !important;
-        }
-
-        .press-contact a {
-            color: var(--accent-bright);
+        .view-report-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
             text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
         }
 
-        .press-contact a:hover {
-            text-decoration: underline;
+        .view-report-btn:hover {
+            background: var(--accent-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
+        }
+
+        .view-report-btn svg {
+            width: 18px;
+            height: 18px;
         }
 
         /* Footer */
@@ -573,16 +639,12 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .article-header {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .page-header {
                 padding: 7rem 1.5rem 2rem;
-            }
-
-            .article-header h1 {
-                font-size: 1.75rem;
-            }
-
-            .article-subtitle {
-                font-size: 1.1rem;
             }
 
             .nav-links {
@@ -593,12 +655,12 @@
                 padding: 0.5rem 1rem;
             }
 
-            .article-body {
-                padding: 2rem 1.5rem;
+            .action-section {
+                padding: 1.5rem 1.5rem 3rem;
             }
 
-            .quote-block {
-                padding: 1rem 1.25rem;
+            .case-studies-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -670,7 +732,7 @@
             <div class="mobile-menu-section-title">Resources</div>
             <ul class="mobile-menu-links">
                 <li><a href="newsroom.html">Newsroom</a></li>
-                <li><a href="in-action.html">In Action</a></li>
+                <li><a href="in-action.html" class="active">In Action</a></li>
             </ul>
         </div>
         <ul class="mobile-menu-links">
@@ -679,53 +741,45 @@
         </ul>
     </div>
 
-    <!-- Article Header -->
-    <header class="article-header">
-        <a href="newsroom.html" class="back-link">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-            </svg>
-            Back to Newsroom
-        </a>
-        <div class="article-meta">
-            <span class="news-tag">Press Release</span>
-            <span class="news-date">January 2026</span>
-        </div>
-        <h1>Civly Launches AI-Powered Campaign Intelligence Platform, Transforming Research for Political Campaigns</h1>
-        <p class="article-subtitle">North Carolina-based startup delivers comprehensive candidate research in days instead of weeks</p>
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Civly In Action</h1>
+        <p>See how Civly's research and intelligence tools are making a difference in political campaigns and compliance.</p>
     </header>
 
-    <!-- Article Content -->
-    <section class="article-content">
-        <div class="article-body">
-            <p><strong>Durham, NC.</strong> &mdash; Civly, a North Carolina-based technology company, today announced the launch of its AI-powered campaign intelligence platform designed to revolutionize how political campaigns, PACs, advocacy organizations, and public affairs firms conduct opposition research.</p>
-
-            <p>A core product, branded as Helios, addresses a longstanding pain point in political campaigns: the time-intensive process of compiling comprehensive research on opponents. What traditionally takes research firms weeks to deliver, Civly's technology accomplishes in days.</p>
-
-            <div class="quote-block">
-                <p>"Political campaigns operate on tight timelines, and the research that informs strategy shouldn't be a bottleneck. We built Helios to give campaigns a decisive edge, actionable intelligence delivered at the speed modern campaigns demand."</p>
-                <span class="quote-author">&mdash; Dan Barkhuff, CEO of Civly</span>
-            </div>
-
-            <h2>A Complete Intelligence Suite</h2>
-
-            <p>Civly offers several core products designed to work together as a comprehensive campaign intelligence system:</p>
-
-            <p><strong>Helios:</strong> Deep research books that serve as the foundation for campaign strategy. Aggregates and analyzes data from social media history, voting records, public statements, FEC filings, news coverage, and documented contradictions. Helios delivers in days with on-demand refresh capability as news breaks.</p>
-
-            <p><strong>Command Center:</strong> Tracks social media, issues, voting records, FEC data, and media coverage continuously, alerting campaigns to relevant developments as they happen so rapid response teams can act before narratives take hold. Our Command Center helps keep all your research organized with the vault.</p>
-
-            <p><strong>Compliance:</strong> Supports campaign compliance needs, helping teams navigate the complex regulatory landscape of political campaigns. From FEC filing requirements to disclosure obligations, Civly ensures campaigns stay on the right side of the rules while focusing on winning.</p>
-
-            <h2>Built by Campaign Professionals</h2>
-
-            <p>Civly was founded by a team combining over 100 races of campaign experience and multi-million dollar PAC leadership. This isn't technology built in a vacuum. It's built by people who have lived the campaign cycle and understand the pressure of rapid response and debate prep.</p>
-
-            <div class="press-contact">
-                <h3>Press Contact</h3>
-                <p>Jordyn Geruso</p>
-                <p>Chief Operating Officer</p>
-                <p><a href="mailto:info@civly.ai">info@civly.ai</a> &nbsp;|&nbsp; <a href="https://civly.ai">civly.ai</a></p>
+    <!-- Case Studies Section -->
+    <section class="action-section">
+        <div class="section-container">
+            <div class="case-studies-grid">
+                <!-- NTOC Complaint Log -->
+                <div class="case-card">
+                    <div class="case-card-icon">
+                        <div class="doc-preview">
+                            <div class="doc-lines">
+                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <div class="doc-bar"><span>PDF</span></div>
+                        </div>
+                        <div class="doc-info">
+                            <h4>NTOC-Complaint-Epstein_Civly.pdf</h4>
+                            <p>Civly Research Report</p>
+                        </div>
+                    </div>
+                    <div class="case-card-body">
+                        <div class="case-card-header">
+                            <span class="case-tag">Report</span>
+                            <span class="case-date">2026</span>
+                        </div>
+                        <h3>NTOC Complaint Log</h3>
+                        <p class="case-description">A comprehensive complaint log compiled by Civly documenting issues filed with the National Toxic Oversight Commission. This report showcases Civly's research capabilities in tracking and organizing public records for accountability and transparency.</p>
+                        <a href="NTOC-Complaint-Epstein_Civly.pdf" target="_blank" class="view-report-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            View Report
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
