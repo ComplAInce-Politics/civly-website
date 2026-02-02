@@ -201,6 +201,65 @@
             color: var(--primary-dark);
         }
 
+        .nav-links > li {
+            position: relative;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .dropdown-toggle::after {
+            content: "▼";
+            font-size: 0.5rem;
+            margin-left: 0.25rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: -1rem;
+            background: rgba(20, 10, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 0.5rem 0;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s;
+            margin-top: 0.75rem;
+            z-index: 1001;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            border-radius: 0;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-white);
+        }
+
         .nav-cta {
             background: var(--success) !important;
             padding: 0.5rem 1.25rem !important;
@@ -1026,6 +1085,32 @@
             border: 1px solid var(--border-light);
             text-align: center;
             margin-top: 0.5rem;
+        }
+
+        .mobile-menu-section {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .mobile-menu-section-title {
+            display: block;
+            padding: 0.875rem 1rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 500;
+            min-height: 44px;
+        }
+
+        .mobile-menu-section .mobile-menu-links a {
+            padding-left: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .mobile-menu-section .mobile-menu-links a:hover,
+        .mobile-menu-section .mobile-menu-links a:focus {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
         }
     </style>
 </head>
