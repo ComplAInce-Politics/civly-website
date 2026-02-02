@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What's New | Civly</title>
+    <title>Sample Reports | Civly</title>
     <link rel="icon" type="image/png" href="images/civly-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -200,6 +200,7 @@
             transform: translateY(10px);
             transition: all 0.2s;
             margin-top: 0.75rem;
+            z-index: 1001;
         }
 
         .dropdown:hover .dropdown-menu {
@@ -394,127 +395,203 @@
             color: var(--text-white);
         }
 
-        /* Hero Section */
-        .whats-new-hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        /* Page Header */
+        .page-header {
+            padding: 8rem 2rem 4rem;
             text-align: center;
-            padding: 8rem 2rem 3rem;
             position: relative;
             z-index: 1;
         }
 
-        .hero-tagline {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
+        .page-header h1 {
+            font-size: 3rem;
             font-weight: 800;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-bright) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1rem;
-            line-height: 1.1;
         }
 
-        .hero-footer-text {
-            font-size: 0.9rem;
+        .page-header p {
+            font-size: 1.25rem;
             color: var(--text-muted);
-            margin-top: 0.5rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .hero-footer-text a {
-            color: var(--accent-bright);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .hero-footer-text a:hover {
-            color: var(--text-white);
-        }
-
-        /* Updates Timeline */
-        .updates-section {
+        /* Content Section */
+        .reports-section {
             padding: 2rem 2rem 4rem;
             position: relative;
             z-index: 1;
         }
 
-        .updates-container {
-            max-width: 800px;
+        .section-container {
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .update-card {
+        /* Report Cards */
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .report-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .update-card-date {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
+        .report-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.15);
+        }
+
+        .report-card-icon {
+            padding: 2rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .report-card-icon .doc-preview {
+            width: 56px;
+            height: 72px;
+            background: white;
+            border-radius: 4px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .report-card-icon .doc-preview .doc-bar {
+            width: 100%;
+            height: 20px;
+            background: #dc2626;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .report-card-icon .doc-preview .doc-bar span {
+            font-size: 0.5rem;
+            font-weight: 800;
+            color: white;
             letter-spacing: 0.5px;
-            color: var(--accent-bright);
+        }
+
+        .report-card-icon .doc-preview .doc-lines {
+            flex: 1;
+            width: 100%;
+            padding: 8px 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .report-card-icon .doc-preview .doc-lines span {
+            display: block;
+            height: 2px;
+            background: #d1d5db;
+            border-radius: 1px;
+        }
+
+        .report-card-icon .doc-preview .doc-lines span:nth-child(odd) {
+            width: 85%;
+        }
+
+        .report-card-icon .doc-preview .doc-lines span:nth-child(even) {
+            width: 65%;
+        }
+
+        .report-card-icon .doc-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .report-card-icon .doc-info p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .report-card-body {
+            padding: 1.5rem;
+        }
+
+        .report-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 1rem;
         }
 
-        .update-card-title {
+        .report-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            color: var(--text-white);
+            background: var(--accent);
+        }
+
+        .report-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .report-card h3 {
             font-size: 1.1rem;
             font-weight: 600;
+            margin-bottom: 0.75rem;
             color: var(--text-white);
-            margin-bottom: 0.5rem;
+            line-height: 1.4;
         }
 
-        .update-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .update-card h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-light);
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .update-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .update-card ul li {
-            position: relative;
-            padding-left: 1.25rem;
+        .report-card .report-description {
             color: var(--text-muted);
             font-size: 0.9rem;
             line-height: 1.6;
-            margin-bottom: 0.35rem;
+            margin-bottom: 1.5rem;
         }
 
-        .update-card ul li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.6em;
-            width: 6px;
-            height: 6px;
+        .view-report-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             background: var(--accent);
-            border-radius: 50%;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .view-report-btn:hover {
+            background: var(--accent-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
+        }
+
+        .view-report-btn svg {
+            width: 18px;
+            height: 18px;
         }
 
         /* Footer */
@@ -569,6 +646,14 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .page-header {
+                padding: 7rem 1.5rem 2rem;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -577,20 +662,12 @@
                 padding: 0.5rem 1rem;
             }
 
-            .whats-new-hero {
-                padding: 7rem 1.5rem 2rem;
-            }
-
-            .hero-tagline {
-                font-size: 1rem;
-            }
-
-            .updates-section {
+            .reports-section {
                 padding: 1.5rem 1.5rem 3rem;
             }
 
-            .update-card {
-                padding: 1.5rem;
+            .reports-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -631,7 +708,6 @@
                 <div class="dropdown-menu">
                     <a href="newsroom.html">Newsroom</a>
                     <a href="in-action.html">In Action</a>
-                    <a href="whats-new.html">What's New</a>
                 </div>
             </li>
             <li><a href="company.html">Company</a></li>
@@ -664,7 +740,6 @@
             <ul class="mobile-menu-links">
                 <li><a href="newsroom.html">Newsroom</a></li>
                 <li><a href="in-action.html">In Action</a></li>
-                <li><a href="whats-new.html" class="active">What's New</a></li>
             </ul>
         </div>
         <ul class="mobile-menu-links">
@@ -673,71 +748,46 @@
         </ul>
     </div>
 
-    <!-- Hero -->
-    <section class="whats-new-hero">
-        <h1 class="hero-title">What's New</h1>
-        <p class="hero-tagline">Weekly updates from the Civly team &mdash; new features, improvements, and what we shipped.</p>
-        <p class="hero-footer-text">For more information, visit <a href="civly_redesign.html">civly.ai</a></p>
-    </section>
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Sample Reports</h1>
+        <p>Explore examples of Civly's comprehensive opposition research and intelligence reports.</p>
+    </header>
 
-    <!-- Updates Timeline -->
-    <section class="updates-section">
-        <div class="updates-container">
-
-            <!-- Entry 2: February 1, 2026 -->
-            <div class="update-card">
-                <div class="update-card-date">February 1, 2026</div>
-
-                <h3>Big Book (Opposition Research)</h3>
-                <ul>
-                    <li>Deep research now pulls LinkedIn, Wikipedia, MIT Election Data, and property records</li>
-                    <li>Choose a political angle (left, right, primary challenge, or neutral) for framed research</li>
-                    <li>Enhanced AI models for higher quality writing</li>
-                    <li>Hyperlinked citations, Wikipedia sources, and full bibliography</li>
-                    <li>New sections: political donations, property records, Truth Social, Path to Victory</li>
-                    <li>Professional prose formatting; better support for lesser-known candidates</li>
-                </ul>
-
-                <h3>Social Alerts</h3>
-                <ul>
-                    <li>Monitor up to 10 candidates across YouTube, Substack, and more</li>
-                    <li>AI-categorized alert severity with review/dismiss/escalate workflow</li>
-                </ul>
-
-                <h3>Data Breach Check</h3>
-                <ul>
-                    <li>Screen individuals against known data breaches</li>
-                </ul>
-
-                <h3>Election History &amp; Explorer</h3>
-                <ul>
-                    <li>Browse historical election results and explore race/candidate data</li>
-                </ul>
-
-                <h3>FEC &amp; Campaign Finance</h3>
-                <ul>
-                    <li>PAC contributions view in FEC Committee Explorer</li>
-                    <li>AI-powered queries for more accurate data lookups</li>
-                </ul>
-
-                <h3>Social Media Analysis</h3>
-                <ul>
-                    <li>Toggle to include/exclude replies; advanced Twitter search with auto-retry</li>
-                    <li>Facebook public page scraping for Big Book research</li>
-                </ul>
-
-                <h3>Command Center MCP</h3>
-                <ul>
-                    <li>MCP server lets external AI tools interact with Civly's research capabilities</li>
-                </ul>
+    <!-- Reports Section -->
+    <section class="reports-section">
+        <div class="section-container">
+            <div class="reports-grid">
+                <!-- Eric Greitens Opposition Research -->
+                <div class="report-card">
+                    <div class="report-card-icon">
+                        <div class="doc-preview">
+                            <div class="doc-lines">
+                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <div class="doc-bar"><span>PDF</span></div>
+                        </div>
+                        <div class="doc-info">
+                            <h4>Opposition-Research-Greitens.pdf</h4>
+                            <p>Civly Opposition Research</p>
+                        </div>
+                    </div>
+                    <div class="report-card-body">
+                        <div class="report-card-header">
+                            <span class="report-tag">Opposition Research</span>
+                            <span class="report-date">Sample</span>
+                        </div>
+                        <h3>Eric Robert Greitens</h3>
+                        <p class="report-description">A comprehensive opposition research report on Eric Greitens, showcasing Civly's deep-dive research capabilities including background analysis, voting records, public statements, and documented controversies.</p>
+                        <a href="sample-opposition-research-greitens.pdf" target="_blank" class="view-report-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            View Report
+                        </a>
+                    </div>
+                </div>
             </div>
-
-            <!-- Entry 1: January 26, 2026 (Launch) -->
-            <div class="update-card">
-                <div class="update-card-date">January 26, 2026 &mdash; Launch</div>
-                <p>Map political networks, flag controversial content, and generate professional reports in minutes.</p>
-            </div>
-
         </div>
     </section>
 
