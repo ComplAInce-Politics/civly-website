@@ -305,48 +305,33 @@
         footer {
             background: var(--bg-dark);
             color: white;
-            padding: 3rem 2rem;
+            padding: 2rem;
             border-top: 1px solid var(--border-light);
+            text-align: center;
             position: relative;
             z-index: 1;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        .footer-links {
+            display: flex;
+            justify-content: center;
             gap: 2rem;
-        }
-
-        .footer-section h4 {
-            font-size: 1rem;
             margin-bottom: 1rem;
-            color: var(--text-light);
+            flex-wrap: wrap;
         }
 
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
+        .footer-links a {
             color: var(--text-muted);
             text-decoration: none;
-            display: block;
-            padding: 0.25rem 0;
+            font-size: 0.9rem;
             transition: color 0.2s;
         }
 
-        .footer-section a:hover {
+        .footer-links a:hover {
             color: var(--accent-bright);
         }
 
         .footer-bottom {
-            max-width: 1200px;
-            margin: 2rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-light);
-            text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
         }
@@ -402,6 +387,7 @@
             <li><a href="company.html">Company</a></li>
             <li><a href="newsroom.html">Newsroom</a></li>
             <li><a href="in-action.html">In Action</a></li>
+            <li><a href="whats-new.html">What's New</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
         <button class="mobile-nav-toggle" aria-label="Menu">&#9776;</button>
@@ -448,39 +434,12 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Solutions</h4>
-                <ul>
-                    <li><a href="civly_redesign.html#helios-books">Research</a></li>
-                    <li><a href="compliance.html">Compliance Engine</a></li>
-                    <li><a href="sample-reports.html">Sample Reports</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="company.html">About Us</a></li>
-                    <li><a href="company.html">Our Team</a></li>
-                    <li><a href="newsroom.html">Newsroom</a></li>
-                    <li><a href="in-action.html">In Action</a></li>
-                    <li><a href="civly_redesign.html#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="javascript:void(0)" class="coming-soon">Privacy Policy</a></li>
-                    <li><a href="javascript:void(0)" class="coming-soon">Terms of Service</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Connect</h4>
-                <ul>
-                    <li><a href="https://www.linkedin.com/company/civly/" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://x.com/civly_ai" target="_blank">Twitter/X</a></li>
-                </ul>
-            </div>
+        <div class="footer-links">
+            <a href="civly_redesign.html">Home</a>
+            <a href="company.html">Company</a>
+            <a href="newsroom.html">Newsroom</a>
+            <a href="in-action.html">In Action</a>
+            <a href="whats-new.html">What's New</a>
         </div>
         <div class="footer-bottom">
             &copy; 2025 Civly.AI. All rights reserved.
